@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    
+  </head>
+  <body onload="init()">
+   <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light border-bottom">
+			<img style="width:40px; height:auto;" src="drawable/Logo.png" class="rounded" alt="...">
+ 	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+ 	      <span class="navbar-toggler-icon"></span>
+ 	    </button>
+ 	    <div class="collapse navbar-collapse text-dark row justify-content-between custom-line" >
+ 	      <ul class="col-4 navbar-nav ml-auto mt-2 mt-lg-0 text-dark h6"  >     
+ 	      </ul>
+ 	      <button type="button" class="text-align: center; bg-warning col-1 bg-danger text-light btn align-left">Déconnexion</button>
+ 	    </div>
+     </nav>  
+    <button onclick="ajouterLigne()" type="button" name="button">click</button>
+    <br><br><br>
+    <div class="row" >
+      <h1 style="margin-left: auto; margin-right: auto">Utilisateurs </h1>
+    </div>
+    <br><br><br><br>
+    <div class="col-10 " style="margin-left:auto; margin-right:auto">
+      <table class="table " data-toggle="table" data-search="true" data-pagination="true" id="tableau" >
+      	<caption>Titre du tableau</caption>
+        <thead class="bg-secondary">
+          <tr >
+            <th data-sortable="true" >Nom</th>
+            <th data-sortable="true">Type de forfait</th>
+            <th data-sortable="false">Etat</th>
+            <th data-sortable="false">#</th>
+            <th data-sortable="false">#</th>
+          </tr>
+        </thead>
+        <tbody id="id_tbody">
+          <!--<tr>
+            <td>Valérie CHEVALIER</td>
+            <td>Forfait 2.0</td>
+            <td style="background-Color:red ;width: 5%;"><a href="http://127.0.0.1:5500/admin.html"><img style=" max-width:10%; height:auto;" src="drawable/alert.png" class="rounded" alt="..."></td>
+            <td style="width: 50%;">µ</td>
+            <td style="width: 5%;">µ</td>
+          </tr>-->
+          <tr>
+            <td>JEAN BERNARD</td>
+            <td>Forfait 2.0</td>
+            <td class="w-25 zz" id="picture" ></td>
+            <td >01</td>
+            <td >2010</td>
+          </tr>      
+        </tbody>
+      </table>
+      <div id="div1">The text above has been created dynamically.</div>
+    </div>
+  </div>
+
+    <script type="text/javascript">
+      var array_lignes = document.getElementById('tableau').rows
+      var picture = document.getElementById('picture')
+      var longueur = array_lignes.length;
+      var but = document.getElementById('button')
+
+      i=0;
+      while (i<longueur) {
+        if (i%2==0 && i != 0) {
+          array_lignes[i].style.backgroundColor = "red";
+        }else {
+          array_lignes[i].style.backgroundColor = "bluaye";
+        }
+        i++;
+      }
+
+       let info = '[{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"AMAZONE","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"null"},{"firstName":"parker","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"null"},{"firstName":"Obiang","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"null"},{"firstName":"Macron","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"null"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"}]';
+        
+      ido = JSON.parse(info)
+       
+
+        
+        function recupLigne(){
+          var value_row = document.getElementById('tableau').rows
+         
+
+          //console.log(ido[0].firstName)
+        // console.log(value_row.firstName)
+
+        }
+        recupLigne()
+        Remplirtab()
+
+        function init()
+          {
+            document.getElementById("id_tbody").onclick = tbody_onclick;
+            console.log()
+          }
+
+          function tbody_onclick(event)
+          {
+            var nCell = event.target
+            console.log(nCell)
+          // Je voudrais recupere les coordonnees de la cellule cliquee (1,1)
+          }
+         
+        
+        //remplir le tableau à partir du JSON
+        function Remplirtab(){
+          console.log(ido[0].firstName);
+          i=0
+          for (let i = 0; i < ido.length; i++) {
+            ajouterLigne(i)
+
+          }
+        }
+        
+        //Ajouter une ligne dans le tableau et remplir les cellules
+        function ajouterLigne(i)
+
+        {
+
+        	var tableau = document.getElementById("tableau");
+
+        	var ligne = tableau.insertRow(-1);//on a ajouté une ligne
+
+        	var colonne1 = ligne.insertCell(0);//on a ajouté une cellule
+        	colonne1.innerHTML += ido[i].firstName//on y met le contenu de titre
+
+        	var colonne2 = ligne.insertCell(1);//on ajoute la seconde cellule
+        	colonne2.innerHTML += ido[i].forfaitId;
+
+        	var date = new Date();
+        	var colonne3 = ligne.insertCell(2);
+        	colonne3.innerHTML += "Message!";
+
+        	var colonne4 = ligne.insertCell(3);
+        	colonne4.innerHTML += ido[i].firstName
+
+        	var colonne5 = ligne.insertCell(4);
+        	colonne5.innerHTML += date.getFullYear();
+
+
+        }
+
+      /*   for (var i = 0; i < array_lignes.length; i++) array_lignes[i].style.backgroundColor =  ( i% 2 == 0) ? "#4EB4C9" : "#03CCF5";
+         array_lignes[0].deleteRow;*/
+        /* var j=true;
+         picture.onclick = function(){
+           if (j) {
+            array_lignes[1].style.backgroundColor ="yellow";
+            array_lignes[1].style.color ="black";
+            console.log(j+" ebi");
+           j = false;
+         }else {
+           array_lignes[1].style.backgroundColor ="green";
+           array_lignes[1].style.color ="black";
+           console.log(j+" ebi");
+           j= true;
+         }}*/
+
+      
+        /*document.body.onload = addElement;
+
+        function addElement () {
+          // crée un nouvel élément div
+          var newDiv = document.createElement("div");
+          // et lui donne un peu de contenu
+          var newContent = document.createTextNode('Hi there and greetings!');
+          // ajoute le nœud texte au nouveau div créé
+          newDiv.appendChild(newContent);
+
+          // ajoute le nouvel élément créé et son contenu dans le DOM
+         // var currentDiv = document.getElementById('div1');
+          //document.body.insertBefore(newDiv, currentDiv);
+        }*/
+        
+    </script>
+     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!--<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>-->
+    <script src="assets\bootstrap\js\tab.js"></script>
+  </body>
+</html>
