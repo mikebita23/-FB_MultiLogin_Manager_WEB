@@ -37,7 +37,7 @@
           <tr >
             <th data-sortable="true" >Nom</th>
             <th data-sortable="true">Type de forfait</th>
-            <th data-sortable="false">Etat</th>
+            <th data-sortable="true">Message?</th>
             <th data-sortable="false">#</th>
             <th data-sortable="false">#</th>
           </tr>
@@ -51,11 +51,7 @@
             <td style="width: 5%;">µ</td>
           </tr>-->
           <tr>
-            <td>JEAN BERNARD</td>
-            <td>Forfait 2.0</td>
-            <td class="w-25 zz" id="picture" ></td>
-            <td >01</td>
-            <td >2010</td>
+           
           </tr>      
         </tbody>
       </table>
@@ -69,33 +65,24 @@
       var longueur = array_lignes.length;
       var but = document.getElementById('button')
 
-      i=0;
-      while (i<longueur) {
-        if (i%2==0 && i != 0) {
-          array_lignes[i].style.backgroundColor = "red";
-        }else {
-          array_lignes[i].style.backgroundColor = "bluaye";
-        }
-        i++;
-      }
+      
 
-       let info = '[{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"AMAZONE","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"null"},{"firstName":"parker","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"null"},{"firstName":"Obiang","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"null"},{"firstName":"Macron","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"null"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"}]';
-        
+
+       let info = '[{"User_id":"1","firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"User_id":"2","firstName":"AMAZONE","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"null"},{"User_id":"3","firstName":"parker","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"null"},{"User_id":"4","firstName":"Obiang","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"null"},{"User_id":"5","firstName":"Macron","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"null"},{"User_id":"6","firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"User_id":"7","firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"User_id":"8","firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"User_id":"9","firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"User_id":"10","firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"},{"User_id":"11","firstName":"Jhon","lastName":"Parker","email":"Hunter_Bauch40@gmail.com","phoneNumber":"0762612642","passWord":"123456","role":"null","forfaitId":"2.0"}]';
+       let message = '[{"Object":"Obj","Content":"ee","Sender_id":"1"},{"Object":"Obj","Content":"ff","Sender_id":"2"},{"Object":"Obj","Content":"ff","Sender_id":"3"},{"Object":"Obj","Content":"ff","Sender_id":"4"},{"Object":"Obj","Content":"content","Sender_id":"5"},{"Object":"Obj","Content":"Message Content","Sender_id":"6"},{"Object":"Obj","Content":"Message Content","Sender_id":"7"}]'
+
       ido = JSON.parse(info)
+      msg = JSON.parse(message)
        
-
         
+        Remplirtab(ido)
+
+        /*
         function recupLigne(){
           var value_row = document.getElementById('tableau').rows
          
-
-          //console.log(ido[0].firstName)
-        // console.log(value_row.firstName)
-
         }
         recupLigne()
-        Remplirtab()
-
         function init()
           {
             document.getElementById("id_tbody").onclick = tbody_onclick;
@@ -107,24 +94,21 @@
             var nCell = event.target
             console.log(nCell)
           // Je voudrais recupere les coordonnees de la cellule cliquee (1,1)
-          }
+          }*/
          
         
-        //remplir le tableau à partir du JSON
-        function Remplirtab(){
-          console.log(ido[0].firstName);
+        //Parcourir le tableau et le remplir à partir du JSON
+        function Remplirtab(tab){
           i=0
-          for (let i = 0; i < ido.length; i++) {
+          for (let i = 0; i < tab.length; i++) {
             ajouterLigne(i)
-
           }
         }
+
         
         //Ajouter une ligne dans le tableau et remplir les cellules
         function ajouterLigne(i)
-
         {
-
         	var tableau = document.getElementById("tableau");
 
         	var ligne = tableau.insertRow(-1);//on a ajouté une ligne
@@ -133,20 +117,25 @@
         	colonne1.innerHTML += ido[i].firstName//on y met le contenu de titre
 
         	var colonne2 = ligne.insertCell(1);//on ajoute la seconde cellule
-        	colonne2.innerHTML += ido[i].forfaitId;
+          colonne2.innerHTML += ido[i].forfaitId;
 
-        	var date = new Date();
-        	var colonne3 = ligne.insertCell(2);
-        	colonne3.innerHTML += "Message!";
-
+          var date = new Date(); 
+          
+          if((i < msg.length) && (ido[i].User_id == msg[i].Sender_id)){
+            var colonne3 = ligne.insertCell(2);
+            colonne3.innerHTML += msg[i].Object ;
+          }else{
+            var colonne3 = ligne.insertCell(2);
+            colonne3.innerHTML += 'rien à signaler' ;
+          }
+          
         	var colonne4 = ligne.insertCell(3);
-        	colonne4.innerHTML += ido[i].firstName
-
-        	var colonne5 = ligne.insertCell(4);
+          colonne4.innerHTML += ido[i].firstName
+          
+          var colonne5 = ligne.insertCell(4);
         	colonne5.innerHTML += date.getFullYear();
-
-
         }
+
 
       /*   for (var i = 0; i < array_lignes.length; i++) array_lignes[i].style.backgroundColor =  ( i% 2 == 0) ? "#4EB4C9" : "#03CCF5";
          array_lignes[0].deleteRow;*/
