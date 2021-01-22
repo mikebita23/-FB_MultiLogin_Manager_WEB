@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Data API</title>
+
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <script src="../js/user.js" ></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+
+        <div ng-controller="uController">
+          <div class="row">
+            <div ng-repeat="data in datas">
+             {{data.firstName}}
+             {{data.lastName}}
+            </div>
+          </div>
+        </div>
+
+    </div>
+    
+</body>
+
+</html>
+
+   
+
