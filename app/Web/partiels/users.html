@@ -1,0 +1,89 @@
+
+<a href="#!/">Revenir</a>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<script src="https://code.angularjs.org/1.8.2/angular-route.min.js" ></script>
+
+
+<body>
+    <!-- <div><a href="#!/messages">Liste des messages  </a></div> -->
+    <br> 
+    <div class="container-fluid">
+
+        
+          <h2> ESSAI CRUD USER</h2>
+          
+
+            <table>
+                <tr>
+                    <td width="100">ID:</td>
+                    <td><input type="text" id="id" ng-model="user.id"/></td>
+                </tr>
+                <tr>
+                    <td width="100">Name:</td>
+                    <td><input type="text" id="prenom" ng-model="user.firstName"/></td>
+                </tr>
+                
+                <tr>
+                    <td width="100">lastName</td>
+                    <td><input type="text" id="nom" ng-model="user.lastName"/></td>
+                </tr>
+                <tr>
+                    <td width="100">email:</td>
+                    <td><input type="text" id="email" ng-model="user.email"/></td>
+                </tr>
+                <tr>
+                    <td width="100">Phone:</td>
+                    <td><input type="text" id="phone" ng-model="user.phoneNumber"/></td>
+                </tr>
+                <tr>
+                    <td width="100">Mot de passe:</td>
+                    <td><input type="text" id="psw" ng-model="user.passWord"/></td>
+                </tr>
+            </table>
+            <br>
+     <P>Filtre</P>
+    <input type="text" ng-model="query"/> 
+    <select ng-model="order">
+        <option value="lastName"> Organiser par nom </option>
+        <option value="firstName"> Organiser par Prenom </option>
+    </select><br><br>
+    
+    
+  <div>
+    <button ng-click="getUser()">Get User</button> 
+    <button ng-click="getAllUsers()">Get All User</button> 
+    <button ng-click="deleteUser(user.id)">Delete User</button> 
+   
+     <button ng-click="updateUser(user.firstName,user.lastName,user.email
+    ,user.phoneNumber,user.passWord)">Apdate User</button> 
+    <button ng-click="addUser(user.firstName,user.lastName,user.email
+    ,user.phoneNumber,user.passWord)">Add User</button> 
+    <!-- <div ng-init="users={{getAllUsers()}}"> -->
+    </div>
+        
+
+       
+            <br> <ul>
+                <div ng-repeat="user in users | filter:{lastName:query} | orderBy:order">
+                </div>
+                <!-- <div ng-repeat="user in users | filter:query | orderBy:order">
+                </div> -->
+            </ul>
+            <br>
+                <div ng-repeat="user in users">
+                    <p>
+                        <strong>{{user.firstName}}</strong>  {{user.lastName}}   
+                    </p>
+                </div>
+            
+        </div>
+
+       
+
+</body>
+
+    
+    
+
+

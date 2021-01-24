@@ -1,0 +1,28 @@
+
+<br> <br> 
+
+<button ng-click="getPosts()">Get All Messages</button> 
+
+  <div ng-repeat="message in messages">
+        <h2>{{message.Object}}</h2>
+
+        <!-- <p>{{message.Content}}</p> -->
+
+       <p>
+     <a href="#!/messages/{{message.id}}">{{message.id}} Message </a></p>
+  </div>
+
+
+<br> <br> 
+
+<div><button ng-click="getAllUsers()">Get All User</button> 
+    <br>
+        <div ng-repeat="user in users">
+            <p>
+                <strong>{{user.firstName}}</strong>  {{user.lastName}}   
+            </p>
+        </div>
+    
+</div>
+
+</html>
