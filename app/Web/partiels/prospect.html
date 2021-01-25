@@ -9,14 +9,17 @@
     <!-- <div><a href="#!/messages">Liste des messages  </a></div> -->
     <br> 
     <div class="container-fluid">
+      <br>
         <div>
-            <h2>ajouter un prospect</h2>
-            <input type="text" id="" ng-model="prospect.prospectNom" placeholder="nom du prospect"/>
-            <input type="text" id="" ng-model="prospect.prospectPrenom" placeholder="prospect prenom " />
-            <input type="text" id="" ng-model="prospect.prospectNum" placeholder="prospect prenom " />
-            <button ng-click="addProspect()">connecter</button>
+            <button ng-click="getProspect()"> get un prospect</button>
+            <div>
+                {{nom_Prospect}}
+                {{prenom_Prospect}}
+                {{numero_tel}}
+            </div>
         </div>
     </div>
+
 
 </body>
 
