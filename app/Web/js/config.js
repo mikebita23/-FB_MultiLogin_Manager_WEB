@@ -2,7 +2,7 @@ var application = angular.module('app', ['ngRoute']);
 //Variable globale
 const API_URL_D = "http://api.infinite-scale.fr";
 const API_URL = "http://localhost:3003";
-let token='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImlicmEyQGdtYWlsLmNvbSIsInVzZXJJZCI6MTAwNiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjExNTA0NjExLCJleHAiOjE2MTE1MDgyMTF9.K61N4lCI1hvQQuljxvz-URAl9D6VVLrfA5AfdwiDzjE'
+let token='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbmlAZ21haWwuY29tIiwidXNlcklkIjoxMDAyLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MTE1NjI3MzMsImV4cCI6MTYxMTU2NjMzM30.meNn-bs6DiY1yLNa3y2u90oS-Jo7ZGASS4LpetAWW9c'
  
 application.config(function($routeProvider){
 
