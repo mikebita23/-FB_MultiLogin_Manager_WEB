@@ -1,21 +1,23 @@
 {
-  "name": "infinite-scale",
-  "version": "0.1.0",
-  "private": true,
+  "name": "fb_multilogin_manager_web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "admin.js",
+  "type": "module",
   "scripts": {
-    "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/N0k3r/fb_multilogin_manager_web.git"
+  },
+  "author": "daniel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/N0k3r/fb_multilogin_manager_web/issues"
+  },
+  "homepage": "https://gitlab.com/N0k3r/fb_multilogin_manager_web#readme",
   "dependencies": {
-    "angular": "^1.8.2",
-    "angularjs": "0.0.1",
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "js": "^0.1.0",
-    "morgan": "~1.9.1"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.7"
+    "jquery": "^3.5.1"
   }
 }

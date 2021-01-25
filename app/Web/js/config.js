@@ -11,6 +11,7 @@ application.config(function($routeProvider){
     .when('/messages/:id',{templateUrl:'partiels/message.html', controller: 'MsgReadCtrl'})//Message
     .when('/msgCRUD',{templateUrl:'partiels/messageRead.html', controller: 'MsgReadCtrl'})//Message
     .when('/userCRUD',{templateUrl:'partiels/users.html', controller: 'UserCRUDCtrl'})
+    .when('/login',{templateUrl:'partiels/login.html', controller: 'loginController'})
     .otherwise({redirectTo:'/'});
 
 });
