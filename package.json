@@ -1,0 +1,23 @@
+{
+  "name": "fb_multilogin_manager_web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "admin.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/N0k3r/fb_multilogin_manager_web.git"
+  },
+  "author": "daniel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/N0k3r/fb_multilogin_manager_web/issues"
+  },
+  "homepage": "https://gitlab.com/N0k3r/fb_multilogin_manager_web#readme",
+  "dependencies": {
+    "jquery": "^3.5.1"
+  }
+}
