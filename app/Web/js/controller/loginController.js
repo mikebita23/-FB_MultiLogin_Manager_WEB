@@ -1,16 +1,11 @@
 
-///Creation de controller MsgReadCtrl
-
-    // Creation de controller UserCRUDCtrl
-    //USER
-
     application.controller('loginController',['$scope','loginService',
     function ($scope,loginService) {
     
           
-    //Add user 
+    //login user 
     $scope.login = function () {
-        //if ($scope.user != null && $scope.user.email) {
+        
             loginService.login($scope.login.email,
                 $scope.login.passWord)
               .then (function success(response){

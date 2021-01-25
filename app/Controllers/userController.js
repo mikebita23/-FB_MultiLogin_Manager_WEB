@@ -46,7 +46,7 @@ $scope.dataUser={
 
 //Add user 
 $scope.addUser = function () {
-    //if ($scope.user != null && $scope.user.email) {
+    
         UserCRUDService.addUser($scope.user.firstName,
             $scope.user.lastName,
             $scope.user.email,$scope.user.phoneNumber,
@@ -59,7 +59,7 @@ $scope.addUser = function () {
               $scope.errorMessage = 'Error adding user!';
               $scope.message = '';
         });
-    }
+}
 
 $scope.updateUser = function () {
     UserCRUDService.updateUser($scope.user.firstName,
