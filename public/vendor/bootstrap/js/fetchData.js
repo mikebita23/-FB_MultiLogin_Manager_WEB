@@ -1,4 +1,4 @@
- const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbmlAZ21haWwuY29tIiwidXNlcklkIjoxMCwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjExMzI3MjkyLCJleHAiOjE2MTEzMzA4OTJ9.yiQ2C-UE0Jw7UHmQi8pnZjQ-f8mlpWxYwrrkMtwhg9w";
+ const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhbmlAZ21haWwuY29tIiwidXNlcklkIjoxMDAzLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MTE2NjU4OTAsImV4cCI6MTYxMTY2OTQ5MH0.z31jYshf3Dy_hz6htv3xpZfhRNEDqcg8xHR6mfldvyI";
 const getBtn =document.getElementById('btnGet');
 const postBn =document.getElementById('btnGet');
 const API_URL = "http://localhost:3003";
@@ -225,7 +225,7 @@ const webApp = angular.module('webApp', []);
 //     });
 // };
 
-const showUsers = document.querySelector('#showUsers');
+
 // showUsers.addEventListener('click',getDataUsers);
 
 // Boutons listener
