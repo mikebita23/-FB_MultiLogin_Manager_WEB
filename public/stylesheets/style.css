@@ -11,10 +11,20 @@
 
 #verdana{
   font-family: Verdana, Geneva, sans-serif;
-  font-size: 20px;
+  font-size: 17px;
 }
 
 #cursive{
+  font-family: cursive;
+  font-size: 30px;
+}
+
+#cursive-btn{
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 20px;
+}
+
+#cursive-btn{
   font-family: cursive;
   font-size: 20px;
 }
