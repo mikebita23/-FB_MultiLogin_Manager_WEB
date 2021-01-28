@@ -2,7 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <!-- script for table -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
+    <!-- end script for table -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="../../vendor/bootstrap/css/adminTab.css">
@@ -15,7 +21,7 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarText"  ">
+      <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto" >
           <li class="nav-item ">
             <a class="nav-link" id="users_A" style="color: white;"  href="#">Utilisateurs<span class="sr-only"></span></a>
@@ -27,15 +33,15 @@
             <a class="nav-link" id="messages_A" style="color: white;" href="#">Messages</a>
           </li>
         </ul>
-        <button class="btn btn-sm btn-outline-secondary" id="login" style="color: white;" type="button">login</button>
+        <button class="btn btn-sm btn-outline-secondary" id="login" style="color: white;" type="button">déconnexion</button>
       </div>
     </nav>
     <!-- end navbar -->
 
     <!-- table start -->
-    <div id="usersTable">
+    <div id="usersTable" class="w-3/4 m-auto"  >
       <h1 class="uppercase extrabold text-4xl text-center m-8 underline">utilisateurs</h1>
-      <table class="table table-bordered w-3/4 mt-32 mx-auto border-2 rounded-md" >
+      <table class="table table-bordered w-3/4 mt-32 mx-auto border-2 rounded-md" id='myTableUsers' >
         <thead>
           <tr>
             <th scope="col">users</th>
@@ -52,9 +58,9 @@
             <td>@mdo</td>
             <td>Otto</td>
             <td>
-              <button class="btn btn-sm btn-success">voir</button>
-              <button class="btn btn-sm btn-info">modifier</button>
-              <button class="btn btn-sm btn-danger">supprimer</button>
+              <button class="btn btn-sm btn-success">voir <i class="far fa-eye"></i></button>
+              <button class="btn btn-sm btn-info">modifier <i class="fas fa-pencil-alt"></i>  </button>
+              <button class="btn btn-sm btn-danger">supprimer <i class="far fa-trash-alt"></i></button>
             </td>
           </tr>
           <tr>
@@ -63,9 +69,9 @@
             <td>@fat</td>
             <td>Jacob</td>
             <td>
-              <button class="btn btn-sm btn-success">voir</button>
-              <button class="btn btn-sm btn-info">modifier</button>
-              <button class="btn btn-sm btn-danger">supprimer</button>
+              <button class="btn btn-sm btn-success">voir <i class="far fa-eye"></i></button>
+              <button class="btn btn-sm btn-info">modifier <i class="fas fa-pencil-alt"></i> </button>
+              <button class="btn btn-sm btn-danger">supprimer <i class="far fa-trash-alt"></i></button>
             </td>
             
           </tr>
@@ -75,16 +81,16 @@
             <td>@twitter</td>
             <td>@insta</td>
             <td class="justify-items-center">
-                <button type="button" data-toggle="modal" class="btn btn-sm btn-success" data-target="#exampleModal">voir</button>
-                <button class="btn btn-sm btn-info">modifier</button>
-                <button class="btn btn-sm btn-danger">supprimer</button>
+                <button type="button" data-toggle="modal" class="btn btn-sm btn-success" data-target="#exampleModal">voir <i class="far fa-eye"></i></button>
+                <button class="btn btn-sm btn-info">modifier <i class="fas fa-pencil-alt"></i>  </button>
+                <button class="btn btn-sm btn-danger">supprimer <i class="far fa-trash-alt"></i></button>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <!-- modal qui s'affiche quand on clique sur le button voir  -->
+    <!-- modal qui s'affiche quand on clique sur le button voir dans utilisateur  -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -125,7 +131,7 @@
                           <div class="text-center my-3">
                               <a class="text-xs btn btn-sm btn-info" href="#">appeler </a>
                               <a class="text-xs btn btn-sm btn-info" href="#">message</a>
-                              <a class="text-xs btn btn-sm btn-danger" href="#">supprimer l'utilisateur</a>
+                              <a class="text-xs btn btn-sm btn-danger" href="#">supprimer <i class="far fa-trash-alt"></i> l'utilisateur</a>
                           </div>
               
                       </div>
@@ -143,15 +149,15 @@
    <!-- fin modal -->
 
   <!-- show forfait bellow -->
-  <div id="tabForfait">
+  <div id="tabForfait" class="w-3/4 m-auto">
     <h1 class="uppercase extrabold text-4xl text-center m-8 underline">forfaits</h1>
-    <table class="table table-bordered w-3/4 px-8  mx-auto border-2 rounded-md">
+    <table class="table table-bordered w-3/4 mx-auto border-2 rounded-md">
       <thead>
         <tr>
-          <th>nom forfait</th>
-          <th>prix forfait</th>
-          <th>description forfait</th>
-          <th>actions</th>
+          <th scope="col">nom forfait</th>
+          <th scope="col">prix forfait</th>
+          <th scope="col">description forfait</th>
+          <th class="w-64"scope="col">actions</th>
         </tr>
       </thead>
       <tbody>
@@ -159,45 +165,114 @@
           <td>basic forfait</td>
           <td>19.99</td>
           <td>le forfait basic.. </td>
-          <td>
-            <button class="btn btn-sm btn-success">voir</button>
-            <button class="btn btn-sm btn-info">modifier</button>
-            <button class="btn btn-sm btn-danger">supprimer</button>
+          <td >
+            <button class="btn btn-sm btn-danger">supprimer <i class="far fa-trash-alt"></i></button>
+            <button class="btn btn-sm btn-info">modifier <i class="fas fa-pencil-alt"></i> </button>
           </td>
         </tr>
-        <tr class="bg-emerald-200">
+        <tr>
           <td>forfait medium</td>
           <td>25.99</td>
           <td>le forfait medium.. consectetur adipisicing elit. Suscipit libero, culpa, nisi ducimus qui non labore quasi, explicabo ratione eaque hic debitis beatae voluptate distinctio tenetur voluptates exercitationem sit iste!</td>
           <td>
-            <button class="btn btn-sm btn-success">voir</button>
-            <button class="btn btn-sm btn-info">modifier</button>
-            <button class="btn btn-sm btn-danger">supprimer</button>          
+            <button class="btn btn-sm btn-danger items-center">supprimer <i class="far fa-trash-alt"></i></button>
+            <button class="btn btn-sm btn-info items-center">modifier <i class="fas fa-pencil-alt"></i>  </button>
+                     
           </td>
         </tr>
         <tr >
-          <td class="flex">big forfait </td>
+          <td>big forfait </td>
           <td>30.00</td>
           <td>big forfait..Lorem ipsum dolor sit amet, consectetur adipisicing elit</td>
           <td>
-            <button class="btn btn-sm btn-success">voir</button>
-            <button class="btn btn-sm btn-info">modifier</button>
-            <button class="btn btn-sm btn-danger">supprimer</button>
-
+              <button class="btn btn-sm btn-danger items-center">supprimer <i class="far fa-trash-alt"></i></button>
+              <button class="btn btn-sm btn-info">modifier <i class="fas fa-pencil-alt"></i>  </button>
           </td>
         </tr>
       </tbody>
     </table>
     <section>
-      <button class="btn btn-info my-4 mx-32 ">ajouter un forfait +</button>
+      <button class="btn btn-info my-4 mx-32 ">ajouter un forfait <i class="fas fa-plus"></i></button>
     </section>
   </div>
+  <!-- table message -->
 
+  <div id="tabMessages" class="w-3/4 m-auto">
+    <h1 class="uppercase extrabold text-4xl text-center m-8 underline">Messages</h1>
+    <table class="table table-bordered w-1/2 mx-auto border-2 rounded-md" id="messageTable">
+      <thead>
+        <tr>
+          <th>nom utilisateur</th>
+          <th>forfait</th>
+          <th>objet du message</th>
+          <th>actions</th>
+          <th>réponse</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>jean paul gautier</td>
+          <td>basic forfait</td>
+          <td>le forfait basic.. </td>
+          <td>
+            <button class="btn btn-sm btn-success m-4">voir</button>
+          </td>
+          <td>
+            <div class="custom-control custom-switch">
+              <input type="checkbox" class="custom-control-input" class="responseSwitch" id="customSwitch3">
+              <label class="custom-control-label" for="customSwitch3">non</label>
+            </div>
+          </td>
+        </tr>
+
+        <tr >
+          <td>ibrahima traore </td>
+          <td>30.00</td>
+          <td>big forfait..Lorem ipsum dolor sit amet, consectetur adipisicing elit</td>
+          <td>
+              <button class="btn btn-sm btn-success m-4"  data-toggle="modal" data-target="#modalForMessage">voir</button>
+          </td>
+          <td>
+            <div class="custom-control custom-switch">
+              <input type="checkbox" checked class="custom-control-input" class="responseSwitch" id="customSwitch1">
+              <label class="custom-control-label" for="customSwitch1">oui</label>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+    <!-- Modal for message  -->
+  <div class="modal fade" id="modalForMessage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">objet: object ici</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          le message ici
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end modal for message -->
     <script src="../../vendor/bootstrap/js/admin.js"></script>
 
-    <!-- ajout des script js pour bootstrap -->
+    
+    <!-- ajout des scripts js pour bootstrap -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <!-- script for table  -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="../../vendor/bootstrap/js/dataTable.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
   </body>
 </html>

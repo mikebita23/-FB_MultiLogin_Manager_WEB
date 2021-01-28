@@ -1,7 +1,9 @@
-#tabForfait {
-    visibility: hidden;
+#tabForfait, #tabMessages {
+    display: none;
 }
 
-/* a {
-    display:grid;
-} */
+/* les table forfait  */
+.table td, .table th {
+    padding: .75rem;
+    vertical-align:0%;
+}
