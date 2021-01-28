@@ -9,7 +9,12 @@
 # General
 --------------------------------------------------------------*/
 
-#arial{
+#verdana{
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 20px;
+}
+
+#cursive{
   font-family: cursive;
   font-size: 20px;
 }
