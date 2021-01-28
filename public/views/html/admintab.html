@@ -5,6 +5,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <!-- script for table -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
@@ -33,14 +37,14 @@
             <a class="nav-link" id="messages_A" style="color: white;" href="#">Messages</a>
           </li>
         </ul>
-        <button class="btn btn-sm btn-outline-secondary" id="login" style="color: white;" type="button">déconnexion</button>
+        <button class="btn btn-sm btn-outline-secondary" id="login" style="color: white;" type="button">Déconnexion</button>
       </div>
     </nav>
     <!-- end navbar -->
 
-    <!-- table start -->
-    <div id="usersTable" class="w-3/4 m-auto"  >
-      <h1 class="uppercase extrabold text-4xl text-center m-8 underline">utilisateurs</h1>
+    <!-- table utilisateur -->
+    <div id="usersTable" class="w-3/4 m-auto animate__animated animate__fadeIn"  >
+      <h1 class="uppercase extrabold text-4xl text-center m-8 underline">Utilisateurs</h1>
       <table class="table table-bordered w-3/4 mt-32 mx-auto border-2 rounded-md" id='myTableUsers' >
         <thead>
           <tr>
@@ -129,9 +133,8 @@
                         </table>
               
                           <div class="text-center my-3">
-                              <a class="text-xs btn btn-sm btn-info" href="#">appeler </a>
                               <a class="text-xs btn btn-sm btn-info" href="#">message</a>
-                              <a class="text-xs btn btn-sm btn-danger" href="#">supprimer <i class="far fa-trash-alt"></i> l'utilisateur</a>
+                          
                           </div>
               
                       </div>
@@ -149,7 +152,7 @@
    <!-- fin modal -->
 
   <!-- show forfait bellow -->
-  <div id="tabForfait" class="w-3/4 m-auto">
+  <div id="tabForfait" class="w-3/4 m-auto animate__animated animate__fadeIn">
     <h1 class="uppercase extrabold text-4xl text-center m-8 underline">forfaits</h1>
     <table class="table table-bordered w-3/4 mx-auto border-2 rounded-md">
       <thead>
@@ -180,24 +183,24 @@
                      
           </td>
         </tr>
-        <tr >
+        <tr>
           <td>big forfait </td>
           <td>30.00</td>
           <td>big forfait..Lorem ipsum dolor sit amet, consectetur adipisicing elit</td>
           <td>
-              <button class="btn btn-sm btn-danger items-center">supprimer <i class="far fa-trash-alt"></i></button>
+              <button class="btn btn-sm btn-danger items-center" disabled>supprimer <i class="far fa-trash-alt"></i></button>
               <button class="btn btn-sm btn-info">modifier <i class="fas fa-pencil-alt"></i>  </button>
           </td>
         </tr>
       </tbody>
     </table>
     <section>
-      <button class="btn btn-info my-4 mx-32 ">ajouter un forfait <i class="fas fa-plus"></i></button>
+      <button class="btn btn-info my-4 mx-32 " data-toggle="modal" data-target="#addForfait">ajouter un forfait <i class="fas fa-plus"></i></button>
     </section>
   </div>
   <!-- table message -->
 
-  <div id="tabMessages" class="w-3/4 m-auto">
+  <div id="tabMessages" class="w-3/4 m-auto animate__animated animate__fadeIn">
     <h1 class="uppercase extrabold text-4xl text-center m-8 underline">Messages</h1>
     <table class="table table-bordered w-1/2 mx-auto border-2 rounded-md" id="messageTable">
       <thead>
@@ -262,6 +265,39 @@
     </div>
   </div>
   <!-- end modal for message -->
+    <!-- Modal for adding forfait  -->
+  <div class="modal fade" id="addForfait" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">ajouter un forfait</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="" method="post">
+            <div class="form-group">
+              <label for="formGroupExampleInput">Nom du forfait</label>
+              <input type="text" class="form-control" id="formGroupExampleInput" placeholder="nom du forfait">
+            </div>
+            <div class="form-group">
+              <label for="formGroupExampleInput2">Prix du forfait</label>
+              <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="prix du forfait">
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Description forfait</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">valider</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end modal for adding forfait -->
     <script src="../../vendor/bootstrap/js/admin.js"></script>
 
     
