@@ -77,7 +77,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 40px;
   height: 40px;
   border-radius: 4px;
-  background: #2d2bc2;
+  background: #0146F6;
   color: #fff;
   transition: all 0.4s;
 }
@@ -150,7 +150,6 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.5s;
   background: rgb(48, 46, 46);
   z-index: 997;
-  padding: 15px 0;
   border-bottom: 1px solid #e6f2fb;
 }
 
@@ -1083,7 +1082,7 @@ section {
 --------------------------------------------------------------*/
 
 .cta {
-  background: #2d2bc2;
+  background: #0146F6;
   background-size: cover;
   padding: 60px 0;
 }
