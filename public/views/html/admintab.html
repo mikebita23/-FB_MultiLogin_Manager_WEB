@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="app" >
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
@@ -18,7 +18,10 @@
     <link rel="stylesheet" href="../../vendor/bootstrap/css/adminTab.css">
     <title>admin gls</title>
   </head>
-  <body>
+  <body  ng-controller="UserCRUDCtrl">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.8.2/angular-route.min.js" ></script>
+    <script src="../../js/app/app.js"></script>
     <!-- navigation bar  -->
     <nav class="navbar navbar-expand-lg bg-info navbar-light" id="navbar_admin" style="background-color: #e3f2fd;">
       <a class="navbar-brand" id="logo" href="#">GLs Logo</a>
@@ -43,7 +46,7 @@
     <!-- end navbar -->
 
     <!-- table utilisateur -->
-    <div id="usersTable" class="w-3/4 m-auto animate__animated animate__fadeIn"  >
+    <div id="usersTable" class="w-3/4 m-auto animate__animated animate__fadeIn"  ng-controller="userGetAllController">
       <h1 class="uppercase extrabold text-4xl text-center m-8 underline">Utilisateurs</h1>
       <table class="table table-bordered w-3/4 mt-32 mx-auto border-2 rounded-md" id='myTableUsers' >
         <thead>
@@ -55,41 +58,18 @@
             <th scope="col">actions</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Otto</td>
-            <td>
-              <button class="btn btn-sm btn-success">voir <i class="far fa-eye"></i></button>
-              <button class="btn btn-sm btn-info">modifier <i class="fas fa-pencil-alt"></i>  </button>
-              <button class="btn btn-sm btn-danger">supprimer <i class="far fa-trash-alt"></i></button>
-            </td>
-          </tr>
-          <tr>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>Jacob</td>
-            <td>
-              <button class="btn btn-sm btn-success">voir <i class="far fa-eye"></i></button>
-              <button class="btn btn-sm btn-info">modifier <i class="fas fa-pencil-alt"></i> </button>
-              <button class="btn btn-sm btn-danger">supprimer <i class="far fa-trash-alt"></i></button>
-            </td>
-            
-          </tr>
-          <tr>
-            <td>Larry the Bird</td>
-            <td>@twitter</td>
-            <td>@twitter</td>
-            <td>@insta</td>
+        <tbody ng-repeat="user in users">
+          <tr >
+            <td> {{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.id}}</td>
             <td class="justify-items-center">
-                <button type="button" data-toggle="modal" class="btn btn-sm btn-success" data-target="#exampleModal">voir <i class="far fa-eye"></i></button>
-                <button class="btn btn-sm btn-info">modifier <i class="fas fa-pencil-alt"></i>  </button>
-                <button class="btn btn-sm btn-danger">supprimer <i class="far fa-trash-alt"></i></button>
+              <button type="button" data-toggle="modal" class="btn btn-sm btn-success" data-target="#exampleModal"><i class="far fa-eye"></i></button>
+              <button class="btn btn-sm btn-info"> <i class="fas fa-pencil-alt"></i>  </button>
+              <button class="btn btn-sm btn-danger"> <i class="far fa-trash-alt"></i></button>
             </td>
-          </tr>
+          </tr>  
         </tbody>
       </table>
     </div>
@@ -152,7 +132,7 @@
    <!-- fin modal -->
 
   <!-- show forfait bellow -->
-  <div id="tabForfait" class="w-3/4 m-auto animate__animated animate__fadeIn">
+  <div id="tabForfait" class="w-3/4 m-auto animate__animated animate__fadeIn" ng-controller="forfaitGetAllController">
     <h1 class="uppercase extrabold text-4xl text-center m-8 underline">forfaits</h1>
     <table class="table table-bordered w-3/4 mx-auto border-2 rounded-md">
       <thead>
@@ -163,36 +143,17 @@
           <th class="w-64"scope="col">actions</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>basic forfait</td>
-          <td>19.99</td>
-          <td>le forfait basic.. </td>
-          <td >
-            <button class="btn btn-sm btn-danger">supprimer <i class="far fa-trash-alt"></i></button>
-            <button class="btn btn-sm btn-info">modifier <i class="fas fa-pencil-alt"></i> </button>
-          </td>
-        </tr>
-        <tr>
-          <td>forfait medium</td>
-          <td>25.99</td>
-          <td>le forfait medium.. consectetur adipisicing elit. Suscipit libero, culpa, nisi ducimus qui non labore quasi, explicabo ratione eaque hic debitis beatae voluptate distinctio tenetur voluptates exercitationem sit iste!</td>
-          <td>
-            <button class="btn btn-sm btn-danger items-center">supprimer <i class="far fa-trash-alt"></i></button>
-            <button class="btn btn-sm btn-info items-center">modifier <i class="fas fa-pencil-alt"></i>  </button>
-                     
-          </td>
-        </tr>
-        <tr>
-          <td>big forfait </td>
-          <td>30.00</td>
-          <td>big forfait..Lorem ipsum dolor sit amet, consectetur adipisicing elit</td>
-          <td>
-              <button class="btn btn-sm btn-danger items-center" disabled>supprimer <i class="far fa-trash-alt"></i></button>
-              <button class="btn btn-sm btn-info">modifier <i class="fas fa-pencil-alt"></i>  </button>
-          </td>
-        </tr>
-      </tbody>
+      <tbody ng-repeat="forfait in forfaits">
+        <tr >
+        <td>{{forfait.nom}}</td>
+        <td>{{forfait.prix}}</td>
+        <td>{{forfait.description}} </td>
+        <td >
+          <button class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></button>
+          <button class="btn btn-sm btn-info"><i class="fas fa-pencil-alt"></i> </button>
+        </td>
+      </tr>
+    </tbody>
     </table>
     <section>
       <button class="btn btn-info my-4 mx-32 " data-toggle="modal" data-target="#addForfait">ajouter un forfait <i class="fas fa-plus"></i></button>
@@ -200,7 +161,7 @@
   </div>
   <!-- table message -->
 
-  <div id="tabMessages" class="w-3/4 m-auto animate__animated animate__fadeIn">
+  <div id="tabMessages" class="w-3/4 m-auto animate__animated animate__fadeIn" ng-controller="getMessagesController">
     <h1 class="uppercase extrabold text-4xl text-center m-8 underline">Messages</h1>
     <table class="table table-bordered w-1/2 mx-auto border-2 rounded-md" id="messageTable">
       <thead>
@@ -213,25 +174,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>jean paul gautier</td>
-          <td>basic forfait</td>
-          <td>le forfait basic.. </td>
-          <td>
-            <button class="btn btn-sm btn-success m-4">voir</button>
-          </td>
-          <td>
-            <div class="custom-control custom-switch">
-              <input type="checkbox" class="custom-control-input" class="responseSwitch" id="customSwitch3">
-              <label class="custom-control-label" for="customSwitch3">non</label>
-            </div>
-          </td>
-        </tr>
-
-        <tr >
-          <td>ibrahima traore </td>
-          <td>30.00</td>
-          <td>big forfait..Lorem ipsum dolor sit amet, consectetur adipisicing elit</td>
+        <tr ng-repeat="message in messages">
+          <td>{{message.senderId}}</td>
+          <td>{{message.Content}}</td>
+          <td>{{message.Object}} </td>
           <td>
               <button class="btn btn-sm btn-success m-4"  data-toggle="modal" data-target="#modalForMessage">voir</button>
           </td>
@@ -275,25 +221,28 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+        <div ng-controller="ForfaitCRUDCtrl">
         <div class="modal-body">
           <form action="" method="post">
             <div class="form-group">
               <label for="formGroupExampleInput">Nom du forfait</label>
-              <input type="text" class="form-control" id="formGroupExampleInput" placeholder="nom du forfait">
+              <input type="text" class="form-control" id="formGroupExampleInput" placeholder="nom du forfait" ng-model="forfait.nom">
             </div>
             <div class="form-group">
               <label for="formGroupExampleInput2">Prix du forfait</label>
-              <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="prix du forfait">
+              <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="prix du forfait" ng-model="forfait.prix">
             </div>
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Description forfait</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" ng-model="forfait.description"></textarea>
             </div>
           </form>
+          </div>
+          
+          <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="addForfait(forfait.nom,forfait.prix,forfait.description)">valider</button>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-dismiss="modal">valider</button>
-        </div>
+      </div>
       </div>
     </div>
   </div>
