@@ -1,16 +1,26 @@
-//CREATION DE SERVICE
-app.service('UserCRUDService',['$http', function($http) {
 
-const API_URL_D = "http://api.infinite-scale.fr";
-const API_URL = "http://localhost:3003";
-let $Userdata={
-}
+//CREATION DE SERVICE UserCRUDService
+application.service('UserCRUDService',['$http', function($http) {
 
-//USER GET
-    this.getUser = function getUser() {
+    
+        this.getUser = function getUser() {
+            return $http({
+                method : 'GET',
+                url: `${API_URL_D}/users/get/:id`,
+                headers: {
+                    //'Authorization': `Bearer ${token_D}`  ,
+                    'Authorization': `Bearer ${token}` ,
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            });
+        };
+    
+        //service GET USER
+    this.getAllUsers = function getAllUsers() {
         return $http({
             method : 'GET',
-            url: `${API_URL}/users/all`,
+            url: `${API_URL_D}/users/all`,
             headers: {
                 //'Authorization': `Bearer ${token_D}`  ,
                 'Authorization': `Bearer ${token}` ,
@@ -19,65 +29,64 @@ let $Userdata={
             }
         });
     };
-
-    //GET USER
-this.getAllUsers = function getAllUsers() {
-    return $http({
-        method : 'GET',
-        url: `${API_URL}/users/all`
-    });
-}
- //GET USER
- this.getAllUserMsgForf = function getAllUserMsgForf() {
-    return $http({
-        method : 'GET',
-        url: `${API_URL}/users/userMsgForf`,
-    });
-}
-    // Controller Add User-add
-
-this.addUser = function addUser(firstName,lastName,
-    email,phoneNumber,passWord ) {
-    return $http({
-        method : 'POST',
-        url: `${API_URL}/users/add`,
-        data : {
-            firstName:firstName,
-            lastName:  lastName,
-             email: email,
-            phoneNumber: phoneNumber,
-            passWord: passWord,
-            role: "ADMIN",
-            forfaitId: null
-          } 
-    });
-}
-//UPDATE
-this.updateUser = function updateUser(firstName,lastName,
-    email,phoneNumber,passWord) {
-    return $http({
-        method : 'POST',
-        url: `${API_URL}/users/edit`,
-        data : {
-            firstName:firstName,
-            lastName:  lastName,
-             email: email,
-            phoneNumber: phoneNumber,
-            passWord: passWord,
-            role: "ADMIN",
-            forfaitId: null
-          }
-    });
-}
-//DELETE
-this.deleteUser = function deleteUser(id) {
-    return $http({
-        method : 'DELETE',
-        url: `${API_URL}/users/${id}`
-    })
-}
-
-
-
+    // service Add User-add
     
+    this.addUser = function addUser(firstName,lastName,
+        email,phoneNumber,passWord ) {
+        return $http({
+            method : 'POST',
+            url: `${API_URL_D}/users/add`,
+           
+            data : {
+                firstName:firstName,
+                lastName:  lastName,
+                 email: email,
+                phoneNumber: phoneNumber,
+                passWord: passWord,
+                role: "ADMIN",
+                forfaitId: null
+              } 
+        });
+    };
+    //service UPDATE
+    this.updateUser = function updateUser(firstName,lastName,
+        email,phoneNumber,passWord) {
+        return $http({
+            method : 'POST',
+            url: `${API_URL_D}/users/edit`,
+            headers: {
+                //'Authorization': `Bearer ${token_D}`  ,
+                'Authorization': `Bearer ${token}` ,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            data : {
+                firstName:firstName,
+                lastName:  lastName,
+                 email: email,
+                phoneNumber: phoneNumber,
+                passWord: passWord,
+                role: "ADMIN",
+                forfaitId: null
+              }
+        });
+    };
+    //service DELETE
+    this.deleteUser = function deleteUser(){
+        return $http({
+            method : 'GET',
+            url: `${API_URL_D}/users/remove`,
+            headers: {
+                //'Authorization': `Bearer ${token_D}`  ,
+                'Authorization': `Bearer ${token}` ,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+    };
+    
+    
+    
+        
 }]);
+    

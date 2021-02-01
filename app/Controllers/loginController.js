@@ -1,27 +1,24 @@
-var appLogin = angular.module('myApp', []);
-appLogin.controller('LoginCRUDCtrl',['$scope','LoginService',
-  function ($scope,LoginService) {
-
-$scope.user.email = document.getElementById('')
-$scope.user.psw= document.getElementById('')
-
-
-//Login
+//Contoller Login
+application.controller('loginController',['$scope','loginService',
+function ($scope,loginService) {
+     
 $scope.login = function () {
-    //if ($scope.user != null && $scope.user.email) {
-        LoginService.login($scope.login.psw, $scope.login.email)
+    
+        loginService.login($scope.login.email,
+            $scope.login.passWord)
           .then (function success(response){
-              $scope.message = 'User Connected!';
+             
+              $scope.message = 'User connected';
               $scope.errorMessage = '';
+              console.log( $scope.message);
+              console.log(response.data)
           },
           function error(response){
-              $scope.errorMessage = 'Error adding user!';
+              $scope.errorMessage = 'login error not connected';
               $scope.message = '';
+              console.log( $scope.errorMessage);
         });
-   
-    //  } else {
-    //     $scope.errorMessage = 'Please enter a name!';
-    //     $scope.message = '';
-    // }
-}
+    }
+
 }]);
+  

@@ -1,53 +1,298 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app" >
   <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <!-- script for table -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
+    <!-- end script for table -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../vendor/bootstrap/css/adminTab.css">
+    <title>admin gls</title>
   </head>
-  <body>
-    <!--<div class="container-fluid ">
-      <br><br><br><br><br><br><br><br>
-        <div class="row justify-content-center" style="">
-          <div class="col-4 bg-primary ">
-            <br><br><br><br>
-            <div class="">
-              <input class="border border-primary" style=" border-radius:5px" type="text" name="Nom" placeholder="Nom" value="">
-              <br><br><br>
-            </div>
-            <div class="">
-              <input  class="border border-primary" style="border-radius:5px" type="text" name="" placeholder="Mot de passe" value="">
-              <br><br><br>
-            </div>
-            <div class="">
-              <button class="border border-primary" type="button" style=" border-radius:5px; width:100px; height:40px" name="button" >Soumettre</button>
-              <br><br><br><br>
-            </div>
+  <body  ng-controller="UserCRUDCtrl">
+
+  
+
+
+
+    <!-- navigation bar  -->
+    <nav class="navbar navbar-expand-lg bg-info navbar-light" id="navbar_admin" style="background-color: #e3f2fd;">
+      <a class="navbar-brand" id="logo" href="#">GLs Logo</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto" >
+          <li class="nav-item ">
+            <a class="nav-link" id="users_A" style="color: white;"  href="#">Utilisateurs<span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="forfaits_A" style="color: white;" href="#">Forfaits</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="messages_A" style="color: white;" href="#">Messages</a>
+          </li>
+        </ul>
+        <button class="btn btn-sm btn-outline-secondary" id="login" style="color: white;" type="button">Déconnexion</button>
+      </div>
+    </nav>
+    <!-- end navbar -->
+
+    <!-- table utilisateur -->
+    <div id="usersTable" class="w-3/4 m-auto animate__animated animate__fadeIn"  ng-controller="userGetAllController">
+      
+      <h1 class="uppercase extrabold text-4xl text-center m-8 underline">Utilisateurs</h1>
+ <div>  
+        <select ng-model="order">
+            <option value="firstName"> Organiser par nom </option>
+            <option value="id"> Organiser par Forfait </option>
+        </select>
+    </div> 
+      <table class="table table-bordered w-3/4 mt-32 mx-auto border-2 rounded-md" id='myTableUsers' >
+        <thead> 
+          <tr >
+            <th scope="col">FirstName</th>
+            <th scope="col">LastName</th>
+            <th scope="col">email</th>
+            <th scope="col">forfaits</th>
+            <th scope="col">actions</th>
+          </tr>
+        </thead>
+        <tbody ng-repeat="user in users | filter:query | orderBy:order">   
+          <tr >
+            <td>{{user.firstName}}</td>
+            <td>{{user.lastName}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.id}}</td>
+            <td class="justify-items-center">
+              <button type="button" data-toggle="modal" class="btn btn-sm btn-success" data-target="#exampleModal"><i class="far fa-eye"></i></button>
+              <button class="btn btn-sm btn-info"> <i class="fas fa-pencil-alt"></i>  </button>
+              <button class="btn btn-sm btn-danger"> <i class="far fa-trash-alt"></i></button>
+            </td>
+          </tr>  
+        </tbody>
+      </table>
+    </div>
+
+    <!-- modal qui s'affiche quand on clique sur le button voir dans utilisateur  -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          
+            <div class="flex items-center modal-body justify-center modal-content">
+              <div class="max-w-xs">
+                  <div class="bg-white shadow-xl rounded-lg">
+                      <div class="photo-wrapper p-2">
+                          <img class="w-32 h-32 rounded-full mx-auto" src="../../images/avatar.png" alt="John Doe">
+                      </div>
+                      <div class="p-2">
+                          <h3 class="text-center text-xl text-gray-900 font-medium leading-8">User name </h3>
+                          <div class="text-center text-gray-400 text-xs font-semibold">
+                              <p>Ibrahima TRAORE</p>
+                          </div>
+                          <table class="text-xs my-3">
+                              <tbody>
+                                <tr>
+                                  <td class="px-2 py-2 text-gray-500 font-semibold">Adresse mail:</td>
+                                  <td class="px-2 py-2">testing@gmail.com</td>
+                                </tr>
+                               
+                              <tr>
+                                  <td class="px-2 py-2 text-gray-500 font-semibold">Tel: </td>
+                                  <td class="px-2 py-2"><p>01.01.23.25.56</p> </td>
+                                 
+                              </tr>
+                              <tr>
+                                <td class="px-2 py-2 text-gray-500 font-semibold">Type forfait: </td>
+                                <td class="px-2 py-2 colors-red">Basic Forfait</td>
+                            </tr>
+                          </tbody>
+                        </table>
+              
+                          <div class="text-center my-3">
+                              <a class="text-xs btn btn-sm btn-info" href="#">Contacter</a>
+                          
+                          </div>
+              
+                      </div>
+                  </div>
+              </div>
+              </div>
+          
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
+           
           </div>
         </div>
-    </div>-->
-    <div class="login-page">
-  <div class="form">
-    <h1>Admin interface</h1>
-    <img src="" alt="">
-    <form class="register-form">
-      <input type="text" placeholder="name"/>
-      <input type="password" placeholder="password"/>
-      <input type="text" placeholder="email address"/>
-      <button>create</button>
-      <p class="message">Already registered? <a href="#">Sign In</a></p>
-    </form>
-    <form class="login-form">
-      <input type="text" placeholder="username"/>
-      <input type="password" placeholder="password"/>
-      <button class="bg-primary">login</button>
+      </div>
+    </div>
+   <!-- fin modal -->
 
-    </form>
+  <!-- show forfait bellow -->
+  <div id="tabForfait" class="w-3/4 m-auto animate__animated animate__fadeIn" ng-controller="forfaitGetAllController">
+    <h1 class="uppercase extrabold text-4xl text-center m-8 underline">forfaits</h1>
+    <table class="table table-bordered w-3/4 mx-auto border-2 rounded-md">
+      <thead>
+        <tr>
+          <th scope="col">nom forfait</th>
+          <th scope="col">prix forfait</th>
+          <th scope="col">description forfait</th>
+          <th class="w-64"scope="col">actions</th>
+        </tr>
+      </thead>
+      <tbody ng-repeat="forfait in forfaits">
+        <tr >
+        <td>{{forfait.nom}}</td>
+        <td>{{forfait.prix}}</td>
+        <td>{{forfait.description}} </td>
+        <td >
+          <button class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></button>
+          <button class="btn btn-sm btn-info"><i class="fas fa-pencil-alt"></i> </button>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+    <section>
+      <button class="btn btn-info my-4 mx-32 " data-toggle="modal" data-target="#addForfait">ajouter un forfait <i class="fas fa-plus"></i></button>
+    </section>
   </div>
-</div>
+  <!-- table message -->
 
-      <!--<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>-->
-  </body>
+  <div id="tabMessages" class="w-3/4 m-auto animate__animated animate__fadeIn" ng-controller="getMessagesController">
+    <h1 class="uppercase extrabold text-4xl text-center m-8 underline">Messages</h1>
+    <table class="table table-bordered w-1/2 mx-auto border-2 rounded-md" id="messageTable">
+      <thead>
+        <tr>
+          <th>nom utilisateur</th>
+          <th>Contact</th>
+          <th>objet du message</th>
+          <th>actions</th>
+          <th>réponse</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="message in messages">
+          <td>{{message.senderId}}</td>
+          <td>{{message.Content}}</td>
+          <td>{{message.Object}} </td>
+          <td>
+              <button class="btn btn-sm btn-success m-4"  data-toggle="modal" data-target="#modalForMessage">voir</button>
+          </td>
+          <td>
+            <div class="custom-control custom-switch">
+              <input type="checkbox" checked class="custom-control-input" class="responseSwitch" id="customSwitch1">
+              <label class="custom-control-label" for="customSwitch1">oui</label>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+     <!-- Modal for message  -->
+     <div class="modal fade" id="modalForMessage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Objet: objet ici</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+             Message ici
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- end modal for message -->
+    <!-- Modal for adding forfait  -->
+  <div class="modal fade" id="addForfait" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">ajouter un forfait</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div ng-controller="ForfaitCRUDCtrl">
+        <div class="modal-body">
+          <form action="" method="post">
+            <div class="form-group">
+              <label for="formGroupExampleInput">Nom du forfait</label>
+              <input type="text" class="form-control" id="formGroupExampleInput" placeholder="nom du forfait" ng-model="forfait.nom">
+            </div>
+            <div class="form-group">
+              <label for="formGroupExampleInput2">Prix du forfait</label>
+              <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="prix du forfait" ng-model="forfait.prix">
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Description forfait</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" ng-model="forfait.description"></textarea>
+            </div>
+          </form>
+          </div>
+          
+          <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" ng-click="addForfait(forfait.nom,forfait.prix,forfait.description)">valider</button>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  <!-- end modal for adding forfait -->
+    <script src="../../vendor/bootstrap/js/admin.js"></script>
+
+    
+    <!-- ajout des scripts js pour bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+    <!-- script for table  -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="../../vendor/bootstrap/js/dataTable.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.8.2/angular-route.min.js" ></script>
+    <script src="../../../app/variableGlobale.js"></script>
+    <script src="../../../app/Controllers/downloadController.js"></script>
+    <script src="../../../app/API/downloadService.js"></script>
+
+    <script src="../../../app/API/downloadService.js"></script>
+    <script src="../../../app/API/forfaitService.js"></script>
+    <script src="../../../app/API/messageService.js"></script>
+    <script src="../../../app/API/userService.js"></script>
+    <script src="../../../app/API/loginService.js"></script>
+    <script src="../../../app/API/prospectService.js"></script>
+    
+    <script src="../../../app/Controllers/downloadController.js"></script>
+    <script src="../../../app/Controllers/forfaitControllers.js"></script>
+    <script src="../../../app/Controllers/messageController.js"></script>
+    <script src="../../../app/Controllers/userController.js"></script>
+    <script src="../../../app/Controllers/loginController.js"></script>
+    <script src="../../../app/Controllers/prospectController.js"></script>
+   
+ </body>
+  <!-- <script src="/Factory/app copy.js" ></script> -->
 </html>
+   
+</body>

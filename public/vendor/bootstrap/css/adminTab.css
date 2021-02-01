@@ -1,0 +1,9 @@
+#tabForfait, #tabMessages {
+    display: none;
+}
+
+/* les table forfait  */
+.table td, .table th {
+    padding: .75rem;
+    vertical-align:0%;
+}
