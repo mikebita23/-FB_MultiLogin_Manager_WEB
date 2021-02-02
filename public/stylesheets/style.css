@@ -11,18 +11,30 @@
 
 #verdana{
   font-family: Verdana, Geneva, sans-serif;
-  font-size: 17px;
+}
+
+#quicksand{
+  font-family: Quicksand;
+}
+
+#roboto{
+    font-family: Roboto;
 }
 
 #cursive{
   font-family: cursive;
-  font-size: 30px;
 }
 
 #cursive-btn{
   font-family: Verdana, Geneva, sans-serif;
   font-size: 20px;
 }
+
+#quicksand-btn{
+  font-family: Quicksand;
+  font-size: 15px;
+}
+
 
 #cursive-btn{
   font-family: cursive;
