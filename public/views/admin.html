@@ -72,86 +72,96 @@
           <th scope="col">actions</th>
         </tr>
       </thead>
-      <tbody ng-repeat="user in users | filter:query | orderBy:order">
-        <tr>
+      <tbody >
+        <tr ng-repeat="user in users | filter:query | orderBy:order">
           <td id="name">{{user.firstName}}</td>
           <td id="lastName">{{user.lastName}}</td>
           <td id="email">{{user.email}}</td>
           <td id="id">{{user.id}}</td>
           <td class="justify-items-center">
-            <button type="button" data-toggle="modal" class="btn btn-sm btn-success" data-target="#userModal"
-            ><i class="far fa-eye"></i></button>
+            <button type="button" data-toggle="modal" data-backdrop="false" class="btn btn-sm btn-success" data-target="#userModal_{{user.id}}"><i class="far fa-eye"></i></button>
             <button class="btn btn-sm btn-info"> <i class="fas fa-pencil-alt"></i> </button>
             <button class="btn btn-sm btn-danger"> <i class="far fa-trash-alt"></i></button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-
-  <!-- modal qui s'affiche quand on clique sur le button voir dans utilisateur  -->
-  <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-
-        <div class="flex items-center modal-body justify-center modal-content">
-          <div class="max-w-xs">
-            <div class="bg-white shadow-xl rounded-lg">
-              <div class="photo-wrapper p-2">
-                <img class="w-32 h-32 rounded-full mx-auto" src="/images/avatar.png" alt="John Doe">
-              </div>
-              <div class="p-2">
-                <h3 class="text-center text-xl text-gray-900 font-medium leading-8">User name </h3>
-                <div class="text-center text-gray-400 text-xs font-semibold">
-                  <script> const target=doNotTrack.</script>
-                  <p  data-target="#name"></p>
+            
+            <!-- ********pour enlever le font gris tu enleve la classe 'bg-black et l'id du forfait est vide car il a une valeur null dans la DB -->
+            
+            <!-- modal qui s'affiche quand on clique sur le button voir dans utilisateur  -->
+            <div class="modal fade bg-black bg-opacity-75" id="userModal_{{user.id}}" tabindex="-1" role="dialog" aria-labelledby="userModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
                 </div>
-                <table class="text-xs my-3">
-                  <tbody>
-                    <tr>
-                      <td class="px-2 py-2 text-gray-500 font-semibold">Adresse mail:</td>
-                      <td class="px-2 py-2">testing@gmail.com</td>
-                    </tr>
-
-                    <tr>
-                      <td class="px-2 py-2 text-gray-500 font-semibold">Tel: </td>
-                      <td class="px-2 py-2">
-                        <p>01.01.23.25.56</p>
-                      </td>
-
-                    </tr>
-                    <tr>
-                      <td class="px-2 py-2 text-gray-500 font-semibold">Type forfait: </td>
-                      <td class="px-2 py-2 colors-red">Basic Forfait</td>
-                    </tr>
-                  </tbody>
-                </table>
-
-                <div class="text-center my-3">
-                  <a class="text-xs btn btn-sm btn-info" href="#">Contacter</a>
-
+                <div class="flex items-center modal-body justify-center modal-content">
+                  <div class="max-w-xs">
+                    <div class="bg-white shadow-xl rounded-lg">
+                      <div class="photo-wrapper p-2">
+                        <img class="w-32 h-32 rounded-full mx-auto" src="/images/avatar.png" alt="John Doe">
+                      </div>
+                      <div class="p-2">
+                        <h3 class="text-center text-xl text-gray-900 font-medium leading-8">{{user.firstName}} {{user.lastName}}</h3>
+                        <div class="text-center text-gray-400 text-xs font-semibold">
+                          <p  data-target="#name"></p>
+                        </div>
+                        <table class="text-xs my-3">
+                          <tbody>
+                            <tr>
+                              <td class="px-2 py-2 text-gray-500 font-semibold">Adresse mail:</td>
+                              <td class="px-2 py-2">{{user.email}}</td>
+                            </tr>
+          
+                            <tr>
+                              <td class="px-2 py-2 text-gray-500 font-semibold">Tel: </td>
+                              <td class="px-2 py-2">
+                                <p>{{user.phoneNumber}}</p>
+                              </td>
+          
+                            </tr>
+                            <tr>
+                              <td class="px-2 py-2 text-gray-500 font-semibold">Type forfait (id): </td>
+                              <td class="px-2 py-2 colors-red">{{user.forfaitId}}</td>
+                            </tr>
+                            <tr>
+                              <td class="px-2 py-2 text-gray-500 font-semibold">role utilisateur: </td>
+                              <td class="px-2 py-2 colors-red">{{user.role}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+          
+                        <div class="text-center my-3">
+                          <a class="text-xs btn btn-sm btn-info" href="#">Contacter</a>
+          
+                        </div>
+          
+                      </div>
+                    </div>
+                  </div>
                 </div>
-
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+          <!-- fin modal -->
+          </td>
+          
+        </tr>
+         
+      </tbody>
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
-
-        </div>
-      </div>
-    </div>
+    </table>
+    
   </div>
-  <!-- fin modal -->
+  
+
+         
+
+
+
 
 
   <script>
