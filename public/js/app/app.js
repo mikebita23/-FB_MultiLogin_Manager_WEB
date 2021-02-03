@@ -1,7 +1,7 @@
 var application = angular.module('app', ['ngRoute']);
 const API_URL_D = "http://api.infinite-scale.fr";
 const API_URL = "http://localhost:3003";
-let token='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhdmlkQGdtYWlsLmNvbSIsInVzZXJJZCI6OSwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjEyMTAwNzAyLCJleHAiOjE2MTIxMDQzMDJ9.lDxZ6LwFSZV7vZ7T2Uxh9s35WkgpuHHVn59Rn2xyKno'
+let token='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImlicmFAZ21haWwuY29tIiwidXNlcklkIjoxOSwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjEyMzM5NDkyLCJleHAiOjE2MTIzNDMwOTJ9.16EaNK4_RxYu-xjK5MM_q3iUueVD667ye8NeaXGsc_k'
  
 //CREATION DE SERVICE UserCRUDService
 application.service('UserCRUDService',['$http', function($http) {
