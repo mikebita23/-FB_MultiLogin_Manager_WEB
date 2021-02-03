@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+    crossorigin="anonymous" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <!-- script for table -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
+  <!-- end script for table -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../vendor/bootstrap/css/adminTab.css">
+  <title>admin gls</title>
+</head>
+
+<body ng-controller="UserCRUDCtrl">
+
+
+  <!-- navigation bar  -->
+   <!-- navigation bar  -->
+   <nav class="navbar navbar-expand-lg bg-info navbar-light" id="navbar_admin" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" id="logo" href="#">GLs Logo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ">
+          <a class="nav-link" id="users_A" style="color: white;" href="/users">Utilisateurs<span class="sr-only"></span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="forfaits_A" style="color: white;" href="/forfaits">Forfaits</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="messages_A" style="color: white;" href="/messages">Messages</a>
+        </li>
+      </ul>
+      <button class="btn btn-sm btn-outline-secondary" id="login" style="color: white;"
+        type="button">Déconnexion</button>
+    </div>
+  </nav>
+ 
+  <!-- modal qui s'affiche quand on clique sur le button voir dans utilisateur  -->
+  <div class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="userModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="flex items-center modal-body justify-center modal-content">
+          <div class="max-w-xs">
+            <div class="bg-white shadow-xl rounded-lg">
+              <div class="photo-wrapper p-2">
+                <img class="w-32 h-32 rounded-full mx-auto" src="/images/avatar.png" alt="John Doe">
+              </div>
+              <div class="p-2">
+                <h3 class="text-center text-xl text-gray-900 font-medium leading-8">User name </h3>
+                <div class="text-center text-gray-400 text-xs font-semibold">
+                  <script> const target=doNotTrack.</script>
+                  <p  data-target="#name"></p>
+                </div>
+                <table class="text-xs my-3">
+                  <tbody>
+                    <tr>
+                      <td class="px-2 py-2 text-gray-500 font-semibold">Adresse mail:</td>
+                      <td class="px-2 py-2">testing@gmail.com</td>
+                    </tr>
+
+                    <tr>
+                      <td class="px-2 py-2 text-gray-500 font-semibold">Tel: </td>
+                      <td class="px-2 py-2">
+                        <p>01.01.23.25.56</p>
+                      </td>
+
+                    </tr>
+                    <tr>
+                      <td class="px-2 py-2 text-gray-500 font-semibold">Type forfait: </td>
+                      <td class="px-2 py-2 colors-red">Basic Forfait</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <div class="text-center my-3">
+                  <a class="text-xs btn btn-sm btn-info" href="#">Contacter</a>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- fin modal -->
+
+
+  <script>
+    $(document).on('show.bs.modal', '#exampleModal' , function(e) {
+      alert("hiiii")
+      var name = $(e.relatedTarget).data('name');
+      console.log(name);
+      $('#name').val(name);
+});
+  </script>
+
+
+  <script src="../../vendor/bootstrap/js/admin.js"></script>
+
+
+  <!-- ajout des scripts js pour bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <!-- script for table  -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="../../vendor/bootstrap/js/dataTable.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="https://code.angularjs.org/1.8.2/angular-route.min.js"></script>
+  <script src="variableGlobale.js"></script>
+  <script src="Controllers/downloadController.js"></script>
+  <script src="API/downloadService.js"></script>
+
+  <script src="API/downloadService.js"></script>
+  <script src="API/forfaitService.js"></script>
+  <script src="API/messageService.js"></script>
+  <script src="API/userService.js"></script>
+  <script src="API/loginService.js"></script>
+  <script src="API/prospectService.js"></script>
+
+  <script src="Controllers/downloadController.js"></script>
+  <script src="Controllers/forfaitControllers.js"></script>
+  <script src="Controllers/messageController.js"></script>
+  <script src="Controllers/userController.js"></script>
+  <script src="Controllers/loginController.js"></script>
+  <script src="Controllers/prospectController.js"></script>
+
+
+
+</body>
+<!-- <script src="/Factory/app copy.js" ></script> -->
+
+</html>
+
+</body>

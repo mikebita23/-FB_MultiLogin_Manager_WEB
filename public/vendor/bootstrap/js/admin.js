@@ -3,6 +3,10 @@ const navbar = document.querySelector('#navbar_admin');
 const tableUsers = document.getElementById('usersTable'); 
 const tabForfait = document.getElementById('tabForfait');
 const tabMessages = document.getElementById('tabMessages');
+const nom =document.getElementById('name')
+const lastName= document.getElementById('lastName')
+const email= document.getElementById('email')
+const idForf= document.getElementById('id')
 
   function displayTable(id, tableBlock) {
     navbar.addEventListener('click', (e) => {
@@ -33,9 +37,13 @@ tabMessages.addEventListener('click', (e) => {
    } else {
     var theId = e.target.id;
     var theDiv = document.getElementById(theId);
-    var text = theDiv.parentElement.lastElementChild;
-    text.textContent = "non";
+    // var text = theDiv.parentElement.lastElementChild;
+    // text.textContent = "non";
    }
   
 });
 
+const openModal= function(e){
+  e.preventDefault()
+  const taget= document.querySelector(e.target.getAttribute('exampleModal'))
+}

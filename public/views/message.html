@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html ng-app="app">
+   
+<head>
+
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+    crossorigin="anonymous" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <!-- script for table -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
+  <!-- end script for table -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../vendor/bootstrap/css/adminTab.css">
+  <title>admin gls</title>
+ 
+</head>
+
+<body >
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.8.2/angular-route.min.js"></script>
+    <script src="../variableGlobale.js"></script>
+    <script src="../API/messageService.js"></script>
+    <script src="../Controllers/messageController.js"></script>
+
+        <!-- navigation bar  -->
+         <!-- navigation bar  -->
+         <nav class="navbar navbar-expand-lg bg-info navbar-light" id="navbar_admin" style="background-color: #e3f2fd;">
+          <a class="navbar-brand" id="logo" href="#">GLs Logo</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item ">
+                <a class="nav-link" id="users_A" style="color: white;" href="/users">Utilisateurs<span class="sr-only"></span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="forfaits_A" style="color: white;" href="/forfaits">Forfaits</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="messages_A" style="color: white;" href="/messages">Messages</a>
+              </li>
+            </ul>
+            <button class="btn btn-sm btn-outline-secondary" id="login" style="color: white;"
+              type="button">Déconnexion</button>
+          </div>
+        </nav>
+        <!-- end navbar -->
+      
+        <!-- table utilisateur -->
+     
+      
+         
+
+            <div class="jumbotron jumbotron-fluid" ng-controller="MessageController">
+                <div class="container">
+                  <h1 class="display-4">Objet: {{Object}}</h1>
+
+                  <p class="lead"> {{Content}}</p>
+
+                  <p class="lead">
+                    <a class="btn btn-primary btn-lg" href="#" role="button">Fermer</a>
+                  </p>
+                </div>
+                </div>
+          </div>
+         
+        
+      
+          
+        
+             
+      
+      
+        <script>
+          $(document).on('show.bs.modal', '#exampleModal' , function(e) {
+            alert("hiiii")
+            var name = $(e.relatedTarget).data('name');
+            console.log(name);
+            $('#name').val(name);
+      });
+        </script>
+      
+ 
+  <!-- <script src="../../vendor/bootstrap/js/admin.js"></script> -->
+
+
+  <!-- ajout des scripts js pour bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <!-- script for table  -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="../../vendor/bootstrap/js/dataTable.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+
+
+ 
+ >
+
+
+
+</body>
+<!-- <script src="/Factory/app copy.js" ></script> -->
+
+</html>
+
