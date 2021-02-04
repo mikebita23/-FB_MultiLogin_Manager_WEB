@@ -36,7 +36,6 @@ this.addForfait = function addForfait( Nom,description,prix) {
         method : 'POST',
         url: `${API_URL_D}/forf/add`,
         headers: {
-            //'Authorization': `Bearer ${token_D}`  ,
             'Authorization': `Bearer ${token}` ,
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -49,20 +48,21 @@ this.addForfait = function addForfait( Nom,description,prix) {
     });
 };
 //service UPDATE
-this.updateForfait = function updateForfait(idForfait) {
+this.updateForfait = function updateForfait(idForfait, Nom,description,prix) {
     return $http({
         method : 'patch',
         url: `${API_URL_D}/forf/${idForfait}/edit`,
         headers: {
-            //'Authorization': `Bearer ${token_D}`  ,
             'Authorization': `Bearer ${token}` ,
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         }
-        // ,
-        // data : {
-        //     Nom:Nom,description:description, prix:prix
-        //   }
+        ,
+        data : {
+            nom:Nom,
+            description:description,
+            prix:prix    
+          }
     });
 };
 //service DELETE
@@ -71,7 +71,6 @@ this.updateForfait = function updateForfait(idForfait) {
                      method : 'GET',
                      url: `${API_URL_D}/forf/del/${id}`,
                         headers: {
-                       //'Authorization': `Bearer ${token_D}`  ,
                          'Authorization': `Bearer ${token}` ,
                          'Accept': 'application/json',
                          'Content-Type': 'application/json'

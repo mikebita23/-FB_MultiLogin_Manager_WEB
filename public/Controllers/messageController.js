@@ -44,7 +44,20 @@ application.controller('MsgReadCtrl',['$scope','MsgReadService','$routeParams',
               console.log( $scope.errorMessage)
           });
     };
-
+    $scope.deleteMessage = function() {
+        MsgReadService.deleteMessage($scope.message.id)
+          .then (function success(response) {
+              $scope.message = 'Message deleted!';
+              $scope.User = null;
+              $scope.errorMessage='';
+              console.log( $scope.message)
+          },
+          function error(response) {
+              $scope.errorMessage = 'Error deleting Message!';
+              $scope.message='';
+              console.log( $scope.errorMessage)
+          });
+    }
 
 }]);
 
@@ -54,35 +67,14 @@ application.controller('getMessagesController', function getDataUsers($scope, Ms
         $scope.messages = response.data;
         $scope.message='get All';
         $scope.errorMessage = '';
-        console.log($scope.messages)         
+        console.log(response.data)
     },
     function error (response) {
         $scope.message='';
         $scope.errorMessage = 'Error getting users!';
-        console.log( $scope.errorMessage)
+       
     });
 }) 
-var a=2
-application.controller('MessageController',['$scope','MsgReadService','$routeParams',
- function($scope,MsgReadService,$routeParams){
-console.log($routeParams)
-    MsgReadService.getMessage($routeParams.id)
-      .then(function success(response) {
-         $scope.message = response.data;
-         $scope.id=message.id;
-          $scope.Objet=message.Objet;
-          $scope.Content=message.Content;
-          scope.senderId=message.senderId
-          $scope.message='get Message';
-          $scope.errorMessage = '';
-          console.log( message)
-      },
-      function error (response) {
-          $scope.message='';
-          $scope.errorMessage = 'Error getting users!';
-          console.log( $scope.errorMessage)
-      });
-}]) 
 application.controller('MsgForfController', function getDataUsers($scope, MsgReadService,$http) {
     MsgReadService.getAllUserMsgForf()
       .then(function success(response) {

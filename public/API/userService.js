@@ -49,35 +49,36 @@ application.service('UserCRUDService',['$http', function($http) {
         });
     };
     //service UPDATE
-    this.updateUser = function updateUser(firstName,lastName,
-        email,phoneNumber,passWord) {
+    this.updateUser = function updateUser(userid,firstName,
+        lastName,
+        email,phoneNumber,
+        passWord, role) {
         return $http({
             method : 'POST',
             url: `${API_URL_D}/users/edit`,
             headers: {
-                //'Authorization': `Bearer ${token_D}`  ,
                 'Authorization': `Bearer ${token}` ,
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
             data : {
+                id:userid,
                 firstName:firstName,
                 lastName:  lastName,
-                 email: email,
+                email: email,
                 phoneNumber: phoneNumber,
                 passWord: passWord,
-                role: "ADMIN",
+                role: role,
                 forfaitId: null
               }
         });
     };
     //service DELETE
-    this.deleteUser = function deleteUser(){
+    this.deleteUser = function deleteUser(idUser){
         return $http({
             method : 'GET',
-            url: `${API_URL_D}/users/remove`,
+            url: `${API_URL_D}/users/remove/${idUser}`,
             headers: {
-                //'Authorization': `Bearer ${token_D}`  ,
                 'Authorization': `Bearer ${token}` ,
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'

@@ -54,19 +54,13 @@ $scope.addForfait = function () {
         });
     }
 
-    // $scope.forfait;
-    // $scope.editCrib=function(forfait){
-    //     $scope.editListing=true;
-    //     $scope.forfait.nom=forfait;
-    // }
-    //         // $scope.forfait.Nom,
-            // $scope.forfait.decription,
-            // $scope.forfait.prix
     $scope.updateForfait = function () {
-        forfaitCRUDService.updateForfait($routeParams.id)
+        forfaitCRUDService.updateForfait($scope.forfait.id,$scope.forfait.nom,
+            $scope.forfait.prix,$scope.forfait.description )
           .then(function success(response) {
               $scope.message = 'Forfait data updated!';
               console.log( $scope.message)
+              console.log("Forfait change")
               $scope.errorMessage = '';
           },
           function error(response) {
@@ -76,8 +70,8 @@ $scope.addForfait = function () {
           });
     }
     
-    $scope.deleteForfait = function () {
-        forfaitCRUDService.deleteForfait($routeParams.id)
+    $scope.deleteForfait = function() {
+        forfaitCRUDService.deleteForfait($scope.forfait.id)
           .then (function success(response) {
               $scope.message = 'Forfait deleted!';
               $scope.User = null;

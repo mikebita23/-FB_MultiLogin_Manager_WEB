@@ -25,10 +25,10 @@
         }
     
     $scope.updateUser = function () {
-        UserCRUDService.updateUser($scope.user.firstName,
+        UserCRUDService.updateUser($scope.user.id,$scope.user.firstName,
             $scope.user.lastName,
             $scope.user.email,$scope.user.phoneNumber,
-            $scope.user.passWord)
+            $scope.user.passWord, $scope.user.role)
           .then(function success(response) {
               $scope.message = 'User data updated!';
               console.log( $scope.message)
@@ -42,7 +42,7 @@
     }
     
     $scope.deleteUser = function () {
-        UserCRUDService.deleteUser()
+        UserCRUDService.deleteUser($scope.user.id)
           .then (function success(response) {
               $scope.message = 'User deleted!';
               $scope.User = null;

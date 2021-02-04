@@ -22,11 +22,6 @@
 </head>
 
 <body ng-controller="UserCRUDCtrl">
-
-
-
-
-
   <!-- navigation bar  -->
   <nav class="navbar navbar-expand-lg bg-info navbar-light" id="navbar_admin" style="background-color: #e3f2fd;">
     <a class="navbar-brand" id="logo" href="#">GLs Logo</a>
@@ -54,7 +49,6 @@
 
   <!-- table utilisateur -->
   <div id="usersTable" class="w-3/4 m-auto animate__animated animate__fadeIn" ng-controller="userGetAllController">
-
     <h1 class="uppercase extrabold text-4xl text-center m-8 underline">Utilisateurs</h1>
     <div>
       <select ng-model="order">
@@ -72,96 +66,163 @@
           <th scope="col">actions</th>
         </tr>
       </thead>
-      <tbody ng-repeat="user in users | filter:query | orderBy:order">
-        <tr>
+      <tbody>
+        <tr ng-repeat="user in users | filter:query | orderBy:order">
           <td id="name">{{user.firstName}}</td>
           <td id="lastName">{{user.lastName}}</td>
           <td id="email">{{user.email}}</td>
           <td id="id">{{user.id}}</td>
           <td class="justify-items-center">
-            <button type="button" data-toggle="modal" class="btn btn-sm btn-success" data-target="#userModal"
-            ><i class="far fa-eye"></i></button>
-            <button class="btn btn-sm btn-info"> <i class="fas fa-pencil-alt"></i> </button>
-            <button class="btn btn-sm btn-danger"> <i class="far fa-trash-alt"></i></button>
+            <button type="button" data-toggle="modal" data-backdrop="false" class="btn btn-sm btn-success"
+              data-target="#userModal_{{user.id}}"><i class="far fa-eye"></i></button>
+            <button type="button" data-toggle="modal" data-backdrop="false" data-target="#userModalUpdate_{{user.id}}"
+              class="btn btn-sm btn-info"> <i class="fas fa-pencil-alt"></i> </button>
+            <button type="button" data-toggle="modal" data-backdrop="false" class="btn btn-sm btn-danger"
+              data-target="#UserModalSupp_{{user.id}}"> <i class="far fa-trash-alt"></i></button>
+
+            <!-- modal qui s'affiche quand on clique sur le button voir dans utilisateur  -->
+            <div class="modal fade bg-black bg-opacity-75" id="userModal_{{user.id}}" tabindex="-1" role="dialog"
+              aria-labelledby="userModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="flex items-center modal-body justify-center modal-content">
+                    <div class="max-w-xs">
+                      <div class="bg-white shadow-xl rounded-lg">
+                        <div class="photo-wrapper p-2">
+                          <img class="w-32 h-32 rounded-full mx-auto" src="/images/avatar.png" alt="John Doe">
+                        </div>
+                        <div class="p-2">
+                          <h3 class="text-center text-xl text-gray-900 font-medium leading-8">{{user.firstName}}
+                            {{user.lastName}}</h3>
+                          <div class="text-center text-gray-400 text-xs font-semibold">
+
+                          </div>
+                          <table class="text-xs my-3">
+                            <tbody>
+                              <tr>
+                                <td class="px-2 py-2 text-gray-500 font-semibold">Adresse mail:</td>
+                                <td class="px-2 py-2">{{user.email}}</td>
+                              </tr>
+
+                              <tr>
+                                <td class="px-2 py-2 text-gray-500 font-semibold">Tel: </td>
+                                <td class="px-2 py-2">
+                                  <p>{{user.phoneNumber}}</p>
+                                </td>
+
+                              </tr>
+                              <tr>
+                                <td class="px-2 py-2 text-gray-500 font-semibold">Type forfait (id): </td>
+                                <td class="px-2 py-2 colors-red">{{user.id}}</td>
+                              </tr>
+                              <tr>
+                                <td class="px-2 py-2 text-gray-500 font-semibold">role utilisateur: </td>
+                                <td class="px-2 py-2 colors-red">{{user.role}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+
+                          <div class="text-center my-3">
+                            <a class="text-xs btn btn-sm btn-info" href="#">Contacter</a>
+
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- fin modal -->
+
+            <!-- modal update quand on clique sur le button voir dans utilisateur  -->
+            <div class="modal fade bg-black bg-opacity-75" id="userModalUpdate_{{user.id}}" tabindex="-1" role="dialog"
+              aria-labelledby="userModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <form action="" method="post">
+                    <div class="form-group">
+                      <label for="formGroupExampleInput">FirstName</label>
+                      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Prenom"
+                        ng-model="user.firstName">
+                    </div>
+                    <div class="form-group">
+                      <label for="formGroupExampleInput2">LastName</label>
+                      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Nom"
+                        ng-model="user.lastName">
+                    </div>
+                    <div class="form-group">
+                      <label for="formGroupExampleInput2">Email</label>
+                      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Email"
+                        ng-model="user.email">
+                    </div>
+                    <div class="form-group">
+                      <label for="formGroupExampleInput2">Telephone</label>
+                      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Tel"
+                        ng-model="user.phoneNumber">
+                    </div>
+                    <div class="form-group">
+                      <label for="formGroupExampleInput2">PassWord</label>
+                      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Mot de passe"
+                        ng-model="user.PassWord">
+                    </div>
+                    <div class="form-group">
+                      <label for="formGroupExampleInput2">Role</label>
+                      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Role"
+                        ng-model="user.role">
+                    </div>
+                  </form>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal"
+                      ng-click="updateUser(user.id, user.firstName,user.lastName,user.email,user.phoneNumber,user.PassWord,user.role )">Valider</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- fin modal -->
+            <!-- Supprimer User -->
+            <div class="modal fade bg-black bg-opacity-75" id="UserModalSupp_{{user.id}}" tabindex="-1" role="dialog"
+              aria-labelledby="userModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div ng-controller="UserCRUDCtrl">
+                    <div class="form-group">
+                      <label for="formGroupExampleInput"> Voulez-vous vraiment supprimer</label>
+                      <input type="text" class="form-control" id="formGroupExampleInput" ng-model="user.firstName">
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-success" data-dismiss="modal"
+                        ng-click="deleteUser(user.id)">Supprimer</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </td>
+
         </tr>
       </tbody>
     </table>
   </div>
-
-
-  <!-- modal qui s'affiche quand on clique sur le button voir dans utilisateur  -->
-  <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-
-        <div class="flex items-center modal-body justify-center modal-content">
-          <div class="max-w-xs">
-            <div class="bg-white shadow-xl rounded-lg">
-              <div class="photo-wrapper p-2">
-                <img class="w-32 h-32 rounded-full mx-auto" src="/images/avatar.png" alt="John Doe">
-              </div>
-              <div class="p-2">
-                <h3 class="text-center text-xl text-gray-900 font-medium leading-8">User name </h3>
-                <div class="text-center text-gray-400 text-xs font-semibold">
-                  <script> const target=doNotTrack.</script>
-                  <p  data-target="#name"></p>
-                </div>
-                <table class="text-xs my-3">
-                  <tbody>
-                    <tr>
-                      <td class="px-2 py-2 text-gray-500 font-semibold">Adresse mail:</td>
-                      <td class="px-2 py-2">testing@gmail.com</td>
-                    </tr>
-
-                    <tr>
-                      <td class="px-2 py-2 text-gray-500 font-semibold">Tel: </td>
-                      <td class="px-2 py-2">
-                        <p>01.01.23.25.56</p>
-                      </td>
-
-                    </tr>
-                    <tr>
-                      <td class="px-2 py-2 text-gray-500 font-semibold">Type forfait: </td>
-                      <td class="px-2 py-2 colors-red">Basic Forfait</td>
-                    </tr>
-                  </tbody>
-                </table>
-
-                <div class="text-center my-3">
-                  <a class="text-xs btn btn-sm btn-info" href="#">Contacter</a>
-
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
-
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- fin modal -->
-
-
-  <script>
-    $(document).on('show.bs.modal', '#exampleModal' , function(e) {
-      alert("hiiii")
-      var name = $(e.relatedTarget).data('name');
-      console.log(name);
-      $('#name').val(name);
-});
-  </script>
 
 
   <!-- show forfait bellow -->
@@ -181,9 +242,76 @@
           <td>{{forfait.nom}}</td>
           <td>{{forfait.prix}}</td>
           <td>{{forfait.description}} </td>
-          <td>
-            <button class="btn btn-sm btn-danger" ng-click="editCrib(forfait)"><i class="far fa-trash-alt"></i></button>
-            <button class="btn btn-sm btn-info"><i class="fas fa-pencil-alt"></i> </button>
+          <td class="justify-items-center">
+            <button type="button" data-toggle="modal" data-backdrop="false" class="btn btn-sm btn-info"
+              data-target="#forfaitModal_{{forfait.id}}"> <i class="fas fa-pencil-alt"></i> </button>
+            <button type="button" data-toggle="modal" data-backdrop="false" class="btn btn-sm btn-danger"
+              data-target="#forfaitModalSupp_{{forfait.id}}"> <i class="far fa-trash-alt"></i></button>
+
+            <div class="modal fade bg-black bg-opacity-75" id="forfaitModal_{{forfait.id}}" tabindex="-1" role="dialog"
+              aria-labelledby="userModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div ng-controller="ForfaitCRUDCtrl">
+                    <div class="modal-body">
+                      <form action="" method="post">
+                        <div class="form-group">
+                          <label for="formGroupExampleInput">Nom du forfait</label>
+                          <input type="text" class="form-control" id="formGroupExampleInput"
+                            placeholder="nom du forfait" ng-model="forfait.nom">
+                        </div>
+                        <div class="form-group">
+                          <label for="formGroupExampleInput2">Prix du forfait</label>
+                          <input type="number" class="form-control" id="formGroupExampleInput2"
+                            placeholder="prix du forfait" ng-model="forfait.prix">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlTextarea1">Description forfait</label>
+                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                            ng-model="forfait.description"></textarea>
+                        </div>
+                      </form>
+                    </div>
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-success" data-dismiss="modal"
+                        ng-click="updateForfait(forfait.id,forfait.nom,forfait.prix,forfait.description)">valider</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <!-- Supprimer Forfait -->
+            <div class="modal fade bg-black bg-opacity-75" id="forfaitModalSupp_{{forfait.id}}" tabindex="-1"
+              role="dialog" aria-labelledby="userModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div ng-controller="ForfaitCRUDCtrl">
+                    <div class="form-group">
+                      <label for="formGroupExampleInput"> Voulez-vous vraiment supprimer</label>
+                      <input type="text" class="form-control" id="formGroupExampleInput" ng-model="forfait.nom">
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-success" data-dismiss="modal"
+                        ng-click="deleteForfait(forfait.id)">Supprimer</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <!-- fin modal -->
           </td>
         </tr>
       </tbody>
@@ -193,59 +321,6 @@
           class="fas fa-plus"></i></button>
     </section>
   </div>
-  <!-- table message -->
-
-  <div id="tabMessages" class="w-3/4 m-auto animate__animated animate__fadeIn" ng-controller="getMessagesController">
-    <h1 class="uppercase extrabold text-4xl text-center m-8 underline">Messages</h1>
-    <table class="table table-bordered w-1/2 mx-auto border-2 rounded-md" id="messageTable">
-      <thead>
-        <tr>
-          <th>nom utilisateur</th>
-          <th>Contact</th>
-          <th>objet du message</th>
-          <th>actions</th>
-          <th>réponse</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="message in messages">
-          <td>{{message.senderId}}</td>
-          <td>{{message.Content}}</td>
-          <td>{{message.Object}} </td>
-          <td>
-            <button class="btn btn-sm btn-success m-4" data-toggle="modal" data-target="#modalForMessage">voir</button>
-          </td>
-          <td>
-            <div class="custom-control custom-switch">
-              <input type="checkbox" checked class="custom-control-input" class="responseSwitch" id="customSwitch1">
-              <label class="custom-control-label" for="customSwitch1">oui</label>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <!-- Modal for message  -->
-     <div class="modal fade" id="modalForMessage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">objet: object ici</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            le message ici
-          </div>
-          <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
-
-        </div>
-        </div>
-      </div>
-    </div>
-
-  <!-- end modal for message -->
   <!-- Modal for adding forfait  -->
   <div class="modal fade" id="addForfait" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
@@ -262,11 +337,13 @@
             <form action="" method="post">
               <div class="form-group">
                 <label for="formGroupExampleInput">Nom du forfait</label>
-                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="nom du forfait" ng-model="forfait.nom">
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="nom du forfait"
+                  ng-model="forfait.nom">
               </div>
               <div class="form-group">
                 <label for="formGroupExampleInput2">Prix du forfait</label>
-                <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="prix du forfait" ng-model="forfait.prix">
+                <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="prix du forfait"
+                  ng-model="forfait.prix">
               </div>
               <div class="form-group">
                 <label for="exampleFormControlTextarea1">Description forfait</label>
@@ -284,13 +361,105 @@
       </div>
     </div>
   </div>
-
-
   <!-- end modal for adding forfait -->
 
+  <!-- table message -->
+  <!-- Modal for message  -->
+  <div id="tabMessages" class="w-3/4 m-auto animate__animated animate__fadeIn" ng-controller="getMessagesController">
+    <h1 class="uppercase extrabold text-4xl text-center m-8 underline">Messages</h1>
+    <table class="table table-bordered w-1/2 mx-auto border-2 rounded-md" id="messageTable">
+      <thead>
+        <tr>
+          <th>nom utilisateur</th>
+          <th>Contact</th>
+          <th>objet du message</th>
+          <th>actions</th>
+          <th>réponse</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="message in messages | filter:query | orderBy:order">
+          <td>{{message.senderId}}</td>
+          <td>{{message.Content}}</td>
+          <td>{{message.Object}} </td>
+          <td class="justify-items-center">
+            <button type="button" data-toggle="modal" data-backdrop="false" class="btn btn-sm btn-success"
+              data-target="#messageModal_{{message.id}}"><i class="far fa-eye"></i></button>
+            <button type="button" data-toggle="modal" data-backdrop="false" class="btn btn-sm btn-danger"
+              data-target="#messageModalSupp_{{message.id}}"> <i class="far fa-trash-alt"></i></button>
+
+          <td>
+            <div class="custom-control custom-switch">
+              <input type="checkbox" checked class="custom-control-input" class="responseSwitch" id="customSwitch1">
+              <label class="custom-control-label" for="customSwitch1">oui</label>
+            </div>
+            <!-- ********pour enlever le font gris tu enleve la classe 'bg-black et l'id du forfait est vide car il a une valeur null dans la DB -->
+            <!-- modal qui s'affiche quand on clique sur le button voir dans utilisateur  -->
+            <div class="modal fade bg-black bg-opacity-75" id="messageModal_{{message.id}}" tabindex="-1" role="dialog"
+              aria-labelledby="messageModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h3 class="text-center text-xl text-gray-900 font-medium leading-8">Objet: {{message.Object}}</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="flex items-center modal-body justify-center modal-content">
+                    <div class="max-w-xs">{{message.Content}}</div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- fin modal -->
+
+            <!-- Supprimer Message -->
+            <div class="modal fade bg-black bg-opacity-75" id="messageModalSupp_{{message.id}}" tabindex="-1"
+              role="dialog" aria-labelledby="userModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div ng-controller="MsgReadCtrl">
+                    <div class="form-group">
+                      <label for="formGroupExampleInput"> Voulez-vous vraiment supprimer</label>
+                      <input type="text" class="form-control" id="formGroupExampleInput" ng-model="message.id">
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-success" data-dismiss="modal"
+                        ng-click="deleteMessage(message.id)">Supprimer</button>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- end modal for message -->
+
+
+  <!-- Scripts -->
+  <script>
+    $(document).on('show.bs.modal', '#exampleModal', function (e) {
+      alert("hiiii")
+      var name = $(e.relatedTarget).data('name');
+      console.log(name);
+      $('#name').val(name);
+    });
+  </script>
+
   <script src="../../vendor/bootstrap/js/admin.js"></script>
-
-
   <!-- ajout des scripts js pour bootstrap -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
