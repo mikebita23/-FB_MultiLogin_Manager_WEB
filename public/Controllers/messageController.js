@@ -44,7 +44,20 @@ application.controller('MsgReadCtrl',['$scope','MsgReadService','$routeParams',
               console.log( $scope.errorMessage)
           });
     };
-
+    $scope.deleteMessage = function() {
+        MsgReadService.deleteMessage($scope.message.id)
+          .then (function success(response) {
+              $scope.message = 'Message deleted!';
+              $scope.User = null;
+              $scope.errorMessage='';
+              console.log( $scope.message)
+          },
+          function error(response) {
+              $scope.errorMessage = 'Error deleting Message!';
+              $scope.message='';
+              console.log( $scope.errorMessage)
+          });
+    }
 
 }]);
 

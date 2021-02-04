@@ -7,7 +7,6 @@
         method : 'GET',
         url: `${API_URL_D}/Msg/${id}`,
         headers: {
-            //'Authorization': `Bearer ${token_D}`  ,
             'Authorization': `Bearer ${token}` ,
             'Accept': 'application/json',
             'Content-Type': 'application/json'
@@ -22,7 +21,6 @@
             method : 'GET',
             url: `${API_URL_D}/Msg/all`,
             headers: {
-                //'Authorization': `Bearer ${token_D}`  ,
                 'Authorization': `Bearer ${token}` ,
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -36,7 +34,18 @@
             method : 'GET',
             url: `${API_URL_D}/users/userMsgForf`,
             headers: {
-                //'Authorization': `Bearer ${token_D}`  ,
+                'Authorization': `Bearer ${token}` ,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
+    };
+     //service GET message by  USER and Forfait
+     this.deleteMessage = function deleteMessage(idMessage) {
+        return $http({
+            method : 'GET',
+            url: `${API_URL_D}/Msg/del/${idMessage}`,
+            headers: {
                 'Authorization': `Bearer ${token}` ,
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'

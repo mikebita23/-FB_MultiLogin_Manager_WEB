@@ -330,8 +330,10 @@
           <td>{{message.Object}} </td>
           <td class="justify-items-center">
             <button type="button" data-toggle="modal" data-backdrop="false" class="btn btn-sm btn-success"
-              data-target="#messageModal_{{xx}}"><i class="far fa-eye"></i></button>
-            <button class="btn btn-sm btn-danger"> <i class="far fa-trash-alt"></i></button>
+              data-target="#messageModal_{{message.id}}"><i class="far fa-eye"></i></button>
+            <button type="button" data-toggle="modal" data-backdrop="false" class="btn btn-sm btn-danger"
+             data-target="#messageModalSupp_{{message.id}}"> <i class="far fa-trash-alt"></i></button>
+           
           <td>
             <div class="custom-control custom-switch">
               <input type="checkbox" checked class="custom-control-input" class="responseSwitch" id="customSwitch1">
@@ -339,7 +341,7 @@
             </div>
             <!-- ********pour enlever le font gris tu enleve la classe 'bg-black et l'id du forfait est vide car il a une valeur null dans la DB -->
             <!-- modal qui s'affiche quand on clique sur le button voir dans utilisateur  -->
-            <div class="modal fade bg-black bg-opacity-75" id="messageModal_{{xx}}" tabindex="-1" role="dialog"
+            <div class="modal fade bg-black bg-opacity-75" id="messageModal_{{message.id}}" tabindex="-1" role="dialog"
               aria-labelledby="messageModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -359,6 +361,31 @@
               </div>
             </div>
             <!-- fin modal -->
+
+             <!-- Supprimer Message -->
+             <div class="modal fade bg-black bg-opacity-75" id="messageModalSupp_{{message.id}}" tabindex="-1" role="dialog"
+             aria-labelledby="userModalLabel" aria-hidden="true">
+             <div class="modal-dialog" role="document">
+               <div class="modal-content">
+                 <div class="modal-header">
+                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                   </button>
+                 </div>
+                 <div ng-controller="MsgReadCtrl">
+                   <div class="form-group">
+                     <label for="formGroupExampleInput"> Voulez-vous vraiment supprimer</label>
+                     <input type="text" class="form-control" id="formGroupExampleInput" ng-model="message.id">
+                   </div>
+                   <div class="modal-footer">
+                     <button type="button" class="btn btn-success" data-dismiss="modal"
+                       ng-click="deleteMessage(message.id)">Supprimer</button>
+                   </div>
+                 </div>
+
+               </div>
+             </div>
+           </div>
           </td>
 
         </tr>
