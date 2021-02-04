@@ -54,12 +54,12 @@ application.controller('getMessagesController', function getDataUsers($scope, Ms
         $scope.messages = response.data;
         $scope.message='get All';
         $scope.errorMessage = '';
-        console.log($scope.messages)         
+        console.log(response.data)
     },
     function error (response) {
         $scope.message='';
         $scope.errorMessage = 'Error getting users!';
-        console.log( $scope.errorMessage)
+       
     });
 }) 
 var a=2
