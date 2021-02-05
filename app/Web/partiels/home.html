@@ -1,0 +1,33 @@
+<!DOCTYPE html >
+<html >
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+ 
+  
+
+</head>
+
+<body ng-app="app" >
+    <div class="login-page" ng-controller="loginController" >
+      <div class="form">
+        <h1>Admin interface</h1>
+        <img src="" alt="">
+        <form class="login-form">
+          <input type="text" placeholder="username"  ng-model="login.email">
+          <input type="password" placeholder="password"  ng-model="login.passWord">
+          <button class="bg-primary" ng-click="login(login.email,login.passWord)">Login</button>
+        </form>
+      </div>
+    </div>
+  
+
+  <!-- script for table  -->
+
+
+
+</body>
+
+</html>

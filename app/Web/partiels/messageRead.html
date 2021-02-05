@@ -1,0 +1,31 @@
+<a href="#!/">Revenir</a>
+<br> <br> 
+
+  <div> 
+        <button ng-click="getMessages()">Get All Messages</button> 
+ 
+        <button ng-click="getAllUserForf() ">MESSAGE BY USER AND FORFAIT</button> 
+  </div> 
+  <div ng-repeat="message in messages">
+        <h2>{{message.Object}}</h2>
+
+        <p>{{message.Content}}</p>
+
+       <p>
+     <a href="#!/messages/{{message.id}}">{{message.id}} Message </a></p>
+  </div>
+ 
+  <div ng-repeat="message in userMsgForf">
+    <h2> Message par forfait</h2>
+   <br> {{message.firstName}} {{message.lastName}}  <a href="#!/messages/{{message.id}}">{{message.id}}{{message.Object}} </a> {{message.Nom}} 
+    <p>{{message.Content}}</p>
+
+  
+</div>
+
+  
+<br> <br> 
+
+
+
+</html>
