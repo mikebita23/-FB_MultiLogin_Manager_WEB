@@ -27,7 +27,8 @@ function ($scope,downloadService, $routeParams) {
                 $scope.errorMessage = '';
                 console.log( $scope.message);
                 console.log(fileToken.link)
-               window.open(fileToken.link,'href')
+              window.open('http://'+fileToken.link,'_blank')
+             
             },
             function error(response){
                 $scope.errorMessage = 'error logiciel can\'t be added';
