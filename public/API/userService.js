@@ -49,10 +49,10 @@ application.service('UserCRUDService',['$http', function($http) {
         });
     };
     //service UPDATE
-    this.updateUser = function updateUser(userid,firstName,
-        lastName,
-        email,phoneNumber,
-        passWord, role) {
+    this.updateUser = function updateUser(userId,prenom,
+        nom,
+        email,tel,
+        pwd, role, forfait) {
         return $http({
             method : 'POST',
             url: `${API_URL_D}/users/edit`,
@@ -62,14 +62,14 @@ application.service('UserCRUDService',['$http', function($http) {
                 'Content-Type': 'application/json'
             },
             data : {
-                id:userid,
-                firstName:firstName,
-                lastName:  lastName,
+                id:userId,
+                firstName:prenom,
+                lastName:  nom,
                 email: email,
-                phoneNumber: phoneNumber,
-                passWord: passWord,
+                phoneNumber: tel,
+                passWord: pwd,
                 role: role,
-                forfaitId: null
+                forfaitId: forfait
               }
         });
     };

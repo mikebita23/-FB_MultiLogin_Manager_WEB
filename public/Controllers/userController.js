@@ -2,17 +2,15 @@
  // Creation de controller UserCRUDCtrl
     //USER
 
-    application.controller('UserCRUDCtrl',['$scope','UserCRUDService','$routeParams',
+    application.controller('UserCRUDCtrl',['$scope','UserCRUDService',
     function ($scope,UserCRUDService) {
     //Add user 
     $scope.addUser = function () {
-        //if ($scope.user != null && $scope.user.email) {
             UserCRUDService.addUser($scope.user.firstName,
                 $scope.user.lastName,
                 $scope.user.email,$scope.user.phoneNumber,
                 $scope.user.passWord)
-              .then (function success(response){
-                 
+              .then (function success(response){      
                   $scope.message = 'User added!';
                   $scope.errorMessage = '';
                   console.log( $scope.message);
@@ -28,7 +26,7 @@
         UserCRUDService.updateUser($scope.user.id,$scope.user.firstName,
             $scope.user.lastName,
             $scope.user.email,$scope.user.phoneNumber,
-            $scope.user.passWord, $scope.user.role)
+            $scope.user.passWord, $scope.user.role,$scope.user.forfaitId)
           .then(function success(response) {
               $scope.message = 'User data updated!';
               console.log( $scope.message)
@@ -62,7 +60,7 @@
                   $scope.users = response.data;
                   $scope.message='get All';
                   $scope.errorMessage = '';
-                  console.log($scope.message)
+                  console.log($scope.message, response.data)
               },
               function error (response) {
                   $scope.message='';

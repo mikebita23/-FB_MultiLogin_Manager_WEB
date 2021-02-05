@@ -71,7 +71,7 @@
           <td id="name">{{user.firstName}}</td>
           <td id="lastName">{{user.lastName}}</td>
           <td id="email">{{user.email}}</td>
-          <td id="id">{{user.id}}</td>
+          <td id="id">{{user.forfaitId}}</td>
           <td class="justify-items-center">
             <button type="button" data-toggle="modal" data-backdrop="false" class="btn btn-sm btn-success"
               data-target="#userModal_{{user.id}}"><i class="far fa-eye"></i></button>
@@ -150,6 +150,7 @@
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Update User</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -185,10 +186,15 @@
                       <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Role"
                         ng-model="user.role">
                     </div>
+                    <div class="form-group">
+                      <label for="formGroupExampleInput2">Forfait</label>
+                      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Forfait"
+                        ng-model="user.forfaitId">
+                    </div>
                   </form>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-success" data-dismiss="modal"
-                      ng-click="updateUser(user.id, user.firstName,user.lastName,user.email,user.phoneNumber,user.PassWord,user.role )">Valider</button>
+                      ng-click="updateUser(user.id, user.firstName,user.lastName,user.email,user.phoneNumber,user.PassWord,user.role, user.forfaitId)">Valider</button>
                   </div>
                 </div>
               </div>
