@@ -40,36 +40,20 @@
         <li class="nav-item">
           <a class="nav-link" id="messages_A" style="color: white;" href="#">Messages</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" id="prospect_A" style="color: white;" href="#">Prospects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="session_A" style="color: white;" href="#">Sessions</a>
+        </li>
+
       </ul>
-      <a  href="/login"><button class="btn btn-sm btn-outline-secondary" id="login" style="color: white;"
-        type="button">Déconnexion</button></a> 
+      <a href="#"><button class="btn btn-sm btn-outline-secondary" id="login" style="color: white;"
+          type="button">Déconnexion</button></a>
     </div>
   </nav>
   <!-- end navbar -->
-  <!-- Login -->
-  <!-- <div id="loginAdmin" class="login-page" class="w-3/4 m-auto animate__animated animate__fadeIn"
-    ng-controller="userGetAllController">
-    <div>
-      <div class="form">
-        <h1>Admin interface</h1>
-        <img src="" alt="">
-        <form class="register-form">
-          <input type="text" placeholder="name" />
-          <input type="password" placeholder="password" />
-          <input type="text" placeholder="email address" />
-          <button>create</button>
-          <p class="message">Already registered? <a href="#">Sign In</a></p>
-        </form>
-        <form class="login-form">
-          <input type="text" placeholder="username" />
-          <input type="password" placeholder="password" />
-          <button class="bg-primary">login</button>
 
-        </form>
-      </div>
-    </div>
-  </div> -->
-  <!-- table utilisateur -->
   <div id="usersTable" class="w-3/4 m-auto animate__animated animate__fadeIn" ng-controller="userGetAllController">
     <h1 class="uppercase extrabold text-4xl text-center m-8 underline">Utilisateurs</h1>
     <div>
@@ -246,11 +230,11 @@
               </div>
             </div>
           </td>
-
         </tr>
       </tbody>
     </table>
   </div>
+
 
 
   <!-- show forfait bellow -->
@@ -281,7 +265,7 @@
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Mise à jour un forfait</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Update forfait</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -350,13 +334,14 @@
           class="fas fa-plus"></i></button>
     </section>
   </div>
+
   <!-- Modal for adding forfait  -->
   <div class="modal fade" id="addForfait" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">ajouter un forfait</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Ajouter un forfait</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -399,11 +384,11 @@
     <table class="table table-bordered w-1/2 mx-auto border-2 rounded-md" id="messageTable">
       <thead>
         <tr>
-          <th>nom utilisateur</th>
-          <th>Contact</th>
-          <th>objet du message</th>
-          <th>actions</th>
-          <th>réponse</th>
+          <th>Utilisateur</th>
+          <th>Contenu</th>
+          <th>Objet du message</th>
+          <th>Actions</th>
+          <th>Réponse</th>
         </tr>
       </thead>
       <tbody>
@@ -437,11 +422,14 @@
                   <div class="flex items-center modal-body justify-center modal-content">
                     <div class="max-w-xs">{{message.Content}}</div>
                   </div>
+
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
                   </div>
                 </div>
               </div>
+
+
             </div>
             <!-- fin modal -->
 
@@ -479,15 +467,6 @@
 
 
   <!-- Scripts -->
-  <script>
-    $(document).on('show.bs.modal', '#exampleModal', function (e) {
-      alert("hiiii")
-      var name = $(e.relatedTarget).data('name');
-      console.log(name);
-      $('#name').val(name);
-    });
-  </script>
-
   <script src="../../vendor/bootstrap/js/admin.js"></script>
   <!-- ajout des scripts js pour bootstrap -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -507,22 +486,23 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
   <script src="https://code.angularjs.org/1.8.2/angular-route.min.js"></script>
+
   <script src="variableGlobale.js"></script>
+  <script src="API/loginService.js"></script>
+  <script src="Controllers/loginController.js"></script>
+
   <script src="Controllers/downloadController.js"></script>
   <script src="API/downloadService.js"></script>
-
   <script src="API/downloadService.js"></script>
   <script src="API/forfaitService.js"></script>
   <script src="API/messageService.js"></script>
   <script src="API/userService.js"></script>
-  <script src="API/loginService.js"></script>
   <script src="API/prospectService.js"></script>
-
   <script src="Controllers/downloadController.js"></script>
   <script src="Controllers/forfaitControllers.js"></script>
   <script src="Controllers/messageController.js"></script>
   <script src="Controllers/userController.js"></script>
-  <script src="Controllers/loginController.js"></script>
+ 
   <script src="Controllers/prospectController.js"></script>
 
 

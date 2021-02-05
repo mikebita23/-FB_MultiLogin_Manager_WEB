@@ -2,7 +2,7 @@
 application.controller('prospectgetAllController',['$scope','prospectService','$routeParams',
 function ($scope,prospectService, $routeParams) {   
          
-        prospectService.getAllProspect($scope.prospect.prospectNum)
+        prospectService.getAllProspect()
             .then (function success(response){     
                 $scope.message = 'prospect has be added succes!';
                 $scope.errorMessage = '';
@@ -14,8 +14,6 @@ function ($scope,prospectService, $routeParams) {
                 $scope.message = '';
                 console.log( $scope.errorMessage);
             });
-    
-
 }]);
 
 application.controller('prospectController',['$scope','prospectService','$routeParams',

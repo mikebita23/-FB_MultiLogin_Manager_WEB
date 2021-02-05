@@ -1,5 +1,6 @@
 
 const navbar = document.querySelector('#navbar_admin');
+// const tableProspect = document.getElementById('prospectTable'); 
 const tableUsers = document.getElementById('usersTable'); 
 const tabForfait = document.getElementById('tabForfait');
 const tabMessages = document.getElementById('tabMessages');
@@ -12,6 +13,7 @@ const loginAdmin = document.getElementById('loginAdmin');
       tableBlock.style.display = tableUserIsVisible;
     });
   }
+  // displayTable("prospect_A",tableProspect);
     displayTable("users_A", tableUsers);
     displayTable("forfaits_A", tabForfait);
     displayTable("messages_A", tabMessages);
@@ -23,7 +25,7 @@ function addOptionsOnTable(id){
     $(id).DataTable();
   });
 }
-
+// addOptionsOnTable('#tableProspect');
 addOptionsOnTable('#myTableUsers');
 addOptionsOnTable('#messageTable');
 addOptionsOnTable('#loginAdmin');

@@ -1,10 +1,10 @@
 //Contoller Login
 application.controller('loginController',['$scope','loginService',
 function ($scope,loginService) {
-     
-$scope.login = function () {
+   
+$scope.addlogin = function () {
     
-        loginService.login($scope.login.email,
+        loginService.addlogin($scope.login.email,
             $scope.login.passWord)
           .then (function success(response){
              
@@ -12,6 +12,7 @@ $scope.login = function () {
               $scope.errorMessage = '';
               console.log( $scope.message);
               console.log(response.data)
+              //token= response.data.token
           },
           function error(response){
               $scope.errorMessage = 'login error not connected';

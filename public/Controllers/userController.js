@@ -71,25 +71,4 @@
     
     
     
-    application.controller('userGetController', function getDataUsers($scope, UserCRUDService,$http,$routeParams) {
-        UserCRUDService.getUser($routeParams.id)
-                .then(function success(response) {
-                    $scope.user = response.data;
-                    $scope.message='User get';
-                    $scope.errorMessage = '';
-                    console.log( $scope.message);
-                    
-                },
-                function error (response) {
-                    $scope.message = '';
-                    if (response.status === 404){
-                        $scope.errorMessage = 'User not found!';
-                        console.log( $scope.errorMessage);
-                    }
-                    else {
-                        $scope.errorMessage = "Error getting user!";
-                        console.log( $scope.errorMessage);
-                    }
-                });
-                
-    }) 
+   
