@@ -3,6 +3,7 @@ const navbar = document.querySelector('#navbar_admin');
 const tableUsers = document.getElementById('usersTable'); 
 const tabForfait = document.getElementById('tabForfait');
 const tabMessages = document.getElementById('tabMessages');
+const loginAdmin = document.getElementById('loginAdmin');
 
 
   function displayTable(id, tableBlock) {
@@ -14,6 +15,7 @@ const tabMessages = document.getElementById('tabMessages');
     displayTable("users_A", tableUsers);
     displayTable("forfaits_A", tabForfait);
     displayTable("messages_A", tabMessages);
+    displayTable("login", loginAdmin);
 
 // jquery for the table 
 function addOptionsOnTable(id){
@@ -24,6 +26,7 @@ function addOptionsOnTable(id){
 
 addOptionsOnTable('#myTableUsers');
 addOptionsOnTable('#messageTable');
+addOptionsOnTable('#loginAdmin');
 // switch button 
 tabMessages.addEventListener('click', (e) => {
    if(e.target.checked){

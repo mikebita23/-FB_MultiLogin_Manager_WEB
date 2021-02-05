@@ -23,18 +23,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/admin', adminRouter)
-app.use('/users',  function(req, res, next) {
-    res.sendFile('users.html', { root: __views})
+app.use('/login',  function(req, res, next) {
+    res.sendFile('login.html', { root: __views})
 });
-app.use('/messages',  function(req, res, next) {
-    res.sendFile('messages.html', { root: __views})
-});
-app.use('/message/:id',  function(req, res, next) {
-    res.sendFile('message.html', { root: __views})
-});
-app.use('/forfaits',  function(req, res, next) {
-    res.sendFile('forfaits.html', { root: __views})
-});
+// app.use('/messages',  function(req, res, next) {
+//     res.sendFile('messages.html', { root: __views})
+// });
+// app.use('/message/:id',  function(req, res, next) {
+//     res.sendFile('message.html', { root: __views})
+// });
+// app.use('/forfaits',  function(req, res, next) {
+//     res.sendFile('forfaits.html', { root: __views})
+// });
 
 
 module.exports = app;

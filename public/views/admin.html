@@ -41,12 +41,34 @@
           <a class="nav-link" id="messages_A" style="color: white;" href="#">Messages</a>
         </li>
       </ul>
-      <button class="btn btn-sm btn-outline-secondary" id="login" style="color: white;"
-        type="button">Déconnexion</button>
+      <a  href="/login"><button class="btn btn-sm btn-outline-secondary" id="login" style="color: white;"
+        type="button">Déconnexion</button></a> 
     </div>
   </nav>
   <!-- end navbar -->
+  <!-- Login -->
+  <!-- <div id="loginAdmin" class="login-page" class="w-3/4 m-auto animate__animated animate__fadeIn"
+    ng-controller="userGetAllController">
+    <div>
+      <div class="form">
+        <h1>Admin interface</h1>
+        <img src="" alt="">
+        <form class="register-form">
+          <input type="text" placeholder="name" />
+          <input type="password" placeholder="password" />
+          <input type="text" placeholder="email address" />
+          <button>create</button>
+          <p class="message">Already registered? <a href="#">Sign In</a></p>
+        </form>
+        <form class="login-form">
+          <input type="text" placeholder="username" />
+          <input type="password" placeholder="password" />
+          <button class="bg-primary">login</button>
 
+        </form>
+      </div>
+    </div>
+  </div> -->
   <!-- table utilisateur -->
   <div id="usersTable" class="w-3/4 m-auto animate__animated animate__fadeIn" ng-controller="userGetAllController">
     <h1 class="uppercase extrabold text-4xl text-center m-8 underline">Utilisateurs</h1>

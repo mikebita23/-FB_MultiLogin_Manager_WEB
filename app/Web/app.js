@@ -7,6 +7,21 @@ const API_URL = "http://localhost:3003";
 let token='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImlicmEyQGdtYWlsLmNvbSIsInVzZXJJZCI6MTAwNiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjExNTAwNjM2LCJleHAiOjE2MTE1MDQyMzZ9.SSMBc8fmIsq9K61purXqXLDpm95kjiJ7WlHAdnY8sTM'
    
 
+
+application.service('LoginService',['$http', function($http) {
+
+    this.login = function addLogin( email, psw) {
+        return $http({
+            method : 'POST',
+            url: `${API_URL_D}/Auth/login`,
+            data : {
+                email: email,
+                passWord:psw
+            }
+        });
+    }
+    
+    }]);
 //CREATION DE SERVICE Message
 
 application.service('MsgReadService',['$http', function($http) {
@@ -15,7 +30,7 @@ application.service('MsgReadService',['$http', function($http) {
         this.getMessage= function getMessage(id) {
             return $http({
                 method : 'GET',
-                url: `${API_URL}/Msg/:${id}`,
+                url: `${API_URL_D}/Msg/:${id}`,
                 headers: {
                     //'Authorization': `Bearer ${token_D}`  ,
                     'Authorization': `Bearer ${token}` ,
@@ -31,7 +46,7 @@ application.service('MsgReadService',['$http', function($http) {
         var message
         return $http({
             method : 'GET',
-            url: `${API_URL}/Msg/all`,
+            url: `${API_URL_D}/Msg/all`,
             headers: {
                 //'Authorization': `Bearer ${token_D}`  ,
                 'Authorization': `Bearer ${token}` ,
@@ -51,7 +66,7 @@ application.service('UserCRUDService',['$http', function($http) {
         this.getUser = function getUser() {
             return $http({
                 method : 'GET',
-                url: `${API_URL}/users/get`,
+                url: `${API_URL_D}/users/get`,
                 headers: {
                     //'Authorization': `Bearer ${token_D}`  ,
                     'Authorization': `Bearer ${token}` ,
@@ -65,7 +80,7 @@ application.service('UserCRUDService',['$http', function($http) {
     this.getAllUsers = function getAllUsers() {
         return $http({
             method : 'GET',
-            url: `${API_URL}/users/all`,
+            url: `${API_URL_D}/users/all`,
             headers: {
                 //'Authorization': `Bearer ${token_D}`  ,
                 'Authorization': `Bearer ${token}` ,
@@ -78,7 +93,7 @@ application.service('UserCRUDService',['$http', function($http) {
      this.getAllUserMsgForf = function getAllUserMsgForf() {
         return $http({
             method : 'GET',
-            url: `${API_URL}/users/userMsgForf`,
+            url: `${API_URL_D}/users/userMsgForf`,
             headers: {
                 //'Authorization': `Bearer ${token_D}`  ,
                 'Authorization': `Bearer ${token}` ,
@@ -93,7 +108,7 @@ application.service('UserCRUDService',['$http', function($http) {
         email,phoneNumber,passWord ) {
         return $http({
             method : 'POST',
-            url: `${API_URL}/users/add`,
+            url: `${API_URL_D}/users/add`,
            
             data : {
                 firstName:firstName,
@@ -111,7 +126,7 @@ application.service('UserCRUDService',['$http', function($http) {
         email,phoneNumber,passWord) {
         return $http({
             method : 'POST',
-            url: `${API_URL}/users/edit`,
+            url: `${API_URL_D}/users/edit`,
             headers: {
                 //'Authorization': `Bearer ${token_D}`  ,
                 'Authorization': `Bearer ${token}` ,
@@ -133,7 +148,7 @@ application.service('UserCRUDService',['$http', function($http) {
     this.deleteUser = function deleteUser(id) {
         return $http({
             method : 'DELETE',
-            url: `${API_URL}/users/${id}`,
+            url: `${API_URL_D}/users/${id}`,
             headers: {
                 //'Authorization': `Bearer ${token_D}`  ,
                 'Authorization': `Bearer ${token}` ,
@@ -339,7 +354,29 @@ $scope.getAllUserForf = function () {
 }]);
 
 
+//Contoller Login
+application.controller('loginController',['$scope','loginService',
+function ($scope,loginService) {
+     
+$scope.login = function () {
+    
+        loginService.login($scope.login.email,
+            $scope.login.passWord)
+          .then (function success(response){
+             
+              $scope.message = 'User connected';
+              $scope.errorMessage = '';
+              console.log( $scope.message);
+              console.log(response.data)
+          },
+          function error(response){
+              $scope.errorMessage = 'login error not connected';
+              $scope.message = '';
+              console.log( $scope.errorMessage);
+        });
+    }
 
+}]);
 
 
 
