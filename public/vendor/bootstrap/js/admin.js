@@ -39,8 +39,8 @@ tabMessages.addEventListener('click', (e) => {
    } else {
     var theId = e.target.id;
     var theDiv = document.getElementById(theId);
-    // var text = theDiv.parentElement.lastElementChild;
-    // text.textContent = "non";
+    var text = theDiv.parentElement.lastElementChild;
+    text.textContent = "non";
    }
   
 });

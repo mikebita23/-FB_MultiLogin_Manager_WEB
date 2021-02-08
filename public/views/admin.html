@@ -156,49 +156,52 @@
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Update User</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">modifier</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <form action="" method="post">
-                    <div class="form-group">
-                      <label for="formGroupExampleInput">FirstName</label>
-                      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Prenom"
-                        ng-model="user.firstName">
-                    </div>
-                    <div class="form-group">
-                      <label for="formGroupExampleInput2">LastName</label>
-                      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Nom"
-                        ng-model="user.lastName">
-                    </div>
-                    <div class="form-group">
-                      <label for="formGroupExampleInput2">Email</label>
-                      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Email"
-                        ng-model="user.email">
-                    </div>
-                    <div class="form-group">
-                      <label for="formGroupExampleInput2">Telephone</label>
-                      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Tel"
-                        ng-model="user.phoneNumber">
-                    </div>
-                    <div class="form-group">
-                      <label for="formGroupExampleInput2">PassWord</label>
-                      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Mot de passe"
-                        ng-model="user.PassWord">
-                    </div>
-                    <div class="form-group">
-                      <label for="formGroupExampleInput2">Role</label>
-                      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Role"
-                        ng-model="user.role">
-                    </div>
-                    <div class="form-group">
-                      <label for="formGroupExampleInput2">Forfait</label>
-                      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Forfait"
-                        ng-model="user.forfaitId">
-                    </div>
-                  </form>
+                  <div class="modal-body">
+                    <form action="" method="post">
+                      <div class="form-group">
+                        <label for="formGroupExampleInput">FirstName</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Prenom"
+                          ng-model="user.firstName">
+                      </div>
+                      <div class="form-group">
+                        <label for="formGroupExampleInput2">LastName</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Nom"
+                          ng-model="user.lastName">
+                      </div>
+                      <div class="form-group">
+                        <label for="formGroupExampleInput2">Email</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Email"
+                          ng-model="user.email">
+                      </div>
+                      <div class="form-group">
+                        <label for="formGroupExampleInput2">Telephone</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Tel"
+                          ng-model="user.phoneNumber">
+                      </div>
+                      <div class="form-group">
+                        <label for="formGroupExampleInput2">PassWord</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Mot de passe"
+                          ng-model="user.PassWord">
+                      </div>
+                      <div class="form-group">
+                        <label for="formGroupExampleInput2">Role</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Role"
+                          ng-model="user.role">
+                      </div>
+                      <div class="form-group">
+                        <label for="formGroupExampleInput2">Forfait</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Forfait"
+                          ng-model="user.forfaitId">
+                      </div>
+                    </form>
+                  </div>
                   <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">annuler</button>
                     <button type="button" class="btn btn-success" data-dismiss="modal"
                       ng-click="updateUser(user.id, user.firstName,user.lastName,user.email,user.phoneNumber,user.PassWord,user.role, user.forfaitId)">Valider</button>
                   </div>
@@ -212,19 +215,23 @@
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
+                    <h5 for="formGroupExampleInput"> Voulez-vous vraiment supprimer l'utilisateur ?</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div ng-controller="UserCRUDCtrl">
-                    <div class="form-group">
-                      <label for="formGroupExampleInput"> Voulez-vous vraiment supprimer</label>
-                      <input type="text" class="form-control" id="formGroupExampleInput" ng-model="user.firstName">
+                  <div class="modal-body">
+                    <div ng-controller="UserCRUDCtrl">
+                      <div class="form-group">
+                       <h4 class="text-3xl italic"> {{user.firstName}} {{user.lastName}}  </h4>
+                       <p>mail: {{ user.email }}</p>
+                      </div>
                     </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-success" data-dismiss="modal"
-                        ng-click="deleteUser(user.id)">Supprimer</button>
-                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"
+                      ng-click="deleteUser(user.id)">Supprimer</button>
+                      <button type="button" class="btn btn-success" data-dismiss="modal">annuler</button>
                   </div>
                 </div>
               </div>
@@ -301,26 +308,29 @@
               </div>
             </div>
             <!-- Supprimer Forfait -->
-            <div class="modal fade bg-black bg-opacity-75" id="forfaitModalSupp_{{forfait.id}}" tabindex="-1"
-              role="dialog" aria-labelledby="userModalLabel" aria-hidden="true">
+            <div class="modal fade bg-black bg-opacity-75" id="forfaitModalSupp_{{forfait.id}}" tabindex="-1" role="dialog"
+              aria-labelledby="userModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
+                    <h5 for="formGroupExampleInput"> Voulez-vous vraiment supprimer ce forfait ?</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div ng-controller="ForfaitCRUDCtrl">
-                    <div class="form-group">
-                      <label for="formGroupExampleInput"> Voulez-vous vraiment supprimer</label>
-                      <input type="text" class="form-control" id="formGroupExampleInput" ng-model="forfait.nom">
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-success" data-dismiss="modal"
-                        ng-click="deleteForfait(forfait.id)">Supprimer</button>
+                  <div class="modal-body">
+                    <div ng-controller="ForfaitCRUDCtrl">
+                      <div class="form-group">
+                       <h4 class="text-3xl italic"> {{forfait.nom}}</h4>
+                       <p>description: {{ forfait.description }}</p>
+                      </div>
                     </div>
                   </div>
-
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"
+                    ng-click="deleteForfait(forfait.id)">Supprimer</button>
+                      <button type="button" class="btn btn-success" data-dismiss="modal">annuler</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -404,8 +414,8 @@
 
           <td>
             <div class="custom-control custom-switch">
-              <input type="checkbox" checked class="custom-control-input" class="responseSwitch" id="customSwitch1">
-              <label class="custom-control-label" for="customSwitch1">oui</label>
+              <input type="checkbox"  class="custom-control-input" class="responseSwitch" id="customSwitch{{message.id}}">
+              <label class="custom-control-label" for="customSwitch{{message.id}}">non</label>
             </div>
             <!-- ********pour enlever le font gris tu enleve la classe 'bg-black et l'id du forfait est vide car il a une valeur null dans la DB -->
             <!-- modal qui s'affiche quand on clique sur le button voir dans utilisateur  -->
@@ -439,19 +449,23 @@
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
+                    <h5>Voulez-vous vraiment supprimer ce message ?</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div ng-controller="MsgReadCtrl">
-                    <div class="form-group">
-                      <label for="formGroupExampleInput"> Voulez-vous vraiment supprimer</label>
-                      <input type="text" class="form-control" id="formGroupExampleInput" ng-model="message.id">
+                  <div class="modal-body">
+                    <div ng-controller="MsgReadCtrl">
+                      <div class="form-group">
+                        <h4 class="text-3xl italic"> {{message.Content}}</h4>
+                       
+                      </div>
                     </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-success" data-dismiss="modal"
-                        ng-click="deleteMessage(message.id)">Supprimer</button>
-                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"
+                      ng-click="deleteMessage(message.id)">Supprimer</button>
+                      <button type="button" class="btn btn-success" data-dismiss="modal">annuler</button>
                   </div>
 
                 </div>
@@ -511,5 +525,3 @@
 <!-- <script src="/Factory/app copy.js" ></script> -->
 
 </html>
-
-</body>
