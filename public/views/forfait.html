@@ -65,7 +65,7 @@
   <section id="cta" class="cta">
     <br><br><br><br><br><br>
     <div class="container" data-aos="fade-up">
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-lg-2 pt-3 pt-lg-0 content text-white" data-aos="fade-left" data-aos-delay="100">
 
           </div>
@@ -84,10 +84,10 @@
           <div class="col-lg-2 video-box align-self-baseline" data-aos="fade-right" data-aos-delay="100">
 
           </div>
-        </div>
-        <div class="row" >
+        </div> -->
+        <div class="row h-full" >
          <!-- {{forfait.description}} -->
-            <div class="col-lg-2 video-box align-self-baseline">
+            <div class="col-lg-2 mr-10 align-self-baseline">
               <p id="quicksand">
                 <h2 class="text-white" style="font-size: 38px;" id="quicksand"><b>Nos Forfaits</b></h2>
                 <br><br>
@@ -95,17 +95,29 @@
                 <p style="font-size: 21px;" id="quicksand"><b>Prix Unitaire d’une Session : 499€ </b></p>
               </p>
             </div>&nbsp;&nbsp;&nbsp;
-            <div class="col-lg-2 bg-white" ng-repeat="forfait in forfaits">
-              <p><h4 class="text-center text-dark"><b>{{forfait.nom}}</b></h4></p><br><br>
-              <p style="font-size: 22px;" id="quicksand" class="text-center text-dark"><b>3 sessions</b></p>
-              <p style="font-size: 22px;" id="quicksand" class="text-center text-dark">{{forfait.description}}*</p>
-              <p style="font-size: 22px;" id="quicksand" class="text-center text-dark">assistance 27/4</p>
-              <p style="font-size: 22px;" id="quicksand" class="text-center text-dark"><del style="color: red;">1500 €</del></p><br><br>
-              <p style="font-size: 22px;" id="quicksand" class="text-center text-dark">{{forfait.prix}}</p>
-              <br>
-              </div>
+            <div style=" width: 20rem;" class=" bg-red-200 mx-2 mt-3 bg-gray-100 pt-16 justify-center" ng-repeat="forfait in forfaits">
+              <!-- <p><h4 class="text-center text-dark"><b>{{forfait.nom}}</b></h4></p><br><br>
+                <p style="font-size: 22px;" id="quicksand" class="text-center text-dark">{{forfait.description}}*</p>
+                <p style="font-size: 22px;" id="quicksand" class="text-center text-dark">assistance 27/4</p>
+                <p style="font-size: 22px;" id="quicksand" class="text-center text-dark"><del style="color: red;">1500 €</del></p><br><br>
+                <p style="font-size: 22px;" id="quicksand" class="text-center text-dark">{{forfait.prix}}</p>
+                <br> -->
+                <div class="bg-white cursor-pointer rounded pt-10">
+                  <div class="p-4 h-32">
+                    <h6 style="font-size: 22px;" id="quicksand" class="text-center text-dark">assistance 27/4 </p>
+                    </h6>
+                    <h2 class="text-xl text-center uppercase">{{forfait.nom}}</h2>
+                    <h6 style="font-size: 22px;" id="quicksand" class="text-center text-dark"><del style="color: red;">1500 €</del></h6><br>
+                    <h5 style="font-size: 22px;" id="quicksand" class="text-center text-dark"><b>3 sessions</b></h5>
+                         <h4 class="text-gray-500 text-lg my-2 text-center">{{forfait.prix}} &euro;</h4>
+                        <h5 class="text-center">{{forfait.description}}</h5>
+                        <a href="#" class="block bg-gray-300 py-2 px-2  text-gray-600 text-center rounded shadow-lg uppercase font-light mt-6 hover:bg-gray-400 hover:text-white duration-300 ease-in-out">ajouter +</a>
+                    </div>
+                </div>
+           </div>
           
         </div>
+    </div>
     <br><br><br><br><br><br><br><br><br><br>
   </section><!-- End Cta Section -->
 
