@@ -4,6 +4,8 @@ const navbar = document.querySelector('#navbar_admin');
 const tableUsers = document.getElementById('usersTable'); 
 const tabForfait = document.getElementById('tabForfait');
 const tabMessages = document.getElementById('tabMessages');
+const tabProspects = document.getElementById('tabProspects');
+const tabSessions = document.getElementById('tabSessions');
 const loginAdmin = document.getElementById('loginAdmin');
 
 
@@ -17,6 +19,8 @@ const loginAdmin = document.getElementById('loginAdmin');
     displayTable("users_A", tableUsers);
     displayTable("forfaits_A", tabForfait);
     displayTable("messages_A", tabMessages);
+    displayTable("prospect_A", tabProspects);
+    displayTable("session_A", tabSessions);
     displayTable("login", loginAdmin);
 
 // jquery for the table 

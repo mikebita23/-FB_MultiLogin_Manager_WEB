@@ -11,6 +11,7 @@
                   $scope.message = 'Session added!';
                   $scope.errorMessage = '';
                   console.log( $scope.message);
+                  $scope.sessions = response.data
               },
               function error(response){
                   $scope.errorMessage = 'Error adding Session!';
