@@ -485,16 +485,16 @@
     <table class="table table-bordered w-3/4 mx-auto border-2 rounded-md">
       <thead>
         <tr>
-          <th scope="col">nom </th>
-          <th scope="col">email</th>
-          <th scope="col">messages</th>
-          <th class="w-64" scope="col">sujet</th>
+          <th scope="col">Nom </th>
+          <th scope="col">Email/Tel</th>
+          <th scope="col">Messages</th>
+          <th class="w-64" scope="col">Sujet</th>
         </tr>
       </thead>
       <tbody ng-repeat="prospect in prospects">
         <tr>
-          <td>{{prospect.nom_Prospect}}</td>
-          <td>{{prospect.nom_Prospect}}</td>
+          <td>{{prospect.nom_Prospect}} {{prospect.prenom_Prospect}}</td>
+          <td>{{prospect.numero_tel}}</td>
           <td>message prospect</td>
           <td class="justify-items-center">
             sujet prospect
@@ -508,9 +508,12 @@
 
 
 <!-- show sessions  bellow  -->
-<div id="tabSessions" class="w-3/4 m-auto animate__animated animate__fadeIn" ng-controller="sessionGetAllController">
+<div ng-controller="sessionCRUDCtrlAll">
+
+
+<div id="tabSessions" class="w-3/4 m-auto animate__animated animate__fadeIn" >
   <h1 class="uppercase extrabold text-4xl text-center m-8 underline">Sessions</h1>
-  <table class="table table-bordered w-3/4 mx-auto border-2 rounded-md">
+  <table class="table table-bordered w-3/4 mx-auto border-2 rounded-md"  >
     <thead>
       <tr>
         <th scope="col">nom session</th>
@@ -518,7 +521,7 @@
         <th scope="col">status</th>
       </tr>
     </thead>
-    <tbody ng-repeat="session in sessions">
+    <tbody  ng-repeat="session in sessions">
       <tr>
         <td>{{session.name}}</td>
         <td>{{session.credentials}}</td>
@@ -527,6 +530,7 @@
     </tbody>
   </table>
   
+</div>
 </div>
 <!-- end show sessions -->
 

@@ -2,9 +2,9 @@
 application.controller('prospectgetAllController',['$scope','prospectService','$routeParams',
 function ($scope,prospectService, $routeParams) {   
          
-        prospectService.getAllProspect()
+        prospectService.getAllProspects()
             .then (function success(response){     
-                $scope.message = 'prospect has be added succes!';
+                $scope.message = 'prospect get all succes!';
                 $scope.errorMessage = '';
                 console.log( $scope.message);
                 console.log(response.data);
@@ -35,4 +35,18 @@ application.controller('prospectController',['$scope','prospectService','$routeP
         }
      
 
+}]);
+application.controller('sessionsController',['$scope','sessionCRUDService','$routeParams',
+    function ($scope,sessionCRUDService, $routeParams) {  
+    sessionCRUDService.getAllSession().then(function success(response) {
+    $scope.sessions = response.data;
+    $scope.message='get All Session';
+    $scope.errorMessage = '';
+    console.log($scope.message, response.data)
+},
+function error (response) {
+    $scope.message='';
+    $scope.errorMessage = 'Error getting users!';
+    console.log( $scope.errorMessage)
+});
 }]);
