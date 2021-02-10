@@ -23,10 +23,15 @@ application.service('prospectService',['$http', function($http) {
             url: `${API_URL_D}/prospect/${id}`,
         });
     };
-    this.getAllProspects = function getProspects() {
+    this.getAllProspect = function getAllProspect() {
         return $http({
             method : 'get',
             url: `${API_URL_D}/prospect/all`,
+            headers: {
+                'Authorization': `Bearer ${token}` ,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
         });
     };
        

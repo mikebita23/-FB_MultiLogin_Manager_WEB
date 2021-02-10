@@ -4,7 +4,7 @@ function ($scope,prospectService, $routeParams) {
          
         prospectService.getAllProspect()
             .then (function success(response){     
-                $scope.message = 'prospect has be added succes!';
+                $scope.message = 'prospect get All succes!';
                 $scope.errorMessage = '';
                 console.log( $scope.message);
                 console.log(response.data);

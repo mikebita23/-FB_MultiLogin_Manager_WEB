@@ -64,20 +64,25 @@
           });
     }
     }]);
-    application.controller('sessionGetAllController', function getDataSession($scope, sessionCRUDService,$http) {
-        sessionCRUDService.getAllSessions()
-              .then(function success(response) {
-                  $scope.sessions = response.data;
-                  $scope.message='get All';
-                  $scope.errorMessage = '';
-                  console.log($scope.message, response.data)
-              },
-              function error (response) {
-                  $scope.message='';
-                  $scope.errorMessage = 'Error getting users!';
-                  console.log( $scope.errorMessage)
-              });
-    });
+    
+
+application.controller('sessionGetAllController',['$scope','sessionCRUDService','$routeParams',
+function ($scope,sessionCRUDService, $routeParams) {   
+         
+    sessionCRUDService.getAllSession()
+            .then (function success(response){     
+                $scope.message = 'session get All succes!';
+                $scope.errorMessage = '';
+                console.log( $scope.message);
+                console.log(response.data);
+                $scope.sessions = response.data;
+            },
+            function error(response){
+                $scope.errorMessage = 'error prospect can\'t be added';
+                $scope.message = '';
+                console.log( $scope.errorMessage);
+            });
+}]);
     
     
     
