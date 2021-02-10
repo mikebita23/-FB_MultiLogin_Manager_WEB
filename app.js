@@ -11,6 +11,7 @@ var userRouter = require('./routes/user')
 var messageRouter = require('./routes/message')
 var forfaitRouter = require('./routes/forfait')
 var msgRouter=require('./routes/msg')
+const loginRouter = require('./routes/loginAdmin')
 var app = express();
 
 app.use(logger('dev'));
@@ -23,9 +24,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/admin', adminRouter)
-app.use('/login',  function(req, res, next) {
-    res.sendFile('login.html', { root: __views})
-});
+app.use('/login', loginRouter)
+// app.use('/login',  function(req, res, next) {
+//     res.sendFile('login.html', { root: __views})
+// });
 // app.use('/messages',  function(req, res, next) {
 //     res.sendFile('messages.html', { root: __views})
 // });

@@ -270,14 +270,13 @@
             <div class="modal fade bg-black bg-opacity-75" id="forfaitModal_{{forfait.id}}" tabindex="-1" role="dialog"
               aria-labelledby="userModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
-                <div class="modal-content">
+                <div class="modal-content" ng-controller="ForfaitCRUDCtrl">
                   <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Update forfait</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div ng-controller="ForfaitCRUDCtrl">
                     <div class="modal-body">
                       <form action="" method="post">
                         <div class="form-group">
@@ -302,8 +301,6 @@
                       <button type="button" class="btn btn-success" data-dismiss="modal"
                         ng-click="updateForfait(forfait.id,forfait.nom,forfait.prix,forfait.description)">valider</button>
                     </div>
-                  </div>
-
                 </div>
               </div>
             </div>
@@ -328,8 +325,8 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal"
-                    ng-click="deleteForfait(forfait.id)">Supprimer</button>
-                      <button type="button" class="btn btn-success" data-dismiss="modal">annuler</button>
+                        ng-click="deleteForfait(forfait.id)">Supprimer</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">annuler</button>
                   </div>
                 </div>
               </div>
@@ -447,7 +444,7 @@
             <div class="modal fade bg-black bg-opacity-75" id="messageModalSupp_{{message.id}}" tabindex="-1"
               role="dialog" aria-labelledby="userModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
-                <div class="modal-content">
+                <div class="modal-content" ng-controller="MsgReadCtrl">
                   <div class="modal-header">
                     <h5>Voulez-vous vraiment supprimer ce message ?</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -455,7 +452,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    <div ng-controller="MsgReadCtrl">
+                    <div >
                       <div class="form-group">
                         <h4 class="text-3xl italic"> {{message.Content}}</h4>
                        

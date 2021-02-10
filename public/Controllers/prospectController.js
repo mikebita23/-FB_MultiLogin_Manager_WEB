@@ -2,7 +2,7 @@
 application.controller('prospectgetAllController',['$scope','prospectService','$routeParams',
 function ($scope,prospectService, $routeParams) {   
          
-        prospectService.getAllProspect()
+        prospectService.getAllProspects()
             .then (function success(response){     
                 $scope.message = 'prospect has be added succes!';
                 $scope.errorMessage = '';
