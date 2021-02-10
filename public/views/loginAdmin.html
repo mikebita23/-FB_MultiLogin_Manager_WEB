@@ -20,27 +20,29 @@
   <link rel="stylesheet" href="../../vendor/bootstrap/css/adminTab.css">
   <title>login page</title>
 </head>
-<body class="bg-grey-lighter h-screen font-sans">
+<body class="bg-grey-lighter h-screen font-sans" ng-controller="loginController">
     <h1 class="text-center mt-16 text-3xl uppercase font-bold"> gls corporation administration</h1>
     <div class="w-full flex  justify-center">
-        <img class="w-32 mt-8 align-center center rounded-full animate__animated animate__flipInY animate__delay-1s " src="../../public/images/logo_infinite.png" >
+        <img class="w-32 mt-8 align-center center rounded-full animate__animated animate__flipInY animate__delay-1s " src="/public/images/logo_infinite.png" >
 
     </div>
-    <form class="container mx-auto h-2/3 pt-2 flex justify-center items-center animate__animated animate__fadeIn" action="" method="POST">
+    <form class="container mx-auto h-2/3 pt-2 flex justify-center items-center animate__animated animate__fadeIn" action="/admin" method="post">
         <div class="w-1/3 mt-2"> 
             <div class="border-teal p-8 border-t-12 bg-white mb-6 rounded-lg shadow-lg">
                 <div class="mb-4">
                     <label  for="userName" class="font-bold text-grey-darker block mb-2">nom / email</label>
-                    <input type="text" id="userName" name="adminUsername" class="block appearance-none w-full bg-white border border-grey-light hover:border-grey px-2 py-2 rounded shadow" placeholder="votre nom ou email">
+                    <input type="text" id="userName" name="adminUsername" class="block appearance-none w-full bg-white border border-grey-light hover:border-grey px-2 py-2 rounded shadow" 
+                    placeholder="votre nom ou email" ng-model="login.email">
                 </div>
 
                 <div class="mb-4">
                     <label for="pwd" class="font-bold text-grey-darker block mb-2">Mot De Passe</label>
-                    <input type="text" id="pwd" name="adminPassword" class="block appearance-none w-full bg-white border border-grey-light hover:border-grey px-2 py-2 rounded shadow" placeholder="mot de passe">
+                    <input type="password" id="pwd" name="adminPassword" class="block appearance-none w-full bg-white border border-grey-light hover:border-grey px-2 py-2 rounded shadow" 
+                    placeholder="mot de passe" ng-model="login.passWord">
                 </div>
 
                 <div class="flex items-center justify-between">
-                    <button class="bg-teal-dark  text-dark font-bold py-2 px-4 rounded">
+                    <button ng-click="addLogin(login.email,login.passWord)" class="bg-teal-dark  text-dark font-bold py-2 px-4 rounded">
                         valider
                     </button>
 
@@ -52,5 +54,13 @@
         </div>
     </form>
     <script src="/public/vendor/"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.8.2/angular-route.min.js"></script>
+  
+    <script src="../variableGlobale.js"></script>
+    <script src="../API/loginService.js"></script>
+    <script src="../Controllers/loginController.js"></script>
+  
+   
 </body>
 </html>
