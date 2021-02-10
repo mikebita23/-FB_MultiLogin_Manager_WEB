@@ -4,7 +4,13 @@ var bodyParser = require('body-parser');
 
 /* GET users listing. */
 router.post('/', function(req, res, next) {
-    res.sendFile('admin.html', { root: __views})
+    const adminPass = req.body.adminPassword;
+    const adminUsername = req.body.adminUsername;
+    if (adminPass !== "admin" && adminUsername !== "admin"){
+        res.send("renseigné un/les champs");
+    } else {
+        res.sendFile('admin.html', { root: __views})
+    }
 });
 
 
