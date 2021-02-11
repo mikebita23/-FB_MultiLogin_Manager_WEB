@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 
+
 /* GET users listing. */
 router.post('/', function(req, res, next) {
     const adminPass = req.body.adminPassword;
@@ -12,7 +13,10 @@ router.post('/', function(req, res, next) {
         res.sendFile('admin.html', { root: __views})
     } else {
         // res.send("renseigné un/les champs");
-        res.sendFile('loginAdmin.html', { root: __views})
+        // console.log(res);
+        // res.sendFile('loginAdmin.html', { root: __views})
+        req.flash("error", err.message);
+        return res.render("register");
     }
 });
 

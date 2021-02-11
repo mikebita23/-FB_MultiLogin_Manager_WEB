@@ -53,3 +53,4 @@ const openModal= function(e){
   e.preventDefault()
   const taget= document.querySelector(e.target.getAttribute('exampleModal'))
 }
+
