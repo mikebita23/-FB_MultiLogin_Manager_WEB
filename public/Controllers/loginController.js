@@ -1,10 +1,13 @@
 //Contoller Login
-application.controller('loginController',['$scope','loginService',
-function ($scope,loginService) {
+
+
+
+application.controller('loginController',['$scope','LoginService',
+function ($scope,LoginService) {
    
-$scope.addlogin = function () {
+$scope.addLogin = function () {
     
-        loginService.addlogin($scope.login.email,
+    LoginService.addLogin($scope.login.email,
             $scope.login.passWord)
           .then (function success(response){
              
@@ -12,7 +15,9 @@ $scope.addlogin = function () {
               $scope.errorMessage = '';
               console.log( $scope.message);
               console.log(response.data)
-              //token= response.data.token
+              token= response.data.token
+              console.log(token)
+              response.sendFile('../views/admin.html')
           },
           function error(response){
               $scope.errorMessage = 'login error not connected';

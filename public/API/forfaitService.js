@@ -22,7 +22,7 @@ this.getAllForfait = function getAllForfait() {
         method : 'GET',
         url: `${API_URL_D}/forf/all`,
         headers: {
-            //'Authorization': `Bearer ${token_D}`  ,
+          
             'Authorization': `Bearer ${token}` ,
             'Accept': 'application/json',
             'Content-Type': 'application/json'

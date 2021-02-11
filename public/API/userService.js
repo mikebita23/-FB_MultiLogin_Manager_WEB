@@ -40,7 +40,7 @@ application.service('UserCRUDService',['$http', function($http) {
             data : {
                 firstName:firstName,
                 lastName:  lastName,
-                 email: email,
+                email: email,
                 phoneNumber: phoneNumber,
                 passWord: passWord,
                 role: "ADMIN",

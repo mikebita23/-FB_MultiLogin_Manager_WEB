@@ -3,8 +3,17 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-    res.sendFile('admin.html', { root: __views})
+router.post('/', function(req, res, next) {
+    const adminPass = req.body.adminPassword;
+    const adminUsername = req.body.adminUsername;
+    if (!adminPass  && !adminUsername ){
+        res.send("-------------");
+    } else if ((adminPass === "admin" && adminUsername === "admin@admin.com")){
+        res.sendFile('admin.html', { root: __views})
+    } else {
+        // res.send("renseigné un/les champs");
+        res.sendFile('loginAdmin.html', { root: __views})
+    }
 });
 
 
