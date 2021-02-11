@@ -1,5 +1,5 @@
 //Contoller Login
-var  token='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInVzZXJJZCI6MjAsImlzQWRtaW4iOnRydWUsImlhdCI6MTYxMjk5OTQxMCwiZXhwIjoxNjEzMDAzMDEwfQ.LXaTl0ovKLqfyZZd4XQP-ZD0htX8NKHQIRJCde8G0RE'
+
 
 
 application.controller('loginController',['$scope','LoginService',
@@ -17,6 +17,7 @@ $scope.addLogin = function () {
               console.log(response.data)
               token= response.data.token
               console.log(token)
+              response.sendFile('../views/admin.html')
           },
           function error(response){
               $scope.errorMessage = 'login error not connected';
