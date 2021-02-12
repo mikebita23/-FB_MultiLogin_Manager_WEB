@@ -12,11 +12,10 @@ router.post('/', function(req, res, next) {
     } else if ((adminPass === "admin" && adminUsername === "admin@admin.com")){
         res.sendFile('admin.html', { root: __views})
     } else {
-        // res.send("renseigné un/les champs");
-        // console.log(res);
-        // res.sendFile('loginAdmin.html', { root: __views})
-        req.flash("error", err.message);
-        return res.render("register");
+        res.send("mot de passe ou user name incorrect");
+        res.sendFile('loginAdmin.html', { root: __views})
+        // req.flash("error", err.message);
+        // return res.render("register");
     }
 });
 

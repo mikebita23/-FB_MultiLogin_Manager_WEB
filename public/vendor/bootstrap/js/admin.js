@@ -26,7 +26,13 @@ const loginAdmin = document.getElementById('loginAdmin');
 // jquery for the table 
 function addOptionsOnTable(id){
   $(document).ready(function () {
-    $(id).DataTable();
+    setTimeout(() => {
+      $(id).DataTable({
+        retrieve: true,
+        paging: true
+        
+      });
+    }, 400);
   });
 }
 // addOptionsOnTable('#tableProspect');
