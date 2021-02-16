@@ -10,6 +10,7 @@
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
     crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <!-- script for table -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
@@ -82,7 +83,7 @@
             <button type="button" data-toggle="modal" data-backdrop="false" class="btn btn-sm btn-success"
               data-target="#userModal_{{user.id}}"><i class="far fa-eye"></i></button>
             <button type="button" disabled data-toggle="modal" data-backdrop="false" data-target="#userModalUpdate_{{user.id}}"
-              class="btn btn-sm btn-info"> <i class="fas fa-pencil-alt"></i> </button>
+              class="btn btn-sm btn-info"> <i class="fas fa-pencil-alt cursor-not-allowed"></i> </button>
             <button type="button" data-toggle="modal" data-backdrop="false" class="btn btn-sm btn-danger"
               data-target="#UserModalSupp_{{user.id}}"> <i class="far fa-trash-alt"></i></button>
 
@@ -247,7 +248,8 @@
   <!-- show forfait bellow -->
   <div id="tabForfait" class="w-3/4 m-auto animate__animated animate__fadeIn" ng-controller="forfaitGetAllController">
     <h1 class="uppercase extrabold text-4xl text-center m-8 underline">forfaits</h1>
-    <table class="table table-bordered w-3/4 mx-auto border-2 rounded-md">
+    <button class="btn btn-secondary" type="button" name="refresh" aria-label="Refresh" title="Refresh"><i class="fa fa-sync"></i> </button>
+    <table class="table table-bordered w-3/4 mx-auto border-2 rounded-md" data-url id="tableauForfait">
       <thead>
         <tr>
           <th scope="col">nom forfait</th>
@@ -272,7 +274,7 @@
               <div class="modal-dialog" role="document">
                 <div class="modal-content" ng-controller="ForfaitCRUDCtrl">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Update forfait</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">modifier forfait</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
@@ -298,7 +300,7 @@
                     </div>
 
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-success" data-dismiss="modal"
+                      <button type="button" id="update-forfait" class="btn btn-success" data-dismiss="modal"
                         ng-click="updateForfait(forfait.id,forfait.nom,forfait.prix,forfait.description)">valider</button>
                     </div>
                 </div>
@@ -337,7 +339,7 @@
       </tbody>
     </table>
     <section>
-      <button class="btn btn-info my-4 mx-32 " data-toggle="modal" data-target="#addForfait">ajouter un forfait <i
+      <button  class="btn btn-info my-4 mx-32 " data-toggle="modal"  data-target="#addForfait">ajouter un forfait <i
           class="fas fa-plus"></i></button>
     </section>
   </div>
@@ -363,7 +365,7 @@
               </div>
               <div class="form-group">
                 <label for="formGroupExampleInput2">Prix du forfait</label>
-                <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="prix du forfait"
+                <input type="number" min="0" class="form-control" id="formGroupExampleInput2" placeholder="prix du forfait"
                   ng-model="forfait.prix">
               </div>
               <div class="form-group">
@@ -375,7 +377,7 @@
           </div>
 
           <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-dismiss="modal"
+            <button type="button" class="btn btn-success" id="add-forfait-btn" data-dismiss="modal"
               ng-click="addForfait(forfait.nom,forfait.prix,forfait.description)">valider</button>
           </div>
         </div>
@@ -491,8 +493,8 @@
       </thead>
       <tbody ng-repeat="prospect in prospects">
         <tr>
-          <td>{{prospect.nom_Prospect}} {{prospect.prenom_Prospect}}</td>
-          <td>{{prospect.numero_tel}}</td>
+          <td>{{prospect.nom_Prospect}} </td>
+          <td>{{prospect.prenom_Prospect}} / {{prospect.numero_tel}}</td>
           <td>message prospect</td>
           <td class="justify-items-center">
             sujet prospect
@@ -505,19 +507,19 @@
               <!-- modal suppimer prospect -->
               <div class="modal fade  bg-black bg-opacity-75" id="id_{{prospect.numero_tel}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
-                  <div class="modal-content">
+                  <div class="modal-content" ng-controller="prospectDelController">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                      <h5 class="modal-title" id="exampleModalLabel"> voulez vous supprimer le prospect ?</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
                     <div class="modal-body">
-                      ...
+                     {{ prospect.nom_Prospect }}
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Save changes</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
+                      <button type="button" data-dismiss="modal"  ng-click="deleteProspect(prospect.id)" class="btn btn-danger">supprimer</button>
                     </div>
                   </div>
                 </div>
@@ -529,7 +531,7 @@
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                      <h5 class="modal-title" id="exampleModalLabel">voir le prospect</h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
@@ -538,8 +540,7 @@
                       message
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Save changes</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">fermer</button>
                     </div>
                   </div>
                 </div>
@@ -615,6 +616,7 @@
   <script src="Controllers/userController.js"></script>
  
   <script src="Controllers/prospectController.js"></script>
+  <script src="extensions/auto-refresh/bootstrap-table-auto-refresh.js"></script>
 
 
 

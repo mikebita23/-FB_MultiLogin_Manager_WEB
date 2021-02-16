@@ -50,3 +50,24 @@ function error (response) {
     console.log( $scope.errorMessage)
 });
 }]);
+
+//supprimer prospect
+application.controller('prospectDelController',['$scope','prospectService','$routeParams',
+    function ($scope,prospectService, $routeParams) {   
+        $scope.deleteProspect = function () {         
+            prospectService.deleteProspect($scope.prospect.id)
+                .then (function success(response){     
+                    $scope.message ='prospect has been delete!';
+                    $scope.errorMessage = '';
+                    console.log( $scope.message);
+                    console.log(response.data)
+                },
+                function error(response){
+                    $scope.errorMessage = 'error prospect can\'t be delete';
+                    $scope.message = '';
+                    console.log($scope.errorMessage);
+                });
+        }
+     
+
+}]);

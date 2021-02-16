@@ -76,7 +76,8 @@ $scope.addForfait = function () {
               $scope.message = 'Forfait deleted!';
               $scope.User = null;
               $scope.errorMessage='';
-              console.log( $scope.message)
+              console.log( $scope.message);
+              
           },
           function error(response) {
               $scope.errorMessage = 'Error deleting Forfait!';

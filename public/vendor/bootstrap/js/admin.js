@@ -23,13 +23,14 @@ const loginAdmin = document.getElementById('loginAdmin');
     displayTable("session_A", tabSessions);
     displayTable("login", loginAdmin);
 
+
 // jquery for the table 
 function addOptionsOnTable(id){
   $(document).ready(function () {
     setTimeout(() => {
       $(id).DataTable({
         retrieve: true,
-        paging: true
+        paging: "full-reset"
         
       });
     }, 400);
@@ -59,4 +60,14 @@ const openModal= function(e){
   e.preventDefault()
   const taget= document.querySelector(e.target.getAttribute('exampleModal'))
 }
+
+//load automatique
+const updateForfait = document.getElementById('update-forfait');
+console.log(updateForfait);
+$('#add-forfait-btn').on('click', () => {
+  console.log('load')
+  //window.location.reload(1);
+  $('#tabForfait #tableauForfait').load('admin.html', { post: 'data' });
+  
+})
 

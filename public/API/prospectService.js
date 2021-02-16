@@ -28,6 +28,17 @@ application.service('prospectService',['$http', function($http) {
             }
         });
     };
+    this.deleteProspect = function deleteProspect(id) {
+        return $http({
+            method : 'get',
+            url: `${API_URL_D}/prospect/del/${id}`,
+            headers: {
+                'Authorization': `Bearer ${token}` ,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
+    };
     this.getAllProspects = function getAllProspects() {
         return $http({
             method : 'get',

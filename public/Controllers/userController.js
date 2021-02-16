@@ -57,15 +57,14 @@
 
           //pagination 
         $scope.initDatatable = function() {
-            console.log('testimony');
             $timeout(function() {
                 var rowCount = $("#myTableUsers tr").length;
                 if (rowCount >= 0) {
-                    console.log("trier");
                     $("#myTableUsers").dataTable({
                         pagingType : "full_numbers",
-                        paging: true,
+                        paging: "full-reset",
                         retrieve: true,
+                        
                     });
                 }
             }, 2000)
@@ -88,7 +87,7 @@
     
     application.directive('repeatDoneTable', function() {
         return function(scope, element, attrs) {
-            console.log('go go dance')
+            
             if (scope.$last) {
                 // window.alert("je suis au dernier element du tableau");
                 scope.$eval(attrs.repeatDoneTable);
