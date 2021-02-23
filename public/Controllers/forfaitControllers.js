@@ -39,8 +39,7 @@
 $scope.addForfait = function () {
     //if ($scope.user != null && $scope.user.email) {
         forfaitCRUDService.addForfait($scope.forfait.nom,
-            $scope.forfait.description,
-            $scope.forfait.prix)
+            $scope.forfait.prix, $scope.forfait.prix_base, $scope.forfait.nb_session,$scope.forfait.description )
           .then (function success(response){
              
               $scope.message = 'Forfait added!';
@@ -56,7 +55,7 @@ $scope.addForfait = function () {
 
     $scope.updateForfait = function () {
         forfaitCRUDService.updateForfait($scope.forfait.id,$scope.forfait.nom,
-            $scope.forfait.prix,$scope.forfait.description )
+            $scope.forfait.prix, $scope.forfait.prix_base, $scope.forfait.nb_session,$scope.forfait.description )
           .then(function success(response) {
               $scope.message = 'Forfait data updated!';
               console.log( $scope.message)

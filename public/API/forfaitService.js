@@ -31,7 +31,7 @@ this.getAllForfait = function getAllForfait() {
 };
 // service Add User-add
 
-this.addForfait = function addForfait( Nom,description,prix) {
+this.addForfait = function addForfait( nom,prix,prix_base, nb_session,description) {
     return $http({
         method : 'POST',
         url: `${API_URL_D}/forf/add`,
@@ -41,14 +41,16 @@ this.addForfait = function addForfait( Nom,description,prix) {
             'Content-Type': 'application/json'
         },
         data : {
-            nom:Nom,
-            description:description,
-            prix:prix    
+            nom: nom,
+            prix: prix,
+            prix_base: prix_base,
+            nb_session: nb_session,
+            description: description  
           } 
     });
 };
 //service UPDATE
-this.updateForfait = function updateForfait(idForfait, Nom,prix,description) {
+this.updateForfait = function updateForfait(idForfait,nom,prix,prix_base, nb_session,description) {
     return $http({
         method : 'patch',
         url: `${API_URL_D}/forf/${idForfait}/edit`,
@@ -59,9 +61,11 @@ this.updateForfait = function updateForfait(idForfait, Nom,prix,description) {
         }
         ,
         data : {
-            nom:Nom,
-            description:description,
-            prix:prix    
+            nom: nom,
+            prix: prix,
+            prix_base: prix_base,
+            nb_session: nb_session,
+            description: description  
           }
     });
 };

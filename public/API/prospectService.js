@@ -2,7 +2,7 @@
 application.service('prospectService',['$http', function($http) {
 
     ///add a new prospect 
-    this.addProspect = function add(nom_Prospect,prenom_Prospect,numero_tel) {
+    this.addProspect = function add(nom_Prospect,sujet_Prospect,email_tel,contenu) {
         return $http({
             method : 'POST',
             url: `${API_URL_D}/prospect/add`,
@@ -10,9 +10,9 @@ application.service('prospectService',['$http', function($http) {
             data : {
     
                 nom_Prospect: nom_Prospect,
-                prenom_Prospect: prenom_Prospect,
-                numero_tel: numero_tel
-           
+                sujet_Prospect: sujet_Prospect,
+                email_tel: email_tel,
+                contenu: contenu
             } 
         });
     };

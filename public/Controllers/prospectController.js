@@ -7,10 +7,11 @@ function ($scope,prospectService, $routeParams) {
                 $scope.message = 'prospect get all succes!';
                 $scope.errorMessage = '';
                 console.log( $scope.message);
-                console.log(response.data);
+                console.log( "prospect data ", response.data);
                 $scope.prospects = response.data;
             },
             function error(response){
+                console.log(response);
                 $scope.errorMessage = 'error prospect can\'t be added';
                 $scope.message = '';
                 console.log( $scope.errorMessage);
@@ -20,7 +21,7 @@ function ($scope,prospectService, $routeParams) {
 application.controller('prospectController',['$scope','prospectService','$routeParams',
     function ($scope,prospectService, $routeParams) {   
         $scope.addProspect = function () {         
-            prospectService.addProspect($scope.nom_Prospect,$scope.prenom_Prospect,$scope.numero_tel)
+            prospectService.addProspect($scope.nom_Prospect,$scope.sujet_Prospect,$scope.email_tel, $scope.contenu)
                 .then (function success(response){     
                     $scope.message = 'prospect has be added succes!';
                     $scope.errorMessage = '';
