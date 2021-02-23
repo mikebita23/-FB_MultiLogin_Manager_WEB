@@ -82,8 +82,8 @@
           <td class="justify-items-center">
             <button type="button" data-toggle="modal" data-backdrop="false" class="btn btn-sm btn-success"
               data-target="#userModal_{{user.id}}"><i class="far fa-eye"></i></button>
-            <button type="button" disabled data-toggle="modal" data-backdrop="false" data-target="#userModalUpdate_{{user.id}}"
-              class="btn btn-sm btn-info"> <i class="fas fa-pencil-alt cursor-not-allowed"></i> </button>
+            <button type="button"  data-toggle="modal" data-backdrop="false" data-target="#userModalUpdate_{{user.id}}"
+              class="btn btn-sm btn-info"> <i class="fas fa-pencil-alt "></i> </button>
             <button type="button" data-toggle="modal" data-backdrop="false" class="btn btn-sm btn-danger"
               data-target="#UserModalSupp_{{user.id}}"> <i class="far fa-trash-alt"></i></button>
 
@@ -268,7 +268,7 @@
               data-target="#forfaitModal_{{forfait.id}}"> <i class="fas fa-pencil-alt"></i> </button>
             <button type="button" data-toggle="modal" data-backdrop="false" class="btn btn-sm btn-danger"
               data-target="#forfaitModalSupp_{{forfait.id}}"> <i class="far fa-trash-alt"></i></button>
-
+              <!-- modifier forfait -->
             <div class="modal fade bg-black bg-opacity-75" id="forfaitModal_{{forfait.id}}" tabindex="-1" role="dialog"
               aria-labelledby="userModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -599,23 +599,23 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
   <script src="https://code.angularjs.org/1.8.2/angular-route.min.js"></script>
 
-  <script src="variableGlobale.js"></script>
-  <script src="API/loginService.js"></script>
-  <script src="Controllers/loginController.js"></script>
+  <script src="../variableGlobale.js"></script>
+  <script src="../API/loginService.js"></script>
+  <script src="../Controllers/loginController.js"></script>
 
-  <script src="Controllers/downloadController.js"></script>
-  <script src="API/downloadService.js"></script>
-  <script src="API/downloadService.js"></script>
-  <script src="API/forfaitService.js"></script>
-  <script src="API/messageService.js"></script>
-  <script src="API/userService.js"></script>
-  <script src="API/prospectService.js"></script>
-  <script src="Controllers/downloadController.js"></script>
-  <script src="Controllers/forfaitControllers.js"></script>
-  <script src="Controllers/messageController.js"></script>
-  <script src="Controllers/userController.js"></script>
+  <script src="../Controllers/downloadController.js"></script>
+  <script src="../API/downloadService.js"></script>
+  <script src="../API/downloadService.js"></script>
+  <script src="../API/forfaitService.js"></script>
+  <script src="../API/messageService.js"></script>
+  <script src="../API/userService.js"></script>
+  <script src="../API/prospectService.js"></script>
+  <script src="../Controllers/downloadController.js"></script>
+  <script src="../Controllers/forfaitControllers.js"></script>
+  <script src="../Controllers/messageController.js"></script>
+  <script src="../Controllers/userController.js"></script>
  
-  <script src="Controllers/prospectController.js"></script>
+  <script src="../Controllers/prospectController.js"></script>
   <script src="extensions/auto-refresh/bootstrap-table-auto-refresh.js"></script>
 
 
