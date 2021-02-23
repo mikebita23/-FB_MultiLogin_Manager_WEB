@@ -20,7 +20,7 @@ function ($scope,prospectService, $routeParams) {
 application.controller('prospectController',['$scope','prospectService','$routeParams',
     function ($scope,prospectService, $routeParams) {   
         $scope.addProspect = function () {         
-            prospectService.addProspect($scope.nom_Prospect,$scope.prenom_Prospect,$scope.numero_tel)
+            prospectService.addProspect($scope.nom_Prospect,$scope.sujet_Prospect,$scope.email_tel, $scope.contenu)
                 .then (function success(response){     
                     $scope.message = 'prospect has be added succes!';
                     $scope.errorMessage = '';

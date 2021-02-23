@@ -9,13 +9,11 @@ router.post('/', function(req, res, next) {
     const adminUsername = req.body.adminUsername;
     if (!adminPass  && !adminUsername ){
         res.send("-------------");
-    } else if ((adminPass === "admin" && adminUsername === "admin@admin.com")){
+    } else if ((adminPass === "admin" && adminUsername === "admin@dani.com")){
         res.sendFile('admin.html', { root: __views})
     } else {
         res.send("mot de passe ou user name incorrect");
         res.sendFile('loginAdmin.html', { root: __views})
-        // req.flash("error", err.message);
-        // return res.render("register");
     }
 });
 

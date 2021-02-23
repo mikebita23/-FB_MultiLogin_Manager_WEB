@@ -23,27 +23,7 @@ application.controller('MsgReadCtrl',['$scope','MsgReadService','$routeParams',
           });
     };
 
-    //Get Message 
-    $scope.getMessage= function () {
-        //var message={};
-        MsgReadService.getMessage($routeParams.id)
-          .then(function success(response) {
-            //  $scope.message = response.data;
-             console.log(response.data)
-             $scope.messages=response.data;
-              $scope.Object=response.data.Object;
-              $scope.Content=response.data.Content;
-            
-              $scope.message='get Message';
-              $scope.errorMessage = '';
-              console.log($scope.message)
-          },
-          function error (response) {
-              $scope.message='';
-              $scope.errorMessage = 'Error getting users!';
-              console.log( $scope.errorMessage)
-          });
-    };
+
     $scope.deleteMessage = function() {
         MsgReadService.deleteMessage($scope.message.id)
           .then (function success(response) {

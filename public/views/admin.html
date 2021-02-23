@@ -254,6 +254,8 @@
         <tr>
           <th scope="col">nom forfait</th>
           <th scope="col">prix forfait</th>
+          <th scope="col">prix base</th>
+          <th scope="col">nombre session</th>
           <th scope="col">description forfait</th>
           <th class="w-64" scope="col">actions</th>
         </tr>
@@ -262,6 +264,8 @@
         <tr>
           <td>{{forfait.nom}}</td>
           <td>{{forfait.prix}}</td>
+          <td>{{forfait.prix_base}}</td>
+          <td>{{forfait.nb_session}}</td>
           <td>{{forfait.description}} </td>
           <td class="justify-items-center">
             <button type="button" data-toggle="modal" data-backdrop="false" class="btn btn-sm btn-info"
@@ -292,6 +296,16 @@
                             placeholder="prix du forfait" ng-model="forfait.prix">
                         </div>
                         <div class="form-group">
+                          <label for="formGroupExampleInput2">Prix de bade</label>
+                          <input type="number" class="form-control" id="formGroupExampleInput2"
+                            placeholder="prix du forfait" ng-model="forfait.prix_base">
+                        </div>
+                        <div class="form-group">
+                          <label for="formGroupExampleInput2">Nombre de session</label>
+                          <input type="number" class="form-control" id="formGroupExampleInput2"
+                            placeholder="prix du forfait" ng-model="forfait.nb_session">
+                        </div>
+                        <div class="form-group">
                           <label for="exampleFormControlTextarea1">Description forfait</label>
                           <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
                             ng-model="forfait.description"></textarea>
@@ -301,7 +315,7 @@
 
                     <div class="modal-footer">
                       <button type="button" id="update-forfait" class="btn btn-success" data-dismiss="modal"
-                        ng-click="updateForfait(forfait.id,forfait.nom,forfait.prix,forfait.description)">valider</button>
+                        ng-click="updateForfait(forfait.id,forfait.nom,forfait.prix,forfait.prix_base,forfait.nb_session,forfait.description)">valider</button>
                     </div>
                 </div>
               </div>
@@ -369,6 +383,16 @@
                   ng-model="forfait.prix">
               </div>
               <div class="form-group">
+                <label for="formGroupExampleInput2">Prix de base</label>
+                <input type="number" class="form-control" id="formGroupExampleInput2"
+                  placeholder="prix du forfait" ng-model="forfait.prix_base">
+              </div>
+              <div class="form-group">
+                <label for="formGroupExampleInput2">Nombre de session</label>
+                <input type="number" class="form-control" id="formGroupExampleInput2"
+                  placeholder="prix du forfait" ng-model="forfait.nb_session">
+              </div>
+              <div class="form-group">
                 <label for="exampleFormControlTextarea1">Description forfait</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
                   ng-model="forfait.description"></textarea>
@@ -378,7 +402,7 @@
 
           <div class="modal-footer">
             <button type="button" class="btn btn-success" id="add-forfait-btn" data-dismiss="modal"
-              ng-click="addForfait(forfait.nom,forfait.prix,forfait.description)">valider</button>
+              ng-click="addForfait(forfait.id,forfait.nom,forfait.prix,forfait.prix_base,forfait.nb_session,forfait.description)">valider</button>
           </div>
         </div>
       </div>
@@ -494,11 +518,11 @@
       <tbody ng-repeat="prospect in prospects">
         <tr>
           <td>{{prospect.nom_Prospect}} </td>
-          <td>{{prospect.prenom_Prospect}} / {{prospect.numero_tel}}</td>
-          <td>message prospect</td>
+          <td>{{prospect.sujet_Prospect}}</td>
+          <td>{{prospect.contenu}}</td>
           <td class="justify-items-center">
-            sujet prospect
-          </td>
+            {{prospect.email_tel}}</td>
+        
           <td>
             <button type="button" data-toggle="modal" data-backdrop="false" class="btn btn-sm btn-success"
               data-target="#identifiant_{{prospect.numero_tel}}"><i class="far fa-eye"></i></button>
