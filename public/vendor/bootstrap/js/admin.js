@@ -21,7 +21,7 @@ const loginAdmin = document.getElementById('loginAdmin');
     displayTable("messages_A", tabMessages);
     displayTable("prospect_A", tabProspects);
     displayTable("session_A", tabSessions);
-    displayTable("login", loginAdmin);
+    // displayTable("login", loginAdmin);
 
 
 // jquery for the table 
@@ -39,22 +39,23 @@ function addOptionsOnTable(id){
 // addOptionsOnTable('#tableProspect');
 addOptionsOnTable('#myTableUsers');
 addOptionsOnTable('#messageTable');
-addOptionsOnTable('#loginAdmin');
+addOptionsOnTable('#myTableProspects');
+// addOptionsOnTable('#loginAdmin');
 // switch button 
-tabMessages.addEventListener('click', (e) => {
-   if(e.target.checked){
-    var theId = e.target.id;
-    var theDiv = document.getElementById(theId);
-    var text = theDiv.parentElement.lastElementChild;
-    text.textContent = "oui";
-   } else {
-    var theId = e.target.id;
-    var theDiv = document.getElementById(theId);
-    var text = theDiv.parentElement.lastElementChild;
-    text.textContent = "non";
-   }
+// tabMessages.addEventListener('click', (e) => {
+//    if(e.target.checked){
+//     var theId = e.target.id;
+//     var theDiv = document.getElementById(theId);
+//     var text = theDiv.parentElement.lastElementChild;
+//     text.textContent = "oui";
+//    } else {
+//     var theId = e.target.id;
+//     var theDiv = document.getElementById(theId);
+//     var text = theDiv.parentElement.lastElementChild;
+//     text.textContent = "non";
+//    }
   
-});
+// });
 
 const openModal= function(e){
   e.preventDefault()
@@ -71,3 +72,9 @@ $('#add-forfait-btn').on('click', () => {
   
 })
 
+
+const btnLogin = document.querySelector('#login');
+btnLogin.addEventListener('click', (e) => {
+    document.cookie = ''
+    window.location.replace("http://localhost:3000/login");
+})
