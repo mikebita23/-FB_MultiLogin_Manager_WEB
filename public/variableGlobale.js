@@ -6,14 +6,7 @@ const API_URL = "http://localhost:3003";
 
 let URL = document.URL.split('/')
 let endPoint = URL[URL.length - 1 ]
-
 if(endPoint !== "login"){
     var token =  document.cookie
 }
 
-/**
- * 
- * @global
- * @name _theToken
- * @@description recuperation du token 
- */
