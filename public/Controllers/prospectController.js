@@ -7,10 +7,11 @@ function ($scope,prospectService, $routeParams) {
                 $scope.message = 'prospect get all succes!';
                 $scope.errorMessage = '';
                 console.log( $scope.message);
-                console.log(response.data);
+                console.log( "prospect data ", response.data);
                 $scope.prospects = response.data;
             },
             function error(response){
+                console.log(response);
                 $scope.errorMessage = 'error prospect can\'t be added';
                 $scope.message = '';
                 console.log( $scope.errorMessage);

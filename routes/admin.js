@@ -5,16 +5,16 @@ var bodyParser = require('body-parser');
 
 /* GET users listing. */
 router.post('/', function(req, res, next) {
-    const adminPass = req.body.adminPassword;
-    const adminUsername = req.body.adminUsername;
-    if (!adminPass  && !adminUsername ){
-        res.send("-------------");
-    } else if ((adminPass === "admin" && adminUsername === "admin@dani.com")){
-        res.sendFile('admin.html', { root: __views})
-    } else {
-        res.send("mot de passe ou user name incorrect");
-        res.sendFile('loginAdmin.html', { root: __views})
-    }
+    // const adminPass = req.body.adminPassword;
+    // const adminUsername = req.body.adminUsername;
+    // if (!adminPass  && !adminUsername ){
+    //     res.send("-------------");
+    // } else if ((adminPass === "admin" && adminUsername === "admin@dani.com")){
+    //     res.sendFile('admin.html', { root: __views})
+    // } else {
+    //     res.send("mot de passe ou user name incorrect");
+    //     res.sendFile('loginAdmin.html', { root: __views})
+    // }
 });
 
 
