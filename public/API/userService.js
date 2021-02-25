@@ -52,7 +52,7 @@ application.service('UserCRUDService',['$http', function($http) {
     this.updateUser = function updateUser(userId,prenom,
         nom,
         email,tel,
-        pwd, role, forfait) {
+        role, forfait) {
         return $http({
             method : 'POST',
             url: `${API_URL_D}/users/edit`,
@@ -66,8 +66,7 @@ application.service('UserCRUDService',['$http', function($http) {
                 firstName:prenom,
                 lastName:  nom,
                 email: email,
-                phoneNumber: tel,
-                passWord: pwd,
+                phoneNumber: tel,       
                 role: role,
                 forfaitId: forfait
               }

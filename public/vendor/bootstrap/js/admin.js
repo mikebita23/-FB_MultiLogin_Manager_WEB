@@ -1,4 +1,5 @@
 
+
 const navbar = document.querySelector('#navbar_admin');
 // const tableProspect = document.getElementById('prospectTable'); 
 const tableUsers = document.getElementById('usersTable'); 

@@ -184,34 +184,33 @@
                         <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Tel"
                           ng-model="user.phoneNumber">
                       </div>
-                      <div class="form-group">
+                      <!-- <div class="form-group">
                         <label for="formGroupExampleInput2">PassWord</label>
                         <input  type="password" class="form-control" id="formGroupExampleInput2" placeholder="Mot de passe"
                           ng-model="user.PassWord" required>
-                      </div>
-                      <div class="form-group">
-                            <!-- <input class="form-control" id="formGroupExampleInput2" placeholder="Role"
-                            ng-model="user.role" type="select">
-                            <label for="formGroupExampleInput2">Role</label>
-                          </input> -->
-                          
+                      </div> -->
+                      <div class="form-group">                           
+                        <label for="">Role</label>
                           <select class="form-control" ng-model="user.role">
-                        
                               <option value="CLIENT">CLIENT</option>
                               <option value="ADMIN">ADMIN</option>
                           </select>
                       </div>
                       <div class="form-group">
-                        <label for="formGroupExampleInput2">Forfait</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Forfait"
-                          ng-model="user.forfaitId">
-                      </div>
+                        <select class="form-control"  ng-model="user.forfaitId">
+                        <label for="">Forfait</label>
+                            <option value=7>Free</option>   
+                            <option value=7>Basique</option>
+                            <option value=8>Normale</option>
+                            <option value=6>Superieur</option>
+                        </select>
+                    </div>
                     </form>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">annuler</button>
                     <button type="submit" class="btn btn-success" data-dismiss="modal"
-                      ng-click="updateUser(user.id, user.firstName,user.lastName,user.email,user.phoneNumber,user.PassWord,user.role, user.forfaitId)" click="window.location.reload()">Valider</button>
+                      ng-click="updateUser(user.id, user.firstName,user.lastName,user.email,user.phoneNumber,user.role, user.forfaitId)" click="window.location.reload()">Valider</button>
                   </div>
                 </div>
               </div>
@@ -523,8 +522,8 @@
           <th scope="col">actions</th>
         </tr>
       </thead>
-      <tbody ng-repeat="prospect in prospects">
-        <tr>
+      <tbody>
+        <tr ng-repeat="prospect in prospects">
           <td>{{prospect.nom_Prospect}} </td>
           <td>{{prospect.sujet_Prospect}}</td>
           <td>{{prospect.contenu}}</td>
