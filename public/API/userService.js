@@ -59,6 +59,7 @@ application.service('UserCRUDService',['$http', function($http) {
                 lastName:  nom,
                 email: email,
                 phoneNumber: tel,
+                passWord:pwd,
                 role: role,
                 forfaitId: forfait
               }
