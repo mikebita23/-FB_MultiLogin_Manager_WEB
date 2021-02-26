@@ -90,7 +90,7 @@ this.updateSession = function updateSession(idSession,name,email,
     //service Attribute
     this.attributSession = function attributSession(id) {
         return $http({
-            method : 'GET',
+            method : 'POST',
             url: `${API_URL_D}/session/setTo/${id}`,
                headers: {
                 'Authorization': `Bearer ${token}` ,

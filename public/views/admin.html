@@ -615,7 +615,7 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h3 class="text-center text-xl text-gray-900 font-medium leading-8">N° {{session.id}}:  {{session.name}}</h3>
+                  <h3 class="text-center text-xl text-gray-900 font-medium leading-8">Attribuer :  {{session.name}}</h3>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -623,15 +623,16 @@
                 <div ng-controller="userGetAllController">
                 <div class="form-group">
                   <label for="">N°Client</label>
-                    <select class="form-control" ng-model="session.status" >
+                    <select class="form-control" ng-model="session.status"  >
                         <option ng-repeat= "user in users" value={{user.id}}> {{user.firstName}} {{user.lastName}}</option>
                     </select>
+                    <div class="modal-footer" ng-controller="sessionCRUDCtrl" >
+                      <button type="button" id="" class="btn btn-success" data-dismiss="modal"
+                      ng-click="attributSession(user.id)">Valider</button>
+                    </div>
                 </div>
                 <div>
-                <div class="modal-footer" ng-controller="sessionCRUDCtrl" >
-                  <button type="button" id="" class="btn btn-success" data-dismiss="modal"
-                  ng-click="attributSession(session.owner)">Valider</button>
-                </div>
+               
                 </div>
               </div>
             </div>
@@ -800,7 +801,6 @@
   <script src="https://code.angularjs.org/1.8.2/angular-route.min.js"></script>
 
   <script src="../variableGlobale.js"></script>
-  <!-- <script src="../Controllers/getSession.js"></script> -->
   <script src="../API/loginService.js"></script>
   <script src="../Controllers/loginController.js"></script>
 

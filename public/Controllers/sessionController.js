@@ -52,7 +52,7 @@ application.controller('sessionCRUDCtrl', ['$scope', 'sessionCRUDService',
                     });
         };
         $scope.attributSession = function () {
-            sessionCRUDService.attributSession($scope.session.id)
+            sessionCRUDService.attributSession($scope.user.id)
                 .then(function success(response) {
                     $scope.message = 'Session atributed!';
                     $scope.Session = null;
