@@ -584,13 +584,11 @@
 
 
 <!-- show sessions  bellow  -->
-<div >
-
-
+<div>
 <div id="tabSessions" class="w-3/4 m-auto animate__animated animate__fadeIn" >
   <h1 class="uppercase extrabold text-4xl text-center m-8 underline">Sessions</h1>
   <div id="resultats">
-    <table class="table table-bordered w-3/4 mx-auto border-2 rounded-md" id="myTableSessions"  >
+    <table class="table table-bordered w-3/4 mx-auto border-2 rounded-md"   >
       <thead>
         <tr>
           <th scope="col">N° Session</th>
@@ -600,7 +598,103 @@
           <th scope="col">Actions</th>
         </tr>
       </thead>
-      <tbody id="tbody" >
+      <tbody ng-controller="sessionCRUDCtrlAll" >
+        <tr ng-repeat="session in sessions">
+          <td >{{session.id}}</td>
+            <td >{{session.name}}</td>
+            <td >{{session.owner}}</td>
+            <td >{{session.status}}</td>
+            <td class="justify-items-center">
+            <button type="button" data-toggle="modal" data-backdrop="false" class="btn btn-sm btn-info"
+              data-target="#sessionModal_{{session.id}}"> <i class="fas fa-pencil-alt"></i> </button>
+            <button type="button" data-toggle="modal" data-backdrop="false" class="btn btn-sm btn-danger"
+              data-target="#sessionModalSupp_{{session.id}}"> <i class="far fa-trash-alt"></i></button>
+              <!-- modifier forfait -->
+            <div class="modal fade bg-black bg-opacity-75" id="sessionModal_{{session.id}}" tabindex="-1" role="dialog"
+              aria-labelledby="userModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">modifier session</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                    <div class="modal-body" ng-controller="sessionCRUDCtrl">
+                      <form action="" method="post">
+                        <div class="form-group">
+                          <label for="formGroupExampleInput">Nom session</label>
+                          <input type="text" class="form-control" id="formGroupExampleInput"
+                            placeholder="nom session" ng-model="session.name">
+                        </div>
+                        
+                        <div class="form-group">
+                          <label for="">Status</label>
+                            <select class="form-control" ng-model="session.status">
+                          
+                                <option value=0>Inactif</option>
+                                <option value=1>Actif</option>
+                                <option value=-1>Blocked</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="">Client</label>
+                            <select class="form-control" ng-model="session.owner">
+                          
+                                <option value=0>Nom Prenom</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                          <label for="formGroupExampleInput2">Email</label>
+                          <input type="text" class="form-control" id="formGroupExampleInput2"
+                            placeholder="email"  ng-model="session.email">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlTextarea1">Password</label>
+                          <input class="form-control"  ng-model="session.pwd">
+                           
+                        </div>
+                      </form>
+                    </div>
+
+                    <div class="modal-footer" ng-controller="sessionCRUDCtrl">
+                      <button type="button" id="update-forfait" class="btn btn-success" data-dismiss="modal"
+                      ng-click="updateSession(session.id,session.name,session.email, session.pwd,session.status,session.owner)">valider</button>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <!-- Supprimer Session -->
+            <div class="modal fade bg-black bg-opacity-75" id="sessionModalSupp_{{session.id}}" tabindex="-1" role="dialog"
+              aria-labelledby="userModalLabel" aria-hidden="true" ng-controller="sessionCRUDCtrl">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 for="formGroupExampleInput"> Voulez-vous vraiment supprimer la session ?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div >
+                      <div class="form-group">
+                       <h4 class="text-3xl italic">{{session.name}}</h4>
+                       
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"
+                        ng-click="deleteSession(session.id)">Supprimer</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">annuler</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- fin modal -->
+          </td>
+          </tr>
       </tbody>
     </table>
   </div>
@@ -609,10 +703,10 @@
         class="fas fa-plus"></i></button>
   </section>
 </div>
-
+</div>
  <!-- Modal for adding Session  -->
  <div class="modal fade" id="addSession" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
- aria-hidden="true">
+ aria-hidden="true" >
  <div class="modal-dialog" role="document">
    <div class="modal-content">
      <div class="modal-header">
@@ -626,41 +720,40 @@
          <form action="" method="post">
            <div class="form-group">
              <label for="formGroupExampleInput">Nom Session</label>
-             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="nom du forfait"
-               id="nomSession">
+             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="nom session"
+              ng-model="session.name">
            </div>
            <div class="form-group">
-             <label for="formGroupExampleInput2">Status</label>
-             <input type="number" min="0" class="form-control" id="formGroupExampleInput2" placeholder="prix du forfait"
-              id="status">
-           </div>
-           <div class="form-group">
-             <label for="formGroupExampleInput2">Client</label>
-             <input type="number" class="form-control" id="formGroupExampleInput2"
-               placeholder="prix du forfait" id="owner">
-           </div>
+            <label for="">Status</label>
+              <select class="form-control" ng-model="session.status">
+            
+                  <option value=0>Inactif</option>
+                  <option value=1>Actif</option>
+                  <option value=-1>Blocked</option>
+              </select>
+          </div>
            <div class="form-group">
              <label for="formGroupExampleInput2">Email</label>
-             <input type="number" class="form-control" id="formGroupExampleInput2"
-               placeholder="prix du forfait" id="email">
+             <input type="email" class="form-control" id="formGroupExampleInput2"
+               placeholder="prix du forfait" ng-model="session.email">
            </div>
            <div class="form-group">
              <label for="exampleFormControlTextarea1">PassWord</label>
              <input class="form-control" id="exampleFormControlTextarea1" rows="3"
-               id="pwd">
+             ng-model="session.pwd">
            </div>
          </form>
        </div>
 
        <div class="modal-footer">
-         <button type="button" class="btn btn-success" id="add-forfait-btn" data-dismiss="modal"
-          onclick="addSession(forfait.id,forfait.nom,forfait.prix,forfait.prix_base,forfait.nb_session,forfait.description)">valider</button>
+         <button type="button" ng-click="addSession(session.name,session.email, session.pwd, session.status)" class="btn btn-success"  data-dismiss="modal"
+        >valider</button>
        </div>
      </div>
    </div>
  </div>
 </div>
-</div>
+
 <!-- end show sessions -->
 
   <!-- Scripts -->
@@ -683,7 +776,7 @@
   <script src="https://code.angularjs.org/1.8.2/angular-route.min.js"></script>
 
   <script src="../variableGlobale.js"></script>
-  <script src="../Controllers/getSession.js"></script>
+  <!-- <script src="../Controllers/getSession.js"></script> -->
   <script src="../API/loginService.js"></script>
   <script src="../Controllers/loginController.js"></script>
 
@@ -694,10 +787,12 @@
   <script src="../API/messageService.js"></script>
   <script src="../API/userService.js"></script>
   <script src="../API/prospectService.js"></script>
+  <script src="../API/sessionService.js"></script>
   <script src="../Controllers/downloadController.js"></script>
   <script src="../Controllers/forfaitControllers.js"></script>
   <script src="../Controllers/messageController.js"></script>
   <script src="../Controllers/userController.js"></script>
+  <script src="../Controllers/sessionController.js"></script>
  
   <script src="../Controllers/prospectController.js"></script>
 
