@@ -56,7 +56,7 @@
   </nav>
   <!-- end navbar -->
 
-  <div id="usersTable" class="w-3/4 m-auto animate__animated animate__fadeIn" ng-controller="userGetAllController">
+  <div id="usersTable" class="w-3/4 m-auto mb-10 animate__animated animate__fadeIn" ng-controller="userGetAllController">
     <h1 class="uppercase extrabold text-4xl text-center m-8 underline">Utilisateurs</h1>
     <!-- <div>
       <select ng-model="order">
@@ -64,7 +64,7 @@
         <option value="id"> Organiser par Forfait </option>
       </select>
     </div> -->
-    <table datatable="ng" class="table table-bordered w-3/4 mt-32 mx-auto border-2 rounded-md" id='myTableUsers'>
+    <table datatable="ng" class="table table-bordered w-3/4 mt-32  mx-auto border-2 rounded-md" id='myTableUsers'>
       <thead>
         <tr>
           <th scope="col">FirstName</th>
@@ -191,12 +191,14 @@
                           ng-model="user.passWord" required>
                       </div>
                       <div class="form-group">
+                        <label for="">Role</label>
                           <select class="form-control" ng-model="user.role">
                               <option value="CLIENT">CLIENT</option>
                               <option value="ADMIN">ADMIN</option>
                           </select>
                       </div>
                       <div class="form-group"  >
+                          <label for="formGroupExampleInput2">Forfaits</label>
                         <select class="form-control"  ng-model="user.forfaitId">
                           <option value=7>Free</option>   
                             <option value=7>Basique</option>
@@ -210,7 +212,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">annuler</button>
                     <button type="submit" class="btn btn-success" data-dismiss="modal"
-                      ng-click="updateUser(user.id, user.firstName,user.lastName,user.email,user.phoneNumber,user.role, user.forfaitId)" click="window.location.reload()">Valider</button>
+                      ng-click="updateUser(user.id,user.firstName,user.lastName,user.email,user.phoneNumber,user.PassWord,user.role, user.forfaitId)" click="window.location.reload()">Valider</button>
                   </div>
                 </div>
               </div>
@@ -522,7 +524,7 @@
           <th scope="col">actions</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody >
         <tr ng-repeat="prospect in prospects">
           <td>{{prospect.nom_Prospect}} </td>
           <td>{{prospect.sujet_Prospect}}</td>
@@ -590,23 +592,76 @@
 
 <div id="tabSessions" class="w-3/4 m-auto animate__animated animate__fadeIn" >
   <h1 class="uppercase extrabold text-4xl text-center m-8 underline">Sessions</h1>
-  <table class="table table-bordered w-3/4 mx-auto border-2 rounded-md"  >
-    <thead>
-      <tr>
-        <th scope="col">nom session</th>
-        <th scope="col">credentials</th>
-        <th scope="col">status</th>
-      </tr>
-    </thead>
-    <tbody  ng-repeat="session in sessions">
-      <tr>
-        <td>{{session.name}}</td>
-        <td>{{session.credentials}}</td>
-        <td>{{session.status}} ryyryr</td>
-      </tr>
-    </tbody>
-  </table>
-  
+  <div id="resultats">
+    <table class="table table-bordered w-3/4 mx-auto border-2 rounded-md"  >
+      <thead>
+        <tr>
+          <th scope="col">N° Session</th>
+          <th scope="col">Nom session</th>
+          <th scope="col">Utilisateur</th>
+          <th scope="col">Status</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody id="tbody" >
+      </tbody>
+    </table>
+  </div>
+  <section>
+    <button  class="btn btn-info my-4 mx-32 " data-toggle="modal"  data-target="#addSession">Créer session <i
+        class="fas fa-plus"></i></button>
+  </section>
+</div>
+
+ <!-- Modal for adding Session  -->
+ <div class="modal fade" id="addSession" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+ aria-hidden="true">
+ <div class="modal-dialog" role="document">
+   <div class="modal-content">
+     <div class="modal-header">
+       <h5 class="modal-title" id="exampleModalLabel">Créer session</h5>
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+       </button>
+     </div>
+     <div>
+       <div class="modal-body">
+         <form action="" method="post">
+           <div class="form-group">
+             <label for="formGroupExampleInput">Nom Session</label>
+             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="nom du forfait"
+               id="nomSession">
+           </div>
+           <div class="form-group">
+             <label for="formGroupExampleInput2">Status</label>
+             <input type="number" min="0" class="form-control" id="formGroupExampleInput2" placeholder="prix du forfait"
+              id="status">
+           </div>
+           <div class="form-group">
+             <label for="formGroupExampleInput2">Client</label>
+             <input type="number" class="form-control" id="formGroupExampleInput2"
+               placeholder="prix du forfait" id="owner">
+           </div>
+           <div class="form-group">
+             <label for="formGroupExampleInput2">Email</label>
+             <input type="number" class="form-control" id="formGroupExampleInput2"
+               placeholder="prix du forfait" id="email">
+           </div>
+           <div class="form-group">
+             <label for="exampleFormControlTextarea1">PassWord</label>
+             <input class="form-control" id="exampleFormControlTextarea1" rows="3"
+               id="pwd">
+           </div>
+         </form>
+       </div>
+
+       <div class="modal-footer">
+         <button type="button" class="btn btn-success" id="add-forfait-btn" data-dismiss="modal"
+          onclick="addSession(forfait.id,forfait.nom,forfait.prix,forfait.prix_base,forfait.nb_session,forfait.description)">valider</button>
+       </div>
+     </div>
+   </div>
+ </div>
 </div>
 </div>
 <!-- end show sessions -->
@@ -631,7 +686,7 @@
   <script src="https://code.angularjs.org/1.8.2/angular-route.min.js"></script>
 
   <script src="../variableGlobale.js"></script>
-  <script src="../Controllers/getToken.js"></script>
+  <script src="../Controllers/getSession.js"></script>
   <script src="../API/loginService.js"></script>
   <script src="../Controllers/loginController.js"></script>
 

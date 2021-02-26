@@ -68,7 +68,8 @@ application.controller('sessionCRUDCtrlAll', ['$scope', 'sessionCRUDService',
     function ($scope, sessionCRUDService) {
         sessionCRUDService.getAllSession()
             .then(function success(response) {
-                $scope.sessions = response.data;
+                $scope.id = response.data.id
+                $scope.name = response.data.name;
                 $scope.message = 'get All Session';
                 $scope.errorMessage = '';
                 console.log($scope.message, response.data)
