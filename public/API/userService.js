@@ -52,7 +52,19 @@ application.service('UserCRUDService',['$http', function($http) {
     this.updateUser = function updateUser(userId,prenom,
         nom,
         email,tel,
-        role, forfait) {
+        pwd, role, forfait) {
+            var tmp ={
+                id:userId,
+                firstName:prenom,
+                lastName:  nom,
+                email: email,
+                phoneNumber: tel,
+                role: role,
+                forfaitId: forfait
+              }
+              if(pwd==''){
+                  tmp.passWord=pwd
+              }
         return $http({
             method : 'POST',
             url: `${API_URL_D}/users/edit`,
@@ -61,15 +73,7 @@ application.service('UserCRUDService',['$http', function($http) {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            data : {
-                id:userId,
-                firstName:prenom,
-                lastName:  nom,
-                email: email,
-                phoneNumber: tel,       
-                role: role,
-                forfaitId: forfait
-              }
+            data : tmp
         });
     };
     //service DELETE

@@ -10,11 +10,19 @@ if(endPoint !== "login"){
     var token =  document.cookie
 }
 // regarde si le token est toujours valide
-function isValidToken(token){
-    curentTime = Math.floor(Date.now() / 1000);
-    console.log(Date.now() /1000);
-    console.log("the token", token );
+ var thetime = (new Date().getTime() + 1) / 1000;
+ var exp = Math.floor(thetime);
+function isValidToken(){
+    curentTime = Math.floor(Date.now() >= exp * 1000);
     console.log("voici le temps courant",curentTime);
-     return (token >= curentTime);
+    console.log(Date.now())
+     return Date.now() >= exp * 1000 ? false : true ;
 }
-console.log(isValidToken(token));
+
+if(isValidToken()){
+    console.log('oui le token est mort')
+    
+} else {
+    console.log('token vivant')
+
+}
