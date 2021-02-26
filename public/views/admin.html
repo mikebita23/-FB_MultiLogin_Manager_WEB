@@ -620,12 +620,12 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                    <div class="modal-body">
+                    <div class="modal-body" ng-controller="sessionCRUDCtrl">
                       <form action="" method="post">
                         <div class="form-group">
                           <label for="formGroupExampleInput">Nom session</label>
                           <input type="text" class="form-control" id="formGroupExampleInput"
-                            placeholder="nom session" id="nom_Session">
+                            placeholder="nom session" ng-model="session.name">
                         </div>
                         
                         <div class="form-group">
@@ -634,13 +634,17 @@
                           
                                 <option value=0>Inactif</option>
                                 <option value=1>Actif</option>
+                                <option value=-1>Blocked</option>
                             </select>
                         </div>
                         <div class="form-group">
-                          <label for="formGroupExampleInput2">Client</label>
-                          <input type="number" class="form-control" id="formGroupExampleInput2"
-                            placeholder="Client"  ng-model="session.owner">
+                          <label for="">Client</label>
+                            <select class="form-control" ng-model="session.owner">
+                          
+                                <option value=0>Nom Prenom</option>
+                            </select>
                         </div>
+                        
                         <div class="form-group">
                           <label for="formGroupExampleInput2">Email</label>
                           <input type="text" class="form-control" id="formGroupExampleInput2"
@@ -654,17 +658,16 @@
                       </form>
                     </div>
 
-                    <div class="modal-footer">
+                    <div class="modal-footer" ng-controller="sessionCRUDCtrl">
                       <button type="button" id="update-forfait" class="btn btn-success" data-dismiss="modal"
-                       onclick="updateSession(forfait.id,forfait.nom,
-                        forfait.prix, forfait.prix_base, forfait.nb_session,forfait.description )">valider</button>
+                      ng-click="updateSession(session.id,session.name,session.email, session.pwd,session.status,session.owner)">valider</button>
                     </div>
                 </div>
               </div>
             </div>
             <!-- Supprimer Session -->
             <div class="modal fade bg-black bg-opacity-75" id="sessionModalSupp_{{session.id}}" tabindex="-1" role="dialog"
-              aria-labelledby="userModalLabel" aria-hidden="true">
+              aria-labelledby="userModalLabel" aria-hidden="true" ng-controller="sessionCRUDCtrl">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -683,7 +686,7 @@
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal"
-                        onclick="deleteSession(session.id)">Supprimer</button>
+                        ng-click="deleteSession(session.id)">Supprimer</button>
                     <button type="button" class="btn btn-success" data-dismiss="modal">annuler</button>
                   </div>
                 </div>
@@ -703,7 +706,7 @@
 </div>
  <!-- Modal for adding Session  -->
  <div class="modal fade" id="addSession" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
- aria-hidden="true" ng-controller="sessionCRUDCtrl">
+ aria-hidden="true" >
  <div class="modal-dialog" role="document">
    <div class="modal-content">
      <div class="modal-header">

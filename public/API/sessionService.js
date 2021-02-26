@@ -51,8 +51,10 @@ this.addSession = function addSession( name, email,pwd,status) {
     });
 };
 //service UPDATE
-this.updateSession = function updateSession(idSession,name, email,pwd,status,owner) {
+this.updateSession = function updateSession(idSession,name,email,
+    pwd, status, owner) {
     var dataSession={
+        id:idSession,
         name:name,
         credentials: {
            email:email,
