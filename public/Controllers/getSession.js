@@ -1,11 +1,43 @@
 
 
  var resultats= document.getElementById("tbody");
-
+ var nomSession=document.getElementById("nomSession")
+ var status=document.getElementById("status")
+ var owner=document.getElementById("owner")
+ var email=document.getElementById("email")
+ var pwd=document.getElementById("pwd")
 
 let sessions;
 
-function  sessionData(){
+$('#addSession').click(function(){
+  console.log("okkkkk");
+  $.ajax({
+      method : 'POST',
+      url: `${API_URL_D}/session/add`,
+      headers: {
+          'Authorization': `Bearer ${token}` ,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+      },
+      data : dataSession ,
+  //Le format de réponse attendu
+      dataType : "json",
+  }).done(function(response){
+      sessions = response;
+      console.log("Session added "+ sessions);
+  }) //Ce code sera exécuté en cas d'échec - L'erreur est passée à fail()
+  //On peut afficher les informations relatives à la requête et à l'erreur
+  .fail(function(error){
+      alert("La requête s'est terminée en échec. Infos : " + JSON.stringify(error));
+      console.log(error);
+  })
+});
+// $("#addSession").on('click', function (e) {
+// console.log("OKKKKKKKKKKKKKKKKKKKK");
+// })
+
+
+function sessionData(){
     $.ajax({
         //L'URL de la requête 
         url: `${API_URL_D}/session/get/all`,
@@ -257,36 +289,16 @@ function  getSession(id){
         console.log(error);
     })
 };
-var credentials={
+var dataSession={
+  name:nomSession,
+  credentials:{
     email:email,
-    passWord:passWord
+    passWord:pwd
+},
+  status:status
 }
- function addSession(name,credentials,status){
-    $.ajax({
-        method : 'POST',
-        url: `${API_URL_D}/session/add`,
-        headers: {
-            'Authorization': `Bearer ${token}` ,
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        data : {
-            name:name,
-            credentials:credentials,
-            status:status
-          } ,
-    //Le format de réponse attendu
-        dataType : "json",
-    }).done(function(response){
-        sessions = response;
-        console.log(sessions);
-    }) //Ce code sera exécuté en cas d'échec - L'erreur est passée à fail()
-    //On peut afficher les informations relatives à la requête et à l'erreur
-    .fail(function(error){
-        alert("La requête s'est terminée en échec. Infos : " + JSON.stringify(error));
-        console.log(error);
-    })
- }
+
+ 
  function updateSession(name,owner,status, email, pwd){
     $.ajax({
         method : 'POST',
@@ -359,5 +371,6 @@ var credentials={
  }
 
 
-
-$.when($.ready).then(_ =>{ sessionData()});
+ $.when($.ready).then(_ =>{
+sessionData();
+ })

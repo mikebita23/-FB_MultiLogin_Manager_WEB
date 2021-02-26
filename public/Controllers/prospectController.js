@@ -37,20 +37,7 @@ application.controller('prospectController',['$scope','prospectService','$routeP
      
 
 }]);
-application.controller('sessionsController',['$scope','sessionCRUDService','$routeParams',
-    function ($scope,sessionCRUDService, $routeParams) {  
-    sessionCRUDService.getAllSession().then(function success(response) {
-    $scope.sessions = response.data;
-    $scope.message='get All Session';
-    $scope.errorMessage = '';
-    console.log($scope.message, response.data)
-},
-function error (response) {
-    $scope.message='';
-    $scope.errorMessage = 'Error getting users!';
-    console.log( $scope.errorMessage)
-});
-}]);
+
 
 //supprimer prospect
 application.controller('prospectDelController',['$scope','prospectService','$routeParams',

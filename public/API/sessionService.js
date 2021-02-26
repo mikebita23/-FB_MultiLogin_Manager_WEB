@@ -30,7 +30,15 @@ this.getAllSession = function getAllSession() {
 };
 // service Add Sesion-add
 
-this.addSession = function addSession( name,credentials,status) {
+this.addSession = function addSession( name, email,pwd,status) {
+    var dataSession={
+        name:name,
+        credentials: {
+           email:email,
+           passWord:pwd
+        },
+        status:status
+    }
     return $http({
         method : 'POST',
         url: `${API_URL_D}/session/add`,
@@ -39,15 +47,20 @@ this.addSession = function addSession( name,credentials,status) {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        data : {
-            name:name,
-            credentials:credentials,
-            status:status    
-          } 
+        data :dataSession
     });
 };
 //service UPDATE
-this.updateSession = function updateSession(idSession, name,credentials,status,owner) {
+this.updateSession = function updateSession(idSession,name, email,pwd,status,owner) {
+    var dataSession={
+        name:name,
+        credentials: {
+           email:email,
+           passWord:pwd
+        },
+        status:status,
+        owner:owner
+    }
     return $http({
         method : 'patch',
         url: `${API_URL_D}/session/edit/${idSession}`,
@@ -57,12 +70,7 @@ this.updateSession = function updateSession(idSession, name,credentials,status,o
             'Content-Type': 'application/json'
         }
         ,
-        data : {
-            name:name,
-            credentials:credentials,
-            status:status,
-            owner:owner       
-          }
+        data : dataSession
     });
 };
 //service DELETE
