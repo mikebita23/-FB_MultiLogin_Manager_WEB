@@ -60,7 +60,7 @@ application.controller('sessionCRUDCtrl', ['$scope', 'sessionCRUDService',
                     console.log($scope.message)
                 },
                     function error(response) {
-                        $scope.errorMessage = 'Error deleting Session!';
+                        $scope.errorMessage = 'Error set to Session!';
                         $scope.message = '';
                         console.log($scope.errorMessage)
                     });
