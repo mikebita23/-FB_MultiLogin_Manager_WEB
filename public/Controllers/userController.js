@@ -27,7 +27,7 @@
             UserCRUDService.updateUser($scope.user.id,$scope.user.firstName,
                 $scope.user.lastName,
                 $scope.user.email,$scope.user.phoneNumber,
-                $scope.user.passWord, $scope.user.role,$scope.user.forfaitId)
+                 $scope.user.role,$scope.user.forfaitId)
             .then(function success(response) {
                 $scope.message = 'User data updated!';
                 console.log( $scope.message)
