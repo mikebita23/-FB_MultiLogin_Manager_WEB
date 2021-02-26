@@ -1,4 +1,5 @@
 
+
 const navbar = document.querySelector('#navbar_admin');
 // const tableProspect = document.getElementById('prospectTable'); 
 const tableUsers = document.getElementById('usersTable'); 
@@ -7,6 +8,7 @@ const tabMessages = document.getElementById('tabMessages');
 const tabProspects = document.getElementById('tabProspects');
 const tabSessions = document.getElementById('tabSessions');
 const loginAdmin = document.getElementById('loginAdmin');
+const theSwitch = document.getElementsByClassName('responseSwitch');
 
 
   function displayTable(id, tableBlock) {
@@ -40,22 +42,27 @@ function addOptionsOnTable(id){
 addOptionsOnTable('#myTableUsers');
 addOptionsOnTable('#messageTable');
 addOptionsOnTable('#myTableProspects');
+addOptionsOnTable('#myTableSessions');
 // addOptionsOnTable('#loginAdmin');
 // switch button 
-// tabMessages.addEventListener('click', (e) => {
-//    if(e.target.checked){
-//     var theId = e.target.id;
-//     var theDiv = document.getElementById(theId);
-//     var text = theDiv.parentElement.lastElementChild;
-//     text.textContent = "oui";
-//    } else {
-//     var theId = e.target.id;
-//     var theDiv = document.getElementById(theId);
-//     var text = theDiv.parentElement.lastElementChild;
-//     text.textContent = "non";
-//    }
+tabMessages.addEventListener('click', (e) => {
+  console.log(e.target);
+   if(e.target.checked){
+    // var theId = e.target.id;
+    // var theDiv = document.getElementById(theId);
+    // var text = theDiv.parentElement.lastElementChild;
+    // text.textContent = "oui";
+    console.log("active")
+   } else {
+    // var theId = e.target.id;
+    // console.log(theDiv)
+    // var theDiv = document.getElementById(theId);
+    // //var text = theDiv.parentElement.lastElementChild;
+    // text.textContent = "non";
+    console.log('descativer')
+   }
   
-// });
+});
 
 const openModal= function(e){
   e.preventDefault()

@@ -7,26 +7,27 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
     integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
     crossorigin="anonymous" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
     crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-  <!-- script for table -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
-  <!-- end script for table -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../../vendor/bootstrap/css/adminTab.css">
-  <title>admin gls</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!-- script for table -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
+    <!-- end script for table -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../vendor/bootstrap/css/adminTab.css">
+    <title>admin gls</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../images/logo_infinite.ico" />
 </head>
 
 <body ng-controller="UserCRUDCtrl">
   <!-- navigation bar  -->
   <nav class="navbar navbar-expand-lg bg-info navbar-light" id="navbar_admin" style="background-color: #e3f2fd;">
-    <a class="navbar-brand" id="logo" href="#">GLs Logo</a>
+    <a class="navbar-brand" id="users_A" href="/index"> <img class="w-8 align-center center rounded-full animate__animated animate__flipInY" src="../images/logo_infinite.png" ></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -56,7 +57,7 @@
   </nav>
   <!-- end navbar -->
 
-  <div id="usersTable" class="w-3/4 m-auto animate__animated animate__fadeIn" ng-controller="userGetAllController">
+  <div id="usersTable" class="w-3/4 m-auto mb-10 animate__animated animate__fadeIn" ng-controller="userGetAllController">
     <h1 class="uppercase extrabold text-4xl text-center m-8 underline">Utilisateurs</h1>
     <!-- <div>
       <select ng-model="order">
@@ -64,7 +65,7 @@
         <option value="id"> Organiser par Forfait </option>
       </select>
     </div> -->
-    <table datatable="ng" class="table table-bordered w-3/4 mt-32 mx-auto border-2 rounded-md" id='myTableUsers'>
+    <table datatable="ng" class="table table-bordered w-3/4 mt-32  mx-auto border-2 rounded-md" id='myTableUsers'>
       <thead>
         <tr>
           <th scope="col">FirstName</th>
@@ -189,7 +190,6 @@
                       <div class="form-group">
                         <label for="">Role</label>
                           <select class="form-control" ng-model="user.role">
-                        
                               <option value="CLIENT">CLIENT</option>
                               <option value="ADMIN">ADMIN</option>
                           </select>
@@ -440,8 +440,8 @@
               data-target="#messageModalSupp_{{message.id}}"> <i class="far fa-trash-alt"></i></button>
 
           <td>
-            <div class="custom-control custom-switch">
-              <input type="checkbox"  class="custom-control-input" class="responseSwitch" id="customSwitch{{message.id}}">
+            <div class="custom-control custom-switch" id="divSwitch">
+              <input type="checkbox"  class="custom-control-input responseSwitch"  id="customSwitch{{message.id}}">
               <label class="custom-control-label" for="customSwitch{{message.id}}">non</label>
             </div>
             <!-- ********pour enlever le font gris tu enleve la classe 'bg-black et l'id du forfait est vide car il a une valeur null dans la DB -->
@@ -586,7 +586,7 @@
 <div id="tabSessions" class="w-3/4 m-auto animate__animated animate__fadeIn" >
   <h1 class="uppercase extrabold text-4xl text-center m-8 underline">Sessions</h1>
   <div id="resultats">
-    <table class="table table-bordered w-3/4 mx-auto border-2 rounded-md"   >
+    <table class="table table-bordered w-3/4 mx-auto border-2 rounded-md" id="myTableSessions"  >
       <thead>
         <tr>
           <th scope="col">N° Session</th>

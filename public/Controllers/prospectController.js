@@ -11,7 +11,12 @@ function ($scope,prospectService, $routeParams) {
                 $scope.prospects = response.data;
             },
             function error(response){
-                console.log(response);
+                //soit le token est expiré ou bien l'utlisateur est un client
+                //et ne doit pas etre la donc on le redirige
+                if (response.status == '401'){
+                    console.log("token off-------");
+                    window.location.replace("http://localhost:3000/login");
+                }
                 $scope.errorMessage = 'error prospect can\'t be added';
                 $scope.message = '';
                 console.log( $scope.errorMessage);

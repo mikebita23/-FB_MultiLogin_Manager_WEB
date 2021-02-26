@@ -17,8 +17,7 @@ function ($scope,LoginService) {
                 $scope.errorMessage = '';
                 console.log( $scope.message);
                 console.log(response.data)
-                document.cookie = response.data.token;
-                console.log(token)
+                document.cookie = response.data.token;   
                 window.location.href = '../views/admin.html';
                   // return res.render("register");
               

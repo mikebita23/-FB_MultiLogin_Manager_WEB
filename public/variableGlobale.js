@@ -9,4 +9,3 @@ let endPoint = URL[URL.length - 1 ]
 if(endPoint !== "login"){
     var token =  document.cookie
 }
-
