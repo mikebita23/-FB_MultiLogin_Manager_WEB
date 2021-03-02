@@ -60,9 +60,6 @@ function sessionData(){
         console.log(sessions);
         resultats.innerHTML =(
             sessions.map(session =>(`
-         
-    
-      
             `
         )).join('')
         );

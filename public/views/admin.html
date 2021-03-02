@@ -577,7 +577,7 @@
 
 <!-- show sessions table bellow  -->
 <div>
-<div id="tabSessions" class="w-3/4 m-auto animate__animated animate__fadeIn" >
+<div id="tabSessions" class="w-3/4 m-auto animate__animated animate__fadeIn" ng-controller="userGetAllController" > 
   <h1 class="uppercase extrabold text-4xl text-center m-8 underline">Sessions</h1>
   <div id="resultats">
     <table class="table table-bordered w-3/4 mx-auto border-2 rounded-md" id="myTableSessions" ng-controller="sessionCRUDCtrlAll" >
@@ -614,7 +614,7 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div ng-controller="userGetAllController">
+                <div>
                 <div class="form-group">
                   <label for="">N°Client</label>
                     <select class="form-control" ng-model="session.status"  >
@@ -799,7 +799,6 @@
 
   <script src="../Controllers/downloadController.js"></script>
   <script src="../API/downloadService.js"></script>
-  <script src="../API/downloadService.js"></script>
   <script src="../API/forfaitService.js"></script>
   <script src="../API/messageService.js"></script>
   <script src="../API/userService.js"></script>
@@ -810,7 +809,6 @@
   <script src="../Controllers/messageController.js"></script>
   <script src="../Controllers/userController.js"></script>
   <script src="../Controllers/sessionController.js"></script>
- 
   <script src="../Controllers/prospectController.js"></script>
 
 
