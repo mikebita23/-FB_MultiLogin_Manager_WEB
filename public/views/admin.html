@@ -59,12 +59,6 @@
 
   <div id="usersTable" class="w-3/4 m-auto mb-10 animate__animated animate__fadeIn" ng-controller="userGetAllController">
     <h1 class="uppercase extrabold text-4xl text-center m-8 underline">Utilisateurs</h1>
-    <!-- <div>
-      <select ng-model="order">
-        <option value="firstName"> Organiser par nom </option>
-        <option value="id"> Organiser par Forfait </option>
-      </select>
-    </div> -->
     <table datatable="ng" class="table table-bordered w-3/4 mt-32  mx-auto border-2 rounded-md" id='myTableUsers'>
       <thead>
         <tr>
@@ -581,12 +575,12 @@
 <!-- end show prospect -->
 
 
-<!-- show sessions  bellow  -->
+<!-- show sessions table bellow  -->
 <div>
-<div id="tabSessions" class="w-3/4 m-auto animate__animated animate__fadeIn" >
+<div id="tabSessions" class="w-3/4 m-auto animate__animated animate__fadeIn" ng-controller="userGetAllController" > 
   <h1 class="uppercase extrabold text-4xl text-center m-8 underline">Sessions</h1>
   <div id="resultats">
-    <table class="table table-bordered w-3/4 mx-auto border-2 rounded-md" id="myTableSessions"  >
+    <table class="table table-bordered w-3/4 mx-auto border-2 rounded-md" id="myTableSessions" ng-controller="sessionCRUDCtrlAll" >
       <thead>
         <tr>
           <th scope="col">N° Session</th>
@@ -596,7 +590,7 @@
           <th scope="col">Actions</th>
         </tr>
       </thead>
-      <tbody ng-controller="sessionCRUDCtrlAll" >
+      <tbody  >
         <tr ng-repeat="session in sessions">
           <td >{{session.id}}</td>
             <td >{{session.name}}</td>
@@ -620,7 +614,7 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div ng-controller="userGetAllController">
+                <div>
                 <div class="form-group">
                   <label for="">N°Client</label>
                     <select class="form-control" ng-model="session.status">
@@ -628,7 +622,7 @@
                     </select>
                     <div class="modal-footer" ng-controller="sessionCRUDCtrl" >
                       <button type="button" id="" class="btn btn-success" data-dismiss="modal"
-                      ng-click="attributSession(user.id)">Valider</button>
+                      ng-click="attributSession(id.user)">Valider</button>
                     </div>
                 </div>
                 <div>
@@ -641,7 +635,7 @@
 
           </div>
           <!-- fin modal -->
-              <!-- modifier forfait -->
+              <!-- modifier Session -->
             <div class="modal fade bg-black bg-opacity-75" id="sessionModal_{{session.id}}" tabindex="-1" role="dialog"
               aria-labelledby="userModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
@@ -664,7 +658,7 @@
                           <label for="">Status</label>
                             <select class="form-control" ng-model="session.status">
                           
-                                <option value=0>Inactif</option>
+                                <option value=0  selected="true">Inactif</option>
                                 <option value=1>Actif</option>
                                 <option value=-1>Blocked</option>
                             </select>
@@ -751,8 +745,7 @@
            <div class="form-group">
             <label for="">Status</label>
               <select class="form-control" ng-model="session.status">
-            
-                  <option value=0>Inactif</option>
+                  <option selected="selected" value=0>Inactif</option>
                   <option value=1>Actif</option>
                   <option value=-1>Blocked</option>
               </select>
@@ -760,12 +753,12 @@
            <div class="form-group">
              <label for="formGroupExampleInput2">Email</label>
              <input type="email" class="form-control" id="formGroupExampleInput2"
-               placeholder="prix du forfait" ng-model="session.email">
+               placeholder="email" ng-model="session.email">
            </div>
            <div class="form-group">
              <label for="exampleFormControlTextarea1">PassWord</label>
              <input class="form-control" id="exampleFormControlTextarea1" rows="3"
-             ng-model="session.pwd">
+             placeholder="password"  ng-model="session.pwd">
            </div>
          </form>
        </div>
@@ -806,7 +799,6 @@
 
   <script src="../Controllers/downloadController.js"></script>
   <script src="../API/downloadService.js"></script>
-  <script src="../API/downloadService.js"></script>
   <script src="../API/forfaitService.js"></script>
   <script src="../API/messageService.js"></script>
   <script src="../API/userService.js"></script>
@@ -817,7 +809,6 @@
   <script src="../Controllers/messageController.js"></script>
   <script src="../Controllers/userController.js"></script>
   <script src="../Controllers/sessionController.js"></script>
- 
   <script src="../Controllers/prospectController.js"></script>
 
 

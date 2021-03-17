@@ -74,7 +74,6 @@
         UserCRUDService.getAllUsers()
               .then(function success(response) {
                   $scope.users = response.data;
-                 
                   $scope.message='get All';
                   $scope.errorMessage = '';
                   console.log($scope.message, response.data)

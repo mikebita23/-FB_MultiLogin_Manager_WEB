@@ -86,7 +86,7 @@ $scope.addForfait = function () {
     }
      
     }]);
-    application.controller('forfaitGetAllController', function getDataUsers($scope, forfaitCRUDService,$http) {
+    application.controller('forfaitGetAllController', function getDataForfait($scope, forfaitCRUDService,$http) {
         forfaitCRUDService.getAllForfait()
               .then(function success(response) {
                   $scope.forfaits = response.data;

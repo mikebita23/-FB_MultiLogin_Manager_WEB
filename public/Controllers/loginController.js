@@ -1,6 +1,3 @@
-//Contoller Login
-
-// let token =  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGRhbmkuY29tIiwidXNlcklkIjo3LCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2MTQwNzEyMDEsImV4cCI6MTYxNDA3NDgwMX0.rHXdObhGlJhnO-OAkMI_wYwvnb4j66s1CxHWJVnU7CQ"
 
 application.controller('loginController',['$scope','LoginService',
 function ($scope,LoginService) {
@@ -19,10 +16,7 @@ function ($scope,LoginService) {
                 console.log(response.data)
                 document.cookie = response.data.token;
                 console.log(token)
-                window.location.href = '../views/admin.html';
-              
-              
-                
+                window.location.href = '../views/admin.html';          
               },
               function error(response){
                 $scope.errorMessage = 'login error not connected';
