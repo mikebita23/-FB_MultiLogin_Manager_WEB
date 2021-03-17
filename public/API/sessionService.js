@@ -70,8 +70,8 @@ this.updateSession = function updateSession(idSession,name,email,
             'Authorization': `Bearer ${token}` ,
             'Accept': 'application/json',
             'Content-Type': 'application/json'
-        }
-        ,
+        },
+        
         data : dataSession
     });
 };
@@ -86,12 +86,11 @@ this.updateSession = function updateSession(idSession,name,email,
                          'Content-Type': 'application/json'
                         }
                      })
-    }; 
-    
+    };   
     //service Attribute
     this.attributSession = function attributSession(id) {
         return $http({
-            method : 'GET',
+            method : 'POST',
             url: `${API_URL_D}/session/setTo/${id}`,
                headers: {
                 'Authorization': `Bearer ${token}` ,

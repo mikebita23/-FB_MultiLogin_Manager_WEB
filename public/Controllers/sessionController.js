@@ -52,7 +52,7 @@ application.controller('sessionCRUDCtrl', ['$scope', 'sessionCRUDService',
                     });
         };
         $scope.attributSession = function () {
-            sessionCRUDService.attributSession($scope.session.id)
+            sessionCRUDService.attributSession($scope.user.id)
                 .then(function success(response) {
                     $scope.message = 'Session atributed!';
                     $scope.Session = null;
@@ -60,7 +60,7 @@ application.controller('sessionCRUDCtrl', ['$scope', 'sessionCRUDService',
                     console.log($scope.message)
                 },
                     function error(response) {
-                        $scope.errorMessage = 'Error deleting Session!';
+                        $scope.errorMessage = 'Error set to Session!';
                         $scope.message = '';
                         console.log($scope.errorMessage)
                     });

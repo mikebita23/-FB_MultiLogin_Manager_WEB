@@ -17,9 +17,10 @@ function ($scope,LoginService) {
                 $scope.errorMessage = '';
                 console.log( $scope.message);
                 console.log(response.data)
-                document.cookie = response.data.token;   
+                document.cookie = response.data.token;
+                console.log(token)
                 window.location.href = '../views/admin.html';
-                  // return res.render("register");
+              
               
                 
               },
@@ -27,7 +28,7 @@ function ($scope,LoginService) {
                 $scope.errorMessage = 'login error not connected';
                 $scope.message = '';
                 console.log( $scope.errorMessage);
-                window.location.href = 'loginAdmin.html'
+                document.getElementById("err").innerHTML=` <h6 class="text-red-500 text-center mt-2"  id="error-message" >mot de passe ou nom d'utilisateur incorrect</h6>`
             });
     },
 
