@@ -10,22 +10,6 @@ const tabSessions = document.getElementById('tabSessions');
 const loginAdmin = document.getElementById('loginAdmin');
 const theSwitch = document.getElementsByClassName('responseSwitch');
 
-
-  // function displayTable(id, tableBlock) {
-  //   navbar.addEventListener('click', (e) => {
-  //     var tableUserIsVisible = e.target.id === id ? 'block': 'none';
-  //     tableBlock.style.display = tableUserIsVisible;
-  //   });
-  // }
-  // displayTable("prospect_A",tableProspect);
-    // displayTable("users_A", tableUsers);
-    // displayTable("forfaits_A", tabForfait);
-    // displayTable("messages_A", tabMessages);
-    // displayTable("prospect_A", tabProspects);
-    // displayTable("session_A", tabSessions);
-    // displayTable("login", loginAdmin);
-
-
 // jquery for the table 
 function addOptionsOnTable(id){
   $(document).ready(function () {
@@ -44,28 +28,33 @@ addOptionsOnTable('#messageTable');
 addOptionsOnTable('#myTableProspects');
 addOptionsOnTable('#myTableSessions');
 
-
 const openModal= function(e){
   e.preventDefault()
   const taget= document.querySelector(e.target.getAttribute('exampleModal'))
 }
 
 //load automatique
-const updateForfait = document.getElementById('update-forfait');
-console.log(updateForfait);
-$('#add-forfait-btn').on('click', () => {
-  console.log('load')
-  setTimeout(() => {
-    window.location.reload();
-    
-  }, 200);
-  //$('#tabForfait #tableauForfait').load('admin.html', { post: 'data' });
-  
-})
-
+function reloadOnclick(btnId){
+  $(btnId).on('click', () => {
+    setTimeout(() => { window.location.reload();}, 200);
+  })
+}
+reloadOnclick('#add-forfait-btn')
+reloadOnclick('#modalDeleteForfaitBtn')
+reloadOnclick("#refresh");
 
 const btnLogin = document.querySelector('#login');
 btnLogin.addEventListener('click', (e) => {
     document.cookie = ''
     window.location.replace("http://localhost:3000/login");
 })
+
+if (document.cookie == ""){
+  window.location.replace("http://localhost:3000/login"); 
+}
+
+
+if(document.readyState !== "complete"){
+   console.log('enchargement'); 
+   console.log(document) 
+}
