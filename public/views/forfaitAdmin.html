@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html ng-app="app" ng-controller="loginController">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+    crossorigin="anonymous" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <!-- script for table -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
+  <!-- end script for table -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../vendor/bootstrap/css/adminTab.css">
+  <title>admin gls</title>
+  <link rel="shortcut icon" type="image/x-icon" href="../images/logo_infinite.ico" />
+</head>
+
+<body ng-controller="UserCRUDCtrl">
+  <!-- navigation bar  -->
+  <nav class="navbar navbar-expand-lg bg-info navbar-light" id="navbar_admin" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" id="users_A" href="/index"> <img
+        class="w-8 align-center center rounded-full animate__animated animate__flipInY"
+        src="../images/logo_infinite.png"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ">
+          <a class="nav-link" id="users_A" style="color: white;" href="/admin">Utilisateurs<span class="sr-only"></span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="forfaits_A" style="color: white;" href="/forfaits">Forfaits</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="messages_A" style="color: white;" href="/messages">Messages</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="prospect_A" style="color: white;" href="/prospects">Prospects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="session_A" style="color: white;" href="/sessions">Sessions</a>
+        </li>
+
+      </ul>
+      <a href="#"><button class="btn btn-sm btn-outline-secondary" id="login" style="color: white;"
+          type="button">Déconnexion</button></a>
+    </div>
+  </nav>
+  <!-- end navbar -->
+  <!-- show forfait bellow -->
+  <div id="tabForfait" class="w-3/4 m-auto animate__animated animate__fadeIn" ng-controller="forfaitGetAllController">
+    <h1 class="uppercase extrabold text-4xl text-center m-8 underline">forfaits</h1>
+    <button class="btn btn-secondary" type="button" name="refresh" aria-label="Refresh" title="Refresh"><i
+        class="fa fa-sync"></i> </button>
+    <table class="table table-bordered w-3/4 mx-auto border-2 rounded-md" data-url id="tableauForfait">
+      <thead>
+        <tr>
+          <th scope="col">nom forfait</th>
+          <th scope="col">prix forfait</th>
+          <th scope="col">prix base</th>
+          <th scope="col">nombre session</th>
+          <th scope="col">description forfait</th>
+          <th class="w-64" scope="col">actions</th>
+        </tr>
+      </thead>
+      <tbody ng-repeat="forfait in forfaits">
+        <tr>
+          <td>{{forfait.nom}}</td>
+          <td>{{forfait.prix}}</td>
+          <td>{{forfait.prix_base}}</td>
+          <td>{{forfait.nb_session}}</td>
+          <td>{{forfait.description}} </td>
+          <td class="justify-items-center">
+            <button type="button" data-toggle="modal" data-backdrop="false" class="btn btn-sm btn-info"
+              data-target="#forfaitModal_{{forfait.id}}"> <i class="fas fa-pencil-alt"></i> </button>
+            <button type="button" data-toggle="modal" data-backdrop="false" class="btn btn-sm btn-danger"
+              data-target="#forfaitModalSupp_{{forfait.id}}"> <i class="far fa-trash-alt"></i></button>
+            <!-- modifier forfait -->
+            <div class="modal fade bg-black bg-opacity-75" id="forfaitModal_{{forfait.id}}" tabindex="-1" role="dialog"
+              aria-labelledby="userModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content" ng-controller="ForfaitCRUDCtrl">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">modifier forfait</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="" method="post">
+                      <div class="form-group">
+                        <label for="formGroupExampleInput">Nom du forfait</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="nom du forfait"
+                          ng-model="forfait.nom">
+                      </div>
+                      <div class="form-group">
+                        <label for="formGroupExampleInput2">Prix du forfait</label>
+                        <input type="number" class="form-control" id="formGroupExampleInput2"
+                          placeholder="prix du forfait" ng-model="forfait.prix">
+                      </div>
+                      <div class="form-group">
+                        <label for="formGroupExampleInput2">Prix de bade</label>
+                        <input type="number" class="form-control" id="formGroupExampleInput2"
+                          placeholder="prix du forfait" ng-model="forfait.prix_base">
+                      </div>
+                      <div class="form-group">
+                        <label for="formGroupExampleInput2">Nombre de session</label>
+                        <input type="number" class="form-control" id="formGroupExampleInput2"
+                          placeholder="prix du forfait" ng-model="forfait.nb_session">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Description forfait</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                          ng-model="forfait.description"></textarea>
+                      </div>
+                    </form>
+                  </div>
+
+                  <div class="modal-footer">
+                    <button type="button" id="update-forfait" class="btn btn-success" data-dismiss="modal" ng-click="updateForfait(forfait.id,forfait.nom,
+                        forfait.prix, forfait.prix_base, forfait.nb_session,forfait.description )">valider</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Supprimer Forfait -->
+            <div class="modal fade bg-black bg-opacity-75" id="forfaitModalSupp_{{forfait.id}}" tabindex="-1"
+              role="dialog" aria-labelledby="userModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content" ng-controller="ForfaitCRUDCtrl">
+                  <div class="modal-header">
+                    <h5 for="formGroupExampleInput"> Voulez-vous vraiment supprimer ce forfait ?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div>
+                      <div class="form-group">
+                        <h4 class="text-3xl italic"> {{forfait.nom}}</h4>
+                        <p>description: {{ forfait.description }}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"
+                      ng-click="deleteForfait(forfait.id)">Supprimer</button>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">annuler</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- fin modal -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <section>
+      <button class="btn btn-info my-4 mx-32 " data-toggle="modal" data-target="#addForfait">ajouter un forfait <i
+          class="fas fa-plus"></i></button>
+    </section>
+  </div>
+
+  <!-- Modal for adding forfait  -->
+  <div class="modal fade" id="addForfait" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ajouter un forfait</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div ng-controller="ForfaitCRUDCtrl">
+          <div class="modal-body">
+            <form action="" method="post">
+              <div class="form-group">
+                <label for="formGroupExampleInput">Nom du forfait</label>
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="nom du forfait"
+                  ng-model="forfait.nom">
+              </div>
+              <div class="form-group">
+                <label for="formGroupExampleInput2">Prix du forfait</label>
+                <input type="number" min="0" class="form-control" id="formGroupExampleInput2"
+                  placeholder="prix du forfait" ng-model="forfait.prix">
+              </div>
+              <div class="form-group">
+                <label for="formGroupExampleInput2">Prix de base</label>
+                <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="prix du forfait"
+                  ng-model="forfait.prix_base">
+              </div>
+              <div class="form-group">
+                <label for="formGroupExampleInput2">Nombre de session</label>
+                <input type="number" class="form-control" id="formGroupExampleInput2" placeholder="nombres de sessions"
+                  ng-model="forfait.nb_session">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Description forfait</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+                  ng-model="forfait.description"></textarea>
+              </div>
+            </form>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-success" id="add-forfait-btn" data-dismiss="modal"
+              ng-click="addForfait(forfait.id,forfait.nom,forfait.prix,forfait.prix_base,forfait.nb_session,forfait.description)">valider</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end modal for adding forfait -->
+  <!-- Scripts -->
+  <script src="../../vendor/bootstrap/js/admin.js"></script>
+  <!-- ajout des scripts js pour bootstrap -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <!-- script for table  -->
+
+  <script src="../../vendor/bootstrap/js/dataTable.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="https://code.angularjs.org/1.8.2/angular-route.min.js"></script>
+
+  <script src="../variableGlobale.js"></script>
+  <script src="../API/loginService.js"></script>
+  <script src="../Controllers/loginController.js"></script>
+
+  <script src="../Controllers/downloadController.js"></script>
+  <script src="../API/downloadService.js"></script>
+  <script src="../API/forfaitService.js"></script>
+  <script src="../API/messageService.js"></script>
+  <script src="../API/userService.js"></script>
+  <script src="../API/prospectService.js"></script>
+  <script src="../API/sessionService.js"></script>
+  <script src="../Controllers/downloadController.js"></script>
+  <script src="../Controllers/forfaitControllers.js"></script>
+  <script src="../Controllers/messageController.js"></script>
+  <script src="../Controllers/userController.js"></script>
+  <script src="../Controllers/sessionController.js"></script>
+  <script src="../Controllers/prospectController.js"></script>
+
+
+
+</body>
+<!-- <script src="/Factory/app copy.js" ></script> -->
+
+</html>

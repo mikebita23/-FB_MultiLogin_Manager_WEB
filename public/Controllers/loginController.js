@@ -16,7 +16,7 @@ function ($scope,LoginService) {
                 console.log(response.data)
                 document.cookie = response.data.token;
                 console.log(token)
-                window.location.href = '../views/admin.html';          
+               window.location.href = '/admin';          
               },
               function error(response){
                 $scope.errorMessage = 'login error not connected';

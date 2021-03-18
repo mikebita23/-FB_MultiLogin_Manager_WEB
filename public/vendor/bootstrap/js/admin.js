@@ -11,18 +11,18 @@ const loginAdmin = document.getElementById('loginAdmin');
 const theSwitch = document.getElementsByClassName('responseSwitch');
 
 
-  function displayTable(id, tableBlock) {
-    navbar.addEventListener('click', (e) => {
-      var tableUserIsVisible = e.target.id === id ? 'block': 'none';
-      tableBlock.style.display = tableUserIsVisible;
-    });
-  }
+  // function displayTable(id, tableBlock) {
+  //   navbar.addEventListener('click', (e) => {
+  //     var tableUserIsVisible = e.target.id === id ? 'block': 'none';
+  //     tableBlock.style.display = tableUserIsVisible;
+  //   });
+  // }
   // displayTable("prospect_A",tableProspect);
-    displayTable("users_A", tableUsers);
-    displayTable("forfaits_A", tabForfait);
-    displayTable("messages_A", tabMessages);
-    displayTable("prospect_A", tabProspects);
-    displayTable("session_A", tabSessions);
+    // displayTable("users_A", tableUsers);
+    // displayTable("forfaits_A", tabForfait);
+    // displayTable("messages_A", tabMessages);
+    // displayTable("prospect_A", tabProspects);
+    // displayTable("session_A", tabSessions);
     // displayTable("login", loginAdmin);
 
 
@@ -35,7 +35,7 @@ function addOptionsOnTable(id){
         paging: "full-reset"
         
       });
-    }, 400);
+    }, 200);
   });
 }
 // addOptionsOnTable('#tableProspect');
@@ -43,26 +43,7 @@ addOptionsOnTable('#myTableUsers');
 addOptionsOnTable('#messageTable');
 addOptionsOnTable('#myTableProspects');
 addOptionsOnTable('#myTableSessions');
-// addOptionsOnTable('#loginAdmin');
-// switch button 
-tabMessages.addEventListener('click', (e) => {
-  console.log(e.target);
-   if(e.target.checked){
-    // var theId = e.target.id;
-    // var theDiv = document.getElementById(theId);
-    // var text = theDiv.parentElement.lastElementChild;
-    // text.textContent = "oui";
-    console.log("active")
-   } else {
-    // var theId = e.target.id;
-    // console.log(theDiv)
-    // var theDiv = document.getElementById(theId);
-    // //var text = theDiv.parentElement.lastElementChild;
-    // text.textContent = "non";
-    console.log('descativer')
-   }
-  
-});
+
 
 const openModal= function(e){
   e.preventDefault()
@@ -74,8 +55,11 @@ const updateForfait = document.getElementById('update-forfait');
 console.log(updateForfait);
 $('#add-forfait-btn').on('click', () => {
   console.log('load')
-  //window.location.reload(1);
-  $('#tabForfait #tableauForfait').load('admin.html', { post: 'data' });
+  setTimeout(() => {
+    window.location.reload();
+    
+  }, 200);
+  //$('#tabForfait #tableauForfait').load('admin.html', { post: 'data' });
   
 })
 

@@ -6,9 +6,16 @@ var logger = require('morgan');
 global.__views = path.resolve(__dirname, './public/views')
 
 var indexRouter = require('./routes/index');
-var adminRouter = require('./routes/admin');
 
+//call for administration routes
+var adminRouter = require('./routes/admin');
 const loginRouter = require('./routes/loginAdmin')
+const forfaitRouter = require('./routes/forfaitAdmin');
+const messageRouter = require('./routes/messageAdmin');
+const prospectRouter = require('./routes/prospectAdmin');
+const sessionsRouter = require('./routes/sessionAdmin');
+
+
 var app = express();
 
 app.use(logger('dev'));
@@ -20,8 +27,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/admin', adminRouter)
+
+//route for administration
 app.use('/login', loginRouter)
+app.use('/admin', adminRouter)
+app.use('/forfaits', forfaitRouter)
+app.use('/messages', messageRouter)
+app.use('/prospects', prospectRouter)
+app.use('/sessions', sessionsRouter)
 
 
 
