@@ -6,14 +6,14 @@ application.controller('sessionCRUDCtrl', ['$scope', 'sessionCRUDService',
     function ($scope, sessionCRUDService) {
         //Add user 
         
-        $scope.addSession = function (name, eamil, pwd, status) {
-            console.log("Nidal is here now, we got : ", name, email, pwd, status);
-            sessionCRUDService.addSession(name, eamil, pwd, status)
+        $scope.addSession = function () {
+           
+            sessionCRUDService.addSession($scope.session.name,$scope.session.email,
+                $scope.session.pwd, $scope.session.status)
                 .then(function success(response) {
                     $scope.message = 'Session added!';
                     $scope.errorMessage = '';
-                    console.log($scope.message,  response.data);
-                   
+                    console.log($scope.message,  response.data);          
                 },
                     function error(response) {
                         $scope.errorMessage = 'Error adding Session!';

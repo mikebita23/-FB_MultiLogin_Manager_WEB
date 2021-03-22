@@ -61,8 +61,8 @@
   </nav>
   <!-- end navbar -->
   <!-- show sessions table bellow  -->
-  <div>
-    <div id="tabSessions" class="w-3/4 m-auto animate__animated animate__fadeIn" ng-controller="userGetAllController">
+  <div ng-controller="userGetAllController">
+    <div id="tabSessions" class="w-3/4 m-auto animate__animated animate__fadeIn" ng-controller="sessionCRUDCtrlAll">
       <h1 class="uppercase extrabold text-4xl text-center m-8 underline">Sessions</h1>
       <div id="resultats">
         <table class="table table-bordered w-3/4 mx-auto border-2 rounded-md" id="myTableSessions"
@@ -222,7 +222,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div>
+        <div ng-controller="sessionCRUDCtrl">
           <div class="modal-body">
             <form action="" method="post">
               <div class="form-group">
