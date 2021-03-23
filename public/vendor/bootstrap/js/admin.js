@@ -42,6 +42,7 @@ function reloadOnclick(btnId){
 reloadOnclick('#add-forfait-btn')
 reloadOnclick('#modalDeleteForfaitBtn')
 reloadOnclick("#refresh");
+reloadOnclick('#sessionAdd')
 
 const btnLogin = document.querySelector('#login');
 btnLogin.addEventListener('click', (e) => {
