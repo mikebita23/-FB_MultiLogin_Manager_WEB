@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="app">
 
     <head>
         <meta charset="UTF-8" />
@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="../../vendor/bootstrap/css/adminTab.css">
-        <title>register page</title>
+        <title>login page</title>
         <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
@@ -26,7 +26,7 @@
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
     </head>         
 
-<body class="flex justify-center bg-gray-200">
+<body class="flex justify-center bg-gray-200" ng-controller="loginPaiementController">
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center">
     
@@ -57,19 +57,19 @@
                         Email
                     </label>
                     <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="email"
-                        type="email" placeholder="exemple@gmail.com">
+                        type="email" name="emailConnect" placeholder="exemple@gmail.com">
                 </div>
                 <div class="mb-6">
                     <label class="block text-grey-darker text-sm font-bold mb-2" for="password">
                         Mot De Passe
                     </label>
                     <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3"
-                        id="password" type="password" placeholder="******************">
+                        id="password" type="password" name="passwordConnect" placeholder="******************">
                     <p class="text-red text-xs italic invisible">choississez un mot de passe long.</p>
                 </div>
                 <div class="flex items-center justify-around">
                     <button class="bg-blue btn btn-primary hover:bg-blue-dark text-white font-bold py-2 px-4 rounded"
-                        type="button">
+                        type="button" ng-click="addLogin(login.email,login.passWord)">
                         connexion
                     </button>
                     <a class="inline-block align-baseline font-bold text-sm text-blue hover:text-blue-darker" href="#">
