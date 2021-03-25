@@ -5,12 +5,13 @@
 
     application.controller('UserCRUDCtrl',['$scope','UserCRUDService','$timeout','$log', '$http',
     function ($scope,UserCRUDService, $timeout) {
-        var tokenUser
+        var tokenUser;
+       
         //Add user 
         $scope.addUser = function () {
                 UserCRUDService.addUser($scope.user.name,
                     $scope.user.lastName,
-                    $scope.user.email,$scope.user.phoneNumber,
+                   $scope.user.email,$scope.user.phoneNumber,
                     $scope.user.pwd, $scope.forfait.id)
                 .then (function success(response){      
                     $scope.message = 'User added!';
@@ -18,7 +19,8 @@
                     console.log( "Token", tokenUser)
                     $scope.errorMessage = '';
                     console.log( $scope.message, response.data);  
-                    // window.open('http://'+tokenUser,'_blank')
+                    UserCRUDService.sendEmail($scope.user.email,tokenUser);
+                    
                 },
                 function error(response){
                     $scope.errorMessage = 'Error adding user!';
@@ -26,7 +28,20 @@
                     console.log( $scope.errorMessage);
                 });
         }
-
+        $scope.sendEmail = function () {
+            UserCRUDService.sendEmail($scope.user.email, tokenUser)
+            .then (function success(response){      
+                $scope.message = 'Email envoyé!';
+                $scope.errorMessage = '';
+                console.log( $scope.message, response.data);  
+               
+            },
+            function error(response){
+                $scope.errorMessage = 'Error email user!';
+                $scope.message = '';
+                console.log( $scope.errorMessage);
+            });
+    }
         $scope.addUserToken = function () {
             UserCRUDService.addUserToken(tokenUser)
             .then (function success(response){      

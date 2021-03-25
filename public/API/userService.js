@@ -2,6 +2,25 @@
 //CREATION DE SERVICE UserCRUDService
 application.service('UserCRUDService',['$http', function($http) {
 
+    this.sendEmail = function sendEmail(mail,link) {
+        return $http({
+            method : 'POST',
+            url: `${API_URL_D}/email/send`,
+            headers: {
+                //'Authorization': `Bearer ${token_D}`  ,
+                'Authorization': `Bearer ${token}` ,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }, 
+            data:{
+                destinateur: mail,
+                objet:"Confirmation inscription",
+                contenu:`<p>bienvenue sur notre plateforme cliquer sur ce lien pour confirmer votre compte gmailmarchemaaaa<a href="${link}">lien ici</a></p>`
+
+            }
+
+        });
+    };
     
         this.getUser = function getUser() {
             return $http({
