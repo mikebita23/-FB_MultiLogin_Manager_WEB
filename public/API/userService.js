@@ -32,7 +32,7 @@ application.service('UserCRUDService',['$http', function($http) {
     // service Add User-add
     
     this.addUser = function addUser(firstName,lastName,
-        email,phoneNumber,passWord ) {
+        email,phoneNumber,passWord, forfaitId ) {
         return $http({
             method : 'POST',
             url: `${API_URL_D}/users/add`,
@@ -44,7 +44,7 @@ application.service('UserCRUDService',['$http', function($http) {
                 phoneNumber: phoneNumber,
                 passWord: passWord,
                 role: "CLIENT",
-                forfaitId: null
+                forfaitId: forfaitId
               } 
         });
     };

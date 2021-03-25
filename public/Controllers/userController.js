@@ -11,15 +11,14 @@
                 UserCRUDService.addUser($scope.user.name,
                     $scope.user.lastName,
                     $scope.user.email,$scope.user.phoneNumber,
-                    $scope.user.pwd)
+                    $scope.user.pwd, $scope.forfait.id)
                 .then (function success(response){      
                     $scope.message = 'User added!';
                     tokenUser=response.data.token
                     console.log( "Token", tokenUser)
                     $scope.errorMessage = '';
-                    console.log( $scope.message, response.data);
-                    console.log(tokenUser.link)
-                    window.open('http://'+tokenUser.link,'_blank')
+                    console.log( $scope.message, response.data);  
+                    // window.open('http://'+tokenUser,'_blank')
                 },
                 function error(response){
                     $scope.errorMessage = 'Error adding user!';
