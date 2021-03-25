@@ -5,16 +5,21 @@
 
     application.controller('UserCRUDCtrl',['$scope','UserCRUDService','$timeout','$log', '$http',
     function ($scope,UserCRUDService, $timeout) {
+        var tokenUser
         //Add user 
         $scope.addUser = function () {
-                UserCRUDService.addUser($scope.user.firstName,
+                UserCRUDService.addUser($scope.user.name,
                     $scope.user.lastName,
                     $scope.user.email,$scope.user.phoneNumber,
-                    $scope.user.passWord)
+                    $scope.user.pwd)
                 .then (function success(response){      
                     $scope.message = 'User added!';
+                    tokenUser=response.data.token
+                    console.log( "Token", tokenUser)
                     $scope.errorMessage = '';
-                    console.log( $scope.message);
+                    console.log( $scope.message, response.data);
+                    console.log(tokenUser.link)
+                    window.open('http://'+tokenUser.link,'_blank')
                 },
                 function error(response){
                     $scope.errorMessage = 'Error adding user!';
@@ -22,6 +27,21 @@
                     console.log( $scope.errorMessage);
                 });
         }
+
+        $scope.addUserToken = function () {
+            UserCRUDService.addUserToken(tokenUser)
+            .then (function success(response){      
+                $scope.message = 'User added with token!';
+                console.log( "Token +TOKEN ", response.data.token)
+                $scope.errorMessage = '';
+                console.log( $scope.message, response.data);
+            },
+            function error(response){
+                $scope.errorMessage = 'Error adding user!';
+                $scope.message = '';
+                console.log( $scope.errorMessage);
+            });
+    }
         
         $scope.updateUser = function () {
             UserCRUDService.updateUser($scope.user.id,$scope.user.firstName,

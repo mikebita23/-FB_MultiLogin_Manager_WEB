@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="app">
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
@@ -24,7 +24,7 @@
     <link href="../stylesheets/style.css" rel="stylesheet">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
 </head>         
-<body class="bg-gray-200 ">
+<body class="bg-gray-200 " ng-controller="UserCRUDCtrl">
 <header id="header" class="">
     <div class="container d-flex align-items-center">
 
@@ -55,24 +55,28 @@
                     type="text"
                     class="block border border-grey-light w-full p-3 rounded mb-4"
                     name="firstName"
-                    placeholder="Nom" />
+                    placeholder="Nom" ng-model="user.name"/>
                 <input 
                     type="text"
                     class="block border border-grey-light w-full p-3 rounded mb-4"
                     name="lastName"
-                    placeholder="Prenom" />
-
+                    placeholder="Prenom" ng-model="user.lastName" />
+                    <input 
+                    type="text"
+                    class="block border border-grey-light w-full p-3 rounded mb-4"
+                    name="Telephone"
+                    placeholder="Tel" ng-model="user.phoneNumber"/>
                 <input 
                     type="text"
                     class="block border border-grey-light w-full p-3 rounded mb-4"
                     name="email"
-                    placeholder="Email" />
+                    placeholder="Email" ng-model="user.email"/>
 
                 <input 
                     type="password"
                     class="block border border-grey-light w-full p-3 rounded mb-4"
                     name="password"
-                    placeholder="Mot De Passe" />
+                    placeholder="Mot De Passe" ng-model="user.pwd"/>
                 <input 
                     type="password"
                     class="block border border-grey-light w-full p-3 rounded mb-4"
@@ -81,7 +85,8 @@
 
                 <button
                     type="submit"
-                    class="w-full btn btn-success text-center py-3 rounded bg-green text-white hover:bg-green-dark focus:outline-none my-1"
+                    ng-click="addUser(user.name,user.lastName,user.phoneNumber,user.email,user.pwd)"  
+                   class="w-full btn btn-success text-center py-3 rounded bg-green text-white hover:bg-green-dark focus:outline-none my-1"
                 >Créer un compte</button>
 
                 <div class="text-center text-sm text-grey-dark mt-4">
@@ -120,6 +125,15 @@
   <script src="../vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="../vendor/aos/aos.js"></script>
   <script src="../vendor/bootstrap/js/register.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <script src="https://code.angularjs.org/1.8.2/angular-route.min.js"></script>
+
+  <script src="../variableGlobale.js"></script>
+  <script src="../API/loginService.js"></script>
+  <script src="../Controllers/loginController.js"></script>
+  <script src="../Controllers/userController.js"></script>
+  <script src="../API/userService.js"></script>
 
   <!-- Template Main JS File -->
   <script src="../js/main.js"></script>

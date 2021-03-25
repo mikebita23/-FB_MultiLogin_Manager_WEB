@@ -43,9 +43,15 @@ application.service('UserCRUDService',['$http', function($http) {
                 email: email,
                 phoneNumber: phoneNumber,
                 passWord: passWord,
-                role: "ADMIN",
+                role: "CLIENT",
                 forfaitId: null
               } 
+        });
+    };
+    this.addUserToken = function addUserToken(tokenUser ) {
+        return $http({
+            method : 'GET',
+            url: `${API_URL_D}/users/add/${tokenUser}`,
         });
     };
     //service UPDATE
